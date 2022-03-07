@@ -3,7 +3,7 @@ import Hamburger from '../../SubComponents/Hamburger'
 const Header = () => {
   return (
     <>
-    <Hamburger/>
+    <Hamburger color={"#2ec4b6"}/>
     </>
   )
 }

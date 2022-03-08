@@ -1,0 +1,54 @@
+*{
+    box-sizing:content-box ;
+}
+
+body{
+    position: relative;
+}
+
+/* Logo CSS */
+.st0{
+    fill:#3FA9F5;
+}
+.st1{
+    fill:#3FA9F5;
+    stroke:#3FA9F5;
+    stroke-width:10;
+    stroke-miterlimit:10;
+}
+.st2{
+    fill:#FFFFFF;
+}
+.st3{
+    fill:#878787;
+}
+.logo{
+    transition: all ease-in-out 0.3s;
+}
+.logo1{
+    width: 350px;
+}
+.logo2{
+    width: 700px;
+}
+.header{
+    transition: all ease-in-out 2s;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger{
+    position:absolute;
+    left:20px;
+    top:10px;
+    transition: all ease-in-out 0.3s;
+    z-index: 10;
+}
+
+.toggleNavbar{
+    transform: translateX(300px);
+    
+}

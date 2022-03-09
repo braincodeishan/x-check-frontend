@@ -15,13 +15,17 @@ const Search = () => {
     { value: 35000, label: '35000', color: '#666666' },
     { value: 40000, label: '40000', color: '#666666' },
   ];
-  const [slider,setSlider]=useState([price[0].value,price[price.length-1].value])
+  const [slider,setSlider]=useState([0,100000])
   const sliderChange=(e,newValue)=>{
     setSlider(newValue)
+
   }
 
+  function valuetext() {
+    return `Rs. ${slider}`;
+  }
   return (
-    <div className='Container'>
+    <div className='container'>
       <div className='Search-Box'>
         <div className='title'>
           <p>Lets Cross-Check the Best Phone between your budget</p>
@@ -29,10 +33,8 @@ const Search = () => {
         <div className='Price-Select'>
         <Select
             defaultValue={price[0]}
-            isMulti
-            name="colors"
+            name="Price"
             options={price}
-            className="basic-multi-select"
             classNamePrefix="select"
             
             
@@ -53,8 +55,8 @@ const Search = () => {
         getAriaLabel={() => 'Price Range'}
         value={slider}
         onChange={sliderChange}
-        valueLabelDisplay="auto"
-        // getAriaValueText={valuetext}
+        // valueLabelDisplay="auto"
+        getAriaValueText={valuetext}
       />
 
         </div>

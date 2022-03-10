@@ -1,12 +1,18 @@
+import React from 'react';
 import './App.css';
+import'./Assets/CSS/Scrollbar.css'
+import'./Assets/CSS/Common.css'
+import'./Assets/CSS/Misc.css'
+// import'./Assets/CSS/Footer.css'
+import {Routes,Route} from 'react-router-dom'
 import Search from './Components/MainComponents/Body/Search'
 import Header from './Components/MainComponents/Header/Header';
 import Navbar from './Components/MainComponents/Navbar/Navbar';
 import LoginProvider from './Contexts/LoginProvider'
 import Login from "./Components/MainComponents/Body/Login"
-import {Routes,Route} from 'react-router-dom'
 import ProtectedRoutes from './Contexts/ProtectedRoutes';
-import'./Assets/CSS/Scrollbar.css'
+import Footer from './Components/MainComponents/Footer/Footer';
+
 function App() {
   return (
     <div className="App">
@@ -21,8 +27,9 @@ function App() {
             
           </Route>
         </Routes>
-        </div>
 
+        </div>
+        <Footer/>
 
 
       </LoginProvider>

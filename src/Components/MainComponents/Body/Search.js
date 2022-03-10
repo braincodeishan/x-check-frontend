@@ -3,10 +3,15 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Loading from '../../SubComponents/Loading'
 const animatedComponents = makeAnimated();
 
 const Search = () => {
   const [isAdvSearch, setisAdvSearch] = useState(false)
+  const [isLoading, setisLoading] = useState(false)
+
   const price = [
     { value: 0, label: '0', color: '#00B8D9' },
     { value: 1000, label: '1000', color: '#0052CC' },
@@ -54,39 +59,49 @@ const Search = () => {
 
   const advSearch = () => {
     setisAdvSearch(!isAdvSearch);
+
   }
 
-
+const search=()=>{
+  setisLoading(true);
+  setTimeout(()=>{setisLoading(false)},3000)
+}
 
   return (
-    <div className='container search'>
-      <div className='Search-Box'>
-        <div className='title'>
-          <p>Lets Cross-Check the Best Phone between your budget</p>
-        </div>
-        <div className='Price-Select'>
-          <Autocomplete
-            id="free-solo-demo"
-            freeSolo
-            className='Price-Select-inputs'
-            options={price.map((option) => option.label)}
-            renderInput={(params) => <TextField {...params} label="Price From" />}
-          />
-          <p>To</p>
-          <Autocomplete
-            id="free-solo-demo"
-            freeSolo
-            className='Price-Select-inputs'
-            options={price.map((option) => option.label)}
-            renderInput={(params) => <TextField {...params} label="Price To" />}
-          />
+    <>
+      {isLoading && <Loading />}
+      <div className='container search'>
+        <div className='Search-Box'>
+          <div className='title'>
+            <p>Lets Cross-Check the Best Phone between your budget</p>
+          </div>
+          <div className='Price-Select'>
+            <Autocomplete
+              id="free-solo-demo"
+              freeSolo
+              className='Price-Select-inputs'
+              options={price.map((option) => option.label)}
+              renderInput={(params) => <TextField {...params} label="Price From" />}
+            />
+            <p>To</p>
+            <Autocomplete
+              id="free-solo-demo"
+              freeSolo
+              className='Price-Select-inputs'
+              options={price.map((option) => option.label)}
+              renderInput={(params) => <TextField {...params} label="Price To" />}
+            />
 
 
-        </div>
-        <i class='bx bx-down-arrow-circle ' onClick={advSearch}></i>
-        {isAdvSearch && <div className='Advance-Search'>
+          </div>
+          <Tooltip title="Advance Search" placement="right">
+            <IconButton>
+              <i class={'bx bx-down-arrow-circle ' + (isAdvSearch ? 'rotate180' : 'rotate0')} onClick={advSearch}></i>
+            </IconButton>
+          </Tooltip>
+          {isAdvSearch && <div className='Advance-Search'>
 
-          
+
             <p>Filter by Processors...</p>
             <Select
               closeMenuOnSelect={false}
@@ -95,8 +110,8 @@ const Search = () => {
               className='Multi-Select'
               options={processors}
             />
-          
-          
+
+
             <p>Filter by RAMs...</p>
             <Select
               closeMenuOnSelect={false}
@@ -105,8 +120,8 @@ const Search = () => {
               className='Multi-Select'
               options={RAM}
             />
-          
-          
+
+
             <p>Filter by Camera...</p>
             <Select
               closeMenuOnSelect={false}
@@ -115,7 +130,7 @@ const Search = () => {
               className='Multi-Select'
               options={camera}
             />
-          
+
             <p>Filter by Display...</p>
             <Select
               closeMenuOnSelect={false}
@@ -124,7 +139,7 @@ const Search = () => {
               className='Multi-Select'
               options={price}
             />
-          
+
             <p>Filter by Brands...</p>
             <Select
               closeMenuOnSelect={false}
@@ -134,11 +149,16 @@ const Search = () => {
               className='Multi-Select'
               options={price}
             />
-          
-        </div>}
-        <i class='bx bx-search' ></i>
+
+          </div>}
+          <Tooltip title="Search" placement="right">
+            <IconButton>
+              <i class='bx bx-search' onClick={search}></i>
+            </IconButton>
+          </Tooltip>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

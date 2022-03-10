@@ -46,7 +46,7 @@ const Footer = () => {
 
           <div className="col-md-4 col-sm-6 col-xs-12">
             <ul className="social-icons">
-              <li><Link to="#" className="facebook" ><i class='bx bxl-facebook-circle'></i></Link></li>
+              <li><Link to="#" className="facebook" ><i className='bx bxl-facebook-circle'></i></Link></li>
               <li><Link to="#" className="twitter"><i className="bx bxl-twitter"></i></Link></li>
               <li><Link to="#" className="dribbble"><i className="bx bxl-whatsapp"></i></Link></li>
               <li><Link to="#" className="linkedin"><i className="bx bxl-youtube"></i></Link></li>   

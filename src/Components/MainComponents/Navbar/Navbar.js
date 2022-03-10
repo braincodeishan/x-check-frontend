@@ -94,7 +94,7 @@ const Navbar = () => {
           <li>
             <div className="iocn-link">
               <Link to="#">
-              <i class='bx bx-mobile-vibration' ></i>
+              <i className='bx bx-mobile-vibration' ></i>
                 {/* <i className='bx bx-collection' ></i> */}
                 <span className="link_name">My Phones</span>
               </Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
           <li>
             <div className="iocn-link">
               <Link to="#">
-              <i class='bx bx-news' ></i>
+              <i className='bx bx-news' ></i>
                 {/* <i className='bx bx-book-alt' ></i> */}
                 <span className="link_name">News</span>
               </Link>
@@ -126,7 +126,7 @@ const Navbar = () => {
           <li>
             <div className="iocn-link">
               <Link to="#">
-              <i class='bx bxs-discount' ></i>
+              <i className='bx bxs-discount' ></i>
                 {/* <i className='bx bx-pie-chart-alt-2' ></i> */}
                 <span className="link_name">Loot</span>
               </Link>
@@ -141,7 +141,7 @@ const Navbar = () => {
           
           <li>
             <Link to="#">
-            <i class='bx bxl-meta'></i>
+            <i className='bx bxl-meta'></i>
               {/* <i className='bx bx-compass' ></i> */}
               <span className="link_name">About Us</span>
             </Link>

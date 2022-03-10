@@ -62,10 +62,10 @@ const Search = () => {
 
   }
 
-const search=()=>{
-  setisLoading(true);
-  setTimeout(()=>{setisLoading(false)},3000)
-}
+  const search = () => {
+    setisLoading(true);
+    setTimeout(() => { setisLoading(false) }, 3000)
+  }
 
   return (
     <>
@@ -94,11 +94,13 @@ const search=()=>{
 
 
           </div>
+          <div onClick={advSearch}>
           <Tooltip title="Advance Search" placement="right">
             <IconButton>
-              <i class={'bx bx-down-arrow-circle ' + (isAdvSearch ? 'rotate180' : 'rotate0')} onClick={advSearch}></i>
+              <i className={'bx bx-down-arrow-circle ' + (isAdvSearch ? 'rotate180' : 'rotate0')}></i>
             </IconButton>
           </Tooltip>
+          </div>
           {isAdvSearch && <div className='Advance-Search'>
 
 
@@ -151,11 +153,13 @@ const search=()=>{
             />
 
           </div>}
-          <Tooltip title="Search" placement="right">
-            <IconButton>
-              <i class='bx bx-search' onClick={search}></i>
-            </IconButton>
-          </Tooltip>
+          <div onClick={search}>
+            <Tooltip title="Search" placement="right">
+              <IconButton>
+                <i className='bx bx-search'></i>
+              </IconButton>
+            </Tooltip>
+          </div>
         </div>
       </div>
     </>

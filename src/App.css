@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #2ec4b6;
+  --secondary-color: #C0F0EC;
+  --third-color: #fff;
+  --fourth-color: rgba(0,0,0,0.7);
+  --fb-color: rgb(145, 145, 255);
+  --instagram-color: rgb(255, 175, 70);
+  --whatsapp-color: rgb(0, 128, 0);
+  --twitter-color: rgb(57, 199, 163);
+}
+
+
 *{
     box-sizing:content-box ;
 }
@@ -9,6 +21,8 @@ body{
   width:calc(100vw-230px);
     margin-left: 78px;
 }
+
+
 
 /* Logo CSS */
 .st0{
@@ -42,6 +56,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 75px;
 }
 
 .hamburger{
@@ -78,6 +93,24 @@ body{
 .sidebar.close{
   width: 78px;
 }
+
+@media screen and (max-width:480px) {
+  .sidebar.close{
+    width: 0px;
+  }
+  .sidebar{
+    left: -78px;
+  }
+  .body{
+    width:100vw;
+    margin: 0;
+  }
+  .logo2{
+    width: 150px;
+  }
+  
+}
+
 .sidebar .logo-details{
   height: 60px;
   width: 100%;
@@ -303,3 +336,68 @@ body{
 .bxl-xing{
     color: #fff;
 }
+
+
+.search{
+  display: flex;
+  justify-content: center;
+}
+.Search-Box{
+width:60%;
+background-color: #C0F0EC;
+display: flex;
+flex-direction: column;
+/* justify-content: center; */
+align-items: center;
+padding: 30px;
+border-radius: 10px;
+}
+
+.search .bx{
+  color:var(--primary-color);
+  font-size: 50px;
+  padding: 10px;
+}
+
+.Search-Box .Price-Select{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+@media screen and (max-width:480px) {
+  .Search-Box .Price-Select{
+    flex-direction: column;
+  }
+  .Search-Box .Price-Select-inputs{
+    width: 100%;
+  }
+}
+
+.Price-Select p{
+  padding: 10px;
+}
+
+.Search-Box .Price-Select-inputs{
+  width: 100%;
+}
+
+.Search-Box .Advance-Search{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: auto ;
+  column-gap: 3px;
+}
+
+.Search-Box .Advance-Search>.Multi-Select{
+width: 100%;
+margin-top: 5px;
+}
+
+.Search-Box .Advance-Search>p{
+  margin-top: 10px;
+}
+

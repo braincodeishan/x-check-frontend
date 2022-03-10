@@ -6,6 +6,7 @@ import LoginProvider from './Contexts/LoginProvider'
 import Login from "./Components/MainComponents/Body/Login"
 import {Routes,Route} from 'react-router-dom'
 import ProtectedRoutes from './Contexts/ProtectedRoutes';
+import'./Assets/CSS/Scrollbar.css'
 function App() {
   return (
     <div className="App">

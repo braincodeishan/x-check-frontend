@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import React, { useContext } from 'react'
-import LoginContext from './LoginContext';
+import {LoginContext} from './Context';
 
 const useAuth = () => {
     const Login = useContext(LoginContext)

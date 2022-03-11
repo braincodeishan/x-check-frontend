@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Hamburger from '../../SubComponents/Hamburger'
 import Logo from '../../SubComponents/Logo'
 const Header = () => {
-  const [logoWidth,setlogoWidth]=useState('logo2')
-const logo=()=>{
-  if(logoWidth==='logo2'){
-setlogoWidth('logo1')
-  }else{
-    setlogoWidth('logo2')
-  }
-
-}
+  
   return (
     <>
     <Hamburger/>
-    <div className='header' onClick={logo}>
+    <div className='header'>
     
-    <Logo width={logoWidth}/>
+    <Logo/>
+    
     </div>
     </>
   )

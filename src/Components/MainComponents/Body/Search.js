@@ -1,4 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+
+//importing Navigation and React routers
+import { Navigate } from 'react-router';
+
+//Importing Context
+import { LogoWidth } from '../../../Contexts/Context';
+import { MobileData } from '../../../Contexts/Context';
+
+//Importing Components
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import makeAnimated from 'react-select/animated';
@@ -6,12 +15,20 @@ import Select from 'react-select';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Loading from '../../SubComponents/Loading'
-const animatedComponents = makeAnimated();
+
+//importing other Libraries
+import axios from 'axios'
+
+
 
 const Search = () => {
+  
+  const logoWidth=useContext(LogoWidth)
+  const mobileData=useContext(MobileData)
   const [isAdvSearch, setisAdvSearch] = useState(false)
   const [isLoading, setisLoading] = useState(false)
-
+  
+  const animatedComponents = makeAnimated();
   const price = [
     { value: 0, label: '0', color: '#00B8D9' },
     { value: 1000, label: '1000', color: '#0052CC' },
@@ -62,9 +79,34 @@ const Search = () => {
 
   }
 
-  const search = () => {
+  const search = async() => {
     setisLoading(true);
-    setTimeout(() => { setisLoading(false) }, 3000)
+    // const res=await axios({
+    //   method:'GET',
+    //   url:process.env.REACT_APP_SEARCH_API,
+    //   // data:JSON.stringify({
+    //   //   fromPrice,
+    //   //   toPrice,
+    //   //   processors,
+    //   //   RAM,
+    //   //   camera,
+    //   //   display,
+    //   //   brand
+    //   // })
+    // })
+    // console.log(res);
+    const result={
+      data:"My mobile"
+    }
+    mobileData.setmobileData(result.data)
+    
+    console.log(mobileData.mobileData);
+    
+    setTimeout(() => { setisLoading(false);
+      logoWidth.setlogoWidth(150); 
+      Navigate("/Result")
+    }, 3000)
+    
   }
 
   return (

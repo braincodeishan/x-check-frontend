@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import LoginContext from '../../../Contexts/LoginContext';
+import {LoginContext} from '../../../Contexts/Context';
+import { LogoWidth } from '../../../Contexts/Context';
 import { Link } from 'react-router-dom'
 import Alert from '../../SubComponents/Alert';
 
 const Navbar = () => {
+  const logoWidth=useContext(LogoWidth)
   const Login = useContext(LoginContext)
   const [sidebarclass, setsidebarclass] = useState("close");
   const [menu, setmenu] = useState("bx-menu");
@@ -82,13 +84,13 @@ const Navbar = () => {
         </div>
         <ul className="nav-links">
           {showLogin()}
-          <li>
+          <li onClick={()=>{logoWidth.setlogoWidth(700)}}>
             <Link to="/">
               <i className='bx bx-grid-alt' ></i>
               <span className="link_name">Home</span>
             </Link>
             <ul className="sub-menu blank">
-              <li><Link className="link_name" to="/Home">Home</Link></li>
+              <li><Link className="link_name" to="/">Home</Link></li>
             </ul>
           </li>
           <li>

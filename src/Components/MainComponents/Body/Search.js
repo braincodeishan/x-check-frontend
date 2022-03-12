@@ -15,14 +15,30 @@ import Select from 'react-select';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Loading from '../../SubComponents/Loading'
+// import Background from '../../SubComponents/Background';
+import img1 from '../../../Assets/Images/1.png'
+import img2 from '../../../Assets/Images/2.png'
+import img3 from '../../../Assets/Images/3.png'
+import img4 from '../../../Assets/Images/4.png'
+
 
 //importing other Libraries
 import axios from 'axios'
+import ReactJSXWrapper from '../../SubComponents/ReactJSXWrapper'
 
 
 
 const Search = () => {
-  
+  const IMG1=ReactJSXWrapper(<div className='plx-block-1'>
+      
+  <img src={img1} alt='phone'  className='parallax-image plx-1'/>
+  {/* <img src={img2} alt='phone'  className='parallax-image plx-2'/> */}
+  </div>,0.03)
+
+  const IMG2=ReactJSXWrapper(<div className='plx-block-2'>
+  {/* <img src={img3} alt='phone'  className='parallax-image plx-3'/> */}
+  <img src={img4} alt='phone'  className='parallax-image plx-4'/>
+  </div>,0.1)
   const logoWidth=useContext(LogoWidth)
   const mobileData=useContext(MobileData)
   const [isAdvSearch, setisAdvSearch] = useState(false)
@@ -100,18 +116,24 @@ const Search = () => {
     }
     mobileData.setmobileData(result.data)
     
-    console.log(mobileData.mobileData);
+    // console.log(mobileData.mobileData);
     
     setTimeout(() => { setisLoading(false);
       logoWidth.setlogoWidth(150); 
-      Navigate("/Result")
+      // Navigate("/Result")
     }, 3000)
     
   }
+  const scrollParallax=(e)=>{
+    console.log(e);
+  }
+
 
   return (
-    <>
+    <div className='Search-Parent' onScroll={scrollParallax}>
       {isLoading && <Loading />}
+      <IMG1/>
+      <IMG2/>
       <div className='container search'>
         <div className='Search-Box'>
           <div className='title'>
@@ -204,7 +226,7 @@ const Search = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

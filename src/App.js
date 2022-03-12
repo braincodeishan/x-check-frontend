@@ -22,6 +22,7 @@ import Header from './Components/MainComponents/Header/Header';
 import Navbar from './Components/MainComponents/Navbar/Navbar';
 import Login from "./Components/MainComponents/Body/Login"
 import Footer from './Components/MainComponents/Footer/Footer';
+import LoveIndia from './Components/MainComponents/Footer/LoveIndia';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               </Routes>
 
             </div>
+            <LoveIndia/>
             <Footer />
           </MobileDataProvider>
         </LogoWidthProvider>

@@ -7,6 +7,8 @@
   --instagram-color: rgb(255, 175, 70);
   --whatsapp-color: rgb(0, 128, 0);
   --twitter-color: rgb(57, 199, 163);
+  --light-color: rgba(0, 213, 255,1);
+  --dark-color: rgba(3,3,94,1)
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -27,37 +29,12 @@ body{
     margin-left: 78px;
     min-height: 60vh;
     position: relative;
+    overflow-x: hidden;
 }
 
 
 
-/* Logo CSS */
-.st0{
-    fill:#3FA9F5;
-}
-.st1{
-    fill:#3FA9F5;
-    stroke:#3FA9F5;
-    stroke-width:10;
-    stroke-miterlimit:10;
-}
-.st2{
-    fill:#FFFFFF;
-}
-.st3{
-    fill:#878787;
-}
-.logo{
-    transition: all ease-in-out 0.3s;
-    /* z-index: 10; */
-}
 
-@media screen and (max-width:480px) {
-  .logo{
-    width: 150px !important;
-  }
-  
-}
 
 @media screen and (max-width:480px) {
     
@@ -69,152 +46,7 @@ body{
   }
     
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 75px;
-    transition: all ease-in-out 2s;
-    background-color: #fff;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 10;
-    /* margin-bottom: 10px; */
-    /* box-shadow: 0 0 10px 1px rgb(185, 185, 185); */
-    position: relative;
-}
-
-.hamburger{
-    position:absolute;
-    left:20px;
-    top:10px;
-    transition: all ease-in-out 0.3s;
-    z-index: 10;
-}
-
-.toggleNavbar{
-    transform: translateX(300px);
-    
-}
-
-.divider{
-  height:5px;
-  animation: colorRainbow 2s 0s infinite ;
-  animation-timing-function: ease-in-out;
-  margin-bottom: 20px;
-}
-@keyframes colorRainbow{
-  0%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(11, 202, 240,1) 0%, rgba(3,3,94,1) 100%);
-  }
-  12.5%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg,  rgba(3,3,94,1) 0%, rgba(11, 202, 240,1) 25%, rgba(3,3,94,1) 100%);
-  }
-  25%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(3,3,94,1) 0%, rgba(11, 202, 240,1) 50%, rgba(3,3,94,1) 100%);
-  }
-  37.5%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(3,3,94,1) 0%, rgba(11, 202, 240,1) 75%, rgba(3,3,94,1) 100%);
-  }
-  50%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(3,3,94,1) 0%, rgba(11, 202, 240,1) 100%);
-  }
-  62.5%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(3,3,94,1) 0%, rgba(11, 202, 240,1) 75%, rgba(3,3,94,1) 100%);
-  }
-  75%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(3,3,94,1) 0%, rgba(11, 202, 240,1) 50%, rgba(3,3,94,1) 100%);
-  }
-  87.5%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(3,3,94,1) 0%, rgba(11, 202, 240,1) 25%, rgba(3,3,94,1) 100%);
-  }
-  100%{
-    background: rgb(3,3,94);
-    background: linear-gradient(90deg, rgba(11, 202, 240,1) 0%, rgba(3,3,94,1) 100%);
-  }
-}
 
 
 
-.search{
-  display: flex;
-  justify-content: center;
-  position: relative;
-  
-}
-.Search-Box{
-width:60%;
-background-color: #C0F0EC;
-display: flex;
-flex-direction: column;
-/* justify-content: center; */
-align-items: center;
-padding: 30px;
-border-radius: 10px;
-z-index: 1;
-}
-
-.search .bx{
-  color:var(--primary-color);
-  font-size: 50px;
-  padding: 10px;
-}
-
-.search .bx{
-  transition: all ease-in-out 0.3s;
-  cursor: pointer;
-}
-
-.Search-Box .Price-Select{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  /* align-items: center; */
-  /* justify-content: center; */
-}
-
-@media screen and (max-width:480px) {
-  .Search-Box{
-    width: 90%;
-  }
-  .Search-Box .Price-Select{
-    flex-direction: column;
-  }
-  .Search-Box .Price-Select-inputs{
-    width: 100%;
-  }
-}
-
-.Price-Select p{
-  padding: 10px;
-}
-
-.Search-Box .Price-Select-inputs{
-  width: 100%;
-}
-
-.Search-Box .Advance-Search{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: auto ;
-  column-gap: 3px;
-}
-
-.Search-Box .Advance-Search>.Multi-Select{
-width: 100%;
-margin-top: 5px;
-}
-
-.Search-Box .Advance-Search>p{
-  margin-top: 10px;
-}
 

@@ -23,6 +23,7 @@ import Navbar from './Components/MainComponents/Navbar/Navbar';
 import Login from "./Components/MainComponents/Body/Login"
 import Footer from './Components/MainComponents/Footer/Footer';
 import LoveIndia from './Components/MainComponents/Footer/LoveIndia';
+import Results from './Components/MainComponents/Body/Results';
 
 function App() {
   return (
@@ -30,13 +31,13 @@ function App() {
       <LoginProvider>
         <LogoWidthProvider>
           <MobileDataProvider>
-            <Header />
             <Navbar />
             <div className='body'>
+            <Header />
               <Routes>
                 <Route exact path="/" element={<Search />} />
                 <Route exact path="/Login" element={<Login />} />
-                <Route exact path="/Result" element={<Login />} />
+                <Route exact path="/Result" element={<Results />} />
                 <Route element={<ProtectedRoutes />}>
 
                 </Route>

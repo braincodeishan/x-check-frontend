@@ -1,4 +1,9 @@
 
+.Search-Parent{
+  width: 100%;
+  min-height:40em;
+  
+}
 .search{
     display: flex;
     justify-content: center;
@@ -78,11 +83,7 @@
   
 
   
-.Search-Parent{
-    width: 100%;
-    min-height:50em;
-    
-}
+
 
 .plx-block-1, .plx-block-2{
     position: fixed;

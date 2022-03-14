@@ -1,41 +1,126 @@
+.results-parent {
+    background-color: #f1f1f1;
+}
 
-.results{
+.mdivider {
+    margin: 10px 0px !important;
+}
+
+.results {
     min-height: 75vh;
     display: grid;
     grid-template-columns: 20% 80%;
-    background-color: #f1f1f1;
+
     width: 100%;
-    height: 100%;
-    padding:20px 10px;
+    /* height: 100%; */
+    padding: 20px 10px;
+
 }
 
-.results .filterBox{
+
+
+
+
+.results .filterBox {
+
     background-color: #fff;
-    margin: 0px 5px ;
-    height:100%;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-}
-
-.results .resultBox{
-    background-color: blue;
     margin: 0px 5px;
     height: 100%;
     border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    border: 0.5px dashed rgba(0, 0, 0, 0.1);
 }
 
-.results .Result-Select-inputs{
+.results .filterBox .mainheading, .filterBox .subheading {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-items: center;
+}
+
+.results .filterBox .mainheading .mbutton, .filterBox .subbutton {
+    font-size: small;
+}
+.results .filterBox .subsection{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.filterBox .subheading {
+    display: grid;
+    grid-template-columns: 50% 40% 10%;
+    align-items: center;
+}
+
+.filterBox .subbutton {
+    font-size: small;
+}
+
+.results .filterBox .sliderContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    
+}
+
+
+.results .filterBox .sliderContainer .slider {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-top: 5px;
+    
+}
+
+.results .filterBox .inputBox {
+    position: relative;
+    margin-top: 10px;
+    padding: 0px 5px;
+
+}
+
+.results .filterBox .inputBox .inputField {
+    width: 100%;
+}
+
+.FilterCheckboxes.hidden{
+    display: none;
+}
+
+
+
+
+.results .resultBox {
+    background-color: #fff;
+    margin: 0px 5px;
+    height: 100%;
+    border-radius: 5px;
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.results .Result-Select-inputs {
     /* background-color: #f1f1f1; */
     border: 0px;
     width: 90%;
+    /* height: 20px !important; */
+    padding: 0px;
+    margin: 5px
+}
 
-    
+.results .Result-Select-inputs:focus {
+    border: none !important;
 
 }
-.results .Result-Select-inputs:focus{
-border: none !important;
 
+@media screen and (max-width:900px) {
+    .results .section1 {
+        position: absolute;
+        left: 100%;
+    }
+    .results{
+        grid-template-columns: 100%;
+
+    }
+    
 }

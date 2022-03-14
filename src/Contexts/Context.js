@@ -27,7 +27,7 @@ export { LoginProvider }
 
 
 const LogoWidthProvider = (props) => {
-    const [logoWidth, setlogoWidth] = useState(700);
+    const [logoWidth, setlogoWidth] = useState(150);
     return (
         <LogoWidth.Provider value={{ logoWidth, setlogoWidth }}>
             {props.children}

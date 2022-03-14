@@ -10,9 +10,11 @@ const FilterBox = (props) => {
             <div className="subheading">
                 <h6>{props.name}</h6>
                 <Button variant="text" className="subbutton">Clear</Button>
-                <i className='bx bxs-chevron-down' onClick={(e)=>{props.invert(props.id)}}></i>
+                <i className='bx bxs-chevron-down' onClick={(e)=>{
+                    e.target.classList.toggle("rotateX180")
+                    props.invert(props.id)}}></i>
             </div>
-            {props.showCheckboxes[props.id] && <div className={"filterForms "}>
+            {props.showFormCheckbox && <div className={"filterForms"} style={{marginLeft:'10px'}}>
             <FormGroup>
                 
                 {props.data.map((data,index)=>{
@@ -22,7 +24,7 @@ const FilterBox = (props) => {
                         return <FormControlLabel key={index} control={<Checkbox default />} label={data} className="FilterCheckboxes hidden"/>
                     }
                 })}
-                <Button variant="text" className="subbutton" onClick={props.showCheckboxes}>Show All</Button>
+                {props.data.length>5 && <Button variant="text" className="subbutton" onClick={props.showCheckboxes}>Show All</Button>}
             </FormGroup>
             </div>}
         </div>

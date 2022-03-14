@@ -26,6 +26,8 @@ const Results = () => {
     ['SnapDragon','Kryto','Bionic','Intel'],
     ['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
     ['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
+    ['>1000maH','>2000maH','>3000maH','>4000maH','>5000maH'],
+    ['2G','3G','4G','5G']
   ];
 
 
@@ -33,15 +35,16 @@ const Results = () => {
     a:false,
     b:false,
     c:false,
-    d:false
+    d:false,
+    e:false,
+    f:false
   })
 
 
   const invert=(id)=>{
-  setshowFormCheckbox((prev)=>{
-    return (...prev,[id]: true)
-  })
-    
+    setshowFormCheckbox((prev) => {
+      return {...prev, [id]: !prev[id]}
+    })
   }
 
   const showCheckboxes=()=>{
@@ -132,7 +135,7 @@ const Results = () => {
               <FilterBox 
               key={"filter1"} 
               id={'a'} 
-              showFormCheckbox={showFormCheckbox} 
+              showFormCheckbox={showFormCheckbox.a} 
               name={"Brand"} 
               invert={invert} 
               data={data[0]} 
@@ -147,7 +150,7 @@ const Results = () => {
               <FilterBox 
               key={"filter2"} 
               id={'b'} 
-              showFormCheckbox={showFormCheckbox} 
+              showFormCheckbox={showFormCheckbox.b} 
               name={"Processor"} 
               invert={invert} 
               data={data[1]} 
@@ -160,7 +163,7 @@ const Results = () => {
               <FilterBox 
               key={"filter3"} 
               id={'c'} 
-              showFormCheckbox={showFormCheckbox} 
+              showFormCheckbox={showFormCheckbox.c} 
               name={"Primary Camera"} 
               invert={invert} 
               data={data[2]} 
@@ -173,10 +176,34 @@ const Results = () => {
               <FilterBox 
               key={"filter4"} 
               id={'d'} 
-              showFormCheckbox={showFormCheckbox} 
+              showFormCheckbox={showFormCheckbox.d} 
               name={"Secondary Camera"} 
               invert={invert} 
               data={data[3]} 
+              showCheckboxes={showCheckboxes}
+              />
+              <Divider className="mdivider" />
+              {/* *************Battery Selection************* */}
+
+              <FilterBox 
+              key={"filter5"} 
+              id={'e'} 
+              showFormCheckbox={showFormCheckbox.e} 
+              name={"Battery"} 
+              invert={invert} 
+              data={data[4]} 
+              showCheckboxes={showCheckboxes}
+              />
+              <Divider className="mdivider" />
+              {/* *************Network Selection************* */}
+
+              <FilterBox 
+              key={"filter6"} 
+              id={'f'} 
+              showFormCheckbox={showFormCheckbox.f} 
+              name={"Network"} 
+              invert={invert} 
+              data={data[5]} 
               showCheckboxes={showCheckboxes}
               />
             </div>

@@ -84,7 +84,7 @@ const Navbar = () => {
         </div>
         <ul className="nav-links">
           {showLogin()}
-          <li onClick={()=>{logoWidth.setlogoWidth(700)}}>
+          <li onClick={()=>{logoWidth.setlogoWidth(150)}}>
             <Link to="/">
               <i className='bx bx-grid-alt' ></i>
               <span className="link_name">Home</span>

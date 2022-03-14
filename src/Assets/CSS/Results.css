@@ -48,6 +48,11 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.results .filterBox .subsection .bx{
+    transition: all ease-in 0.5s;
+    transform-origin: center;
+}
+
 .filterBox .subheading {
     display: grid;
     grid-template-columns: 50% 40% 10%;

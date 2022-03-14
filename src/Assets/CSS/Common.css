@@ -1,7 +1,9 @@
 .rotate180{
     transform: rotate(180deg);
 }
-
+.rotateX180{
+    transform: rotateX(180deg);
+}
 .rotate0{
     transform: rotate(0deg);
 }

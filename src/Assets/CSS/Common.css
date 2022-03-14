@@ -16,7 +16,11 @@
     
 }
 .displayNone{
-    display: none;
+    display: none !important;
+}
+
+.visibility0{
+    visibility: 0 !important;
 }
 
 

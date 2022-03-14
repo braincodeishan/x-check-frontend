@@ -9,7 +9,13 @@ const FilterBox = (props) => {
         <div className="subsection">
             <div className="subheading">
                 <h6>{props.name}</h6>
-                <Button variant="text" className="subbutton">Clear</Button>
+                
+                <Button 
+                variant="text" 
+                disabled={true}
+                className="subbutton">Clear
+                </Button>
+                
                 <i className='bx bxs-chevron-down' onClick={(e)=>{
                     e.target.classList.toggle("rotateX180")
                     props.invert(props.id)}}></i>

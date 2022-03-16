@@ -5,32 +5,34 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 const FilterBox = (props) => {
     // const id=props.id;
+    // console.log(props.data);
     return (
         <div className="subsection">
             <div className="subheading">
-                <h6>{props.name}</h6>
+                <h6>{props.data.name}</h6>
                 
                 <Button 
                 variant="text" 
-                disabled={true}
+                disabled={props.data.isClearDisabled}
                 className="subbutton">Clear
                 </Button>
                 
                 <i className='bx bxs-chevron-down' onClick={(e)=>{
                     e.target.classList.toggle("rotateX180")
-                    props.invert(props.id)}}></i>
+                    props.toggleCheckboxFunction(props.data.seq)}}></i>
+
             </div>
-            {props.showFormCheckbox && <div className={"filterForms"} style={{marginLeft:'10px'}}>
+            {props.data.isCheckboxShown && <div className={"filterForms"} style={{marginLeft:'10px'}}>
             <FormGroup>
                 
-                {props.data.map((data,index)=>{
+                {props.data.value.map((val,index)=>{
                     if(index<5){
-                        return <FormControlLabel key={index} control={<Checkbox default />} label={data} className="FilterCheckboxes"/>
+                        return <FormControlLabel key={index} control={<Checkbox default />} label={val} className="FilterCheckboxes"/>
                     }else{
-                        return <FormControlLabel key={index} control={<Checkbox default />} label={data} className="FilterCheckboxes hidden"/>
+                        return <FormControlLabel key={index} control={<Checkbox default />} label={val} className="FilterCheckboxes hidden"/>
                     }
                 })}
-                {props.data.length>5 && <Button variant="text" className="subbutton" onClick={props.showCheckboxes}>Show All</Button>}
+                {props.data.value.length>5 && <Button variant="text" className="subbutton" onClick={props.showAllCheckboxesFunction}>Show All</Button>}
             </FormGroup>
             </div>}
         </div>

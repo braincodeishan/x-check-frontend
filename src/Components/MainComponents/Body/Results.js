@@ -21,33 +21,71 @@ const Results = () => {
     setpriceValue([pricevalue[0], (e.target.value / 500)]);
   };
 
-  const data=[
-    ['MI','Realme','Samsung','OnePlus','Apple','Vivo','HTC','Oppo','LG'],
-    ['SnapDragon','Kryto','Bionic','Intel'],
-    ['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
-    ['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
-    ['>1000maH','>2000maH','>3000maH','>4000maH','>5000maH'],
-    ['2G','3G','4G','5G']
-  ];
+  const [data,setdata]=useState([
+    {
+      seq:0,
+      id:"phones",
+      name:"Brands",
+      value:['MI','Realme','Samsung','OnePlus','Apple','Vivo','HTC','Oppo','LG'],
+      isCheckboxShown:false,
+      isDataSelected:"",
+      isClearDisabled:true,
+    },
+    {
+      seq:1,
+      id:"processors",
+      name:"Processors",
+      value:['SnapDragon','Kryto','Bionic','Intel'],
+      isCheckboxShown:false,
+      isDataSelected:"",
+      isClearDisabled:true,
+    },
+    {
+      seq:2,
+      id:"primarycamera",
+      name:"Primary Camera",
+      value:['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
+      isCheckboxShown:false,
+      isDataSelected:"",
+      isClearDisabled:true,
+    },
+    {
+      seq:3,
+      id:"secondarycamera",
+      name:"Secondary Camera",
+      value:['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
+      isCheckboxShown:false,
+      isDataSelected:"",
+      isClearDisabled:true,
+    },
+    {
+      seq:4,
+      id:"battery",
+      name:"Battery",
+      value:['>1000maH','>2000maH','>3000maH','>4000maH','>5000maH'],
+      isCheckboxShown:false,
+      isDataSelected:"",
+      isClearDisabled:true,
+    },
+    {
+      seq:5,
+      id:"network",
+      name:"Network",
+      value:['2G','3G','4G','5G'],
+      isCheckboxShown:false,
+      isDataSelected:"",
+      isClearDisabled:true,
+    },
+  ])
 
-
-  const [showFormCheckbox,setshowFormCheckbox]=useState({
-    a:false,
-    b:false,
-    c:false,
-    d:false,
-    e:false,
-    f:false
-  })
-
-
-  const invert=(id)=>{
-    setshowFormCheckbox((prev) => {
-      return {...prev, [id]: !prev[id]}
-    })
+  const toggleCheckboxFunction=(seq)=>{
+    var test=data;
+    test[seq]={...test[seq],isCheckboxShown:true}
+    setdata(test)
+    
   }
 
-  const showCheckboxes=()=>{
+  const showAllCheckboxesFunction=()=>{
 
   }
 
@@ -132,84 +170,29 @@ const Results = () => {
 
 
               {/* *************Brand Selection************* */}
-              <FilterBox 
-              key={"filter1"} 
-              id={'a'} 
-              showFormCheckbox={showFormCheckbox.a} 
-              name={"Brand"} 
-              invert={invert} 
-              data={data[0]} 
-              showCheckboxes={showCheckboxes}
-              />
-
-              <Divider className="mdivider" />
 
 
-
-              {/* *************Processor Selection************* */}
-              <FilterBox 
-              key={"filter2"} 
-              id={'b'} 
-              showFormCheckbox={showFormCheckbox.b} 
-              name={"Processor"} 
-              invert={invert} 
-              data={data[1]} 
-              showCheckboxes={showCheckboxes}
+              {data.map((element)=>{
+               return(<>
+                <FilterBox 
+              key={element.id}
+              data={element} 
+              toggleCheckboxFunction={toggleCheckboxFunction}
+              showAllCheckboxesFunction={showAllCheckboxesFunction}
               />
               <Divider className="mdivider" />
+              </>)
+              })}
+              
 
 
-              {/* *************Primary Camera Selection************* */}
-              <FilterBox 
-              key={"filter3"} 
-              id={'c'} 
-              showFormCheckbox={showFormCheckbox.c} 
-              name={"Primary Camera"} 
-              invert={invert} 
-              data={data[2]} 
-              showCheckboxes={showCheckboxes}
-              />
-              <Divider className="mdivider" />
 
 
-              {/* *************Secondary Camera Selection************* */}
-              <FilterBox 
-              key={"filter4"} 
-              id={'d'} 
-              showFormCheckbox={showFormCheckbox.d} 
-              name={"Secondary Camera"} 
-              invert={invert} 
-              data={data[3]} 
-              showCheckboxes={showCheckboxes}
-              />
-              <Divider className="mdivider" />
-              {/* *************Battery Selection************* */}
-
-              <FilterBox 
-              key={"filter5"} 
-              id={'e'} 
-              showFormCheckbox={showFormCheckbox.e} 
-              name={"Battery"} 
-              invert={invert} 
-              data={data[4]} 
-              showCheckboxes={showCheckboxes}
-              />
-              <Divider className="mdivider" />
-              {/* *************Network Selection************* */}
-
-              <FilterBox 
-              key={"filter6"} 
-              id={'f'} 
-              showFormCheckbox={showFormCheckbox.f} 
-              name={"Network"} 
-              invert={invert} 
-              data={data[5]} 
-              showCheckboxes={showCheckboxes}
-              />
             </div>
           </div>
           <div className="section section2">
             <div className="resultBox">
+
               Result Box
             </div>
           </div>

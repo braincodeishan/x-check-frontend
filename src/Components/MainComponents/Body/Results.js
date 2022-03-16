@@ -56,7 +56,6 @@ const Results = () => {
     },
     {
       id:4,
-      id:"battery",
       name:"Battery",
       value:['>1000maH','>2000maH','>3000maH','>4000maH','>5000maH'],
       isCheckboxShown:false,
@@ -74,12 +73,17 @@ const Results = () => {
   ])
 
   const toggleCheckboxFunction=(id)=>{
-    var dataCopy=data;
-    dataCopy[id].isCheckboxShown=!dataCopy[id].isCheckboxShown
-    setdata(dataCopy)
+    setdata((prev)=>{
+      var dataCopy=prev;
+      dataCopy[id].isCheckboxShown=!dataCopy[id].isCheckboxShown
+      return dataCopy
+    })
     
   }
 
+  const handleCheckboxChangeFunction=()=>{
+
+  }
   const showAllCheckboxesFunction=()=>{
 
   }
@@ -174,6 +178,7 @@ const Results = () => {
               data={element} 
               toggleCheckboxFunction={toggleCheckboxFunction}
               showAllCheckboxesFunction={showAllCheckboxesFunction}
+              handleCheckboxChangeFunction={handleCheckboxChangeFunction}
               />
               <Divider className="mdivider" />
               </>)

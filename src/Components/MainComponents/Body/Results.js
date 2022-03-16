@@ -104,15 +104,59 @@ const Results = () => {
   ]);
 
   const toggleCheckboxFunction = (id) => {
-    var dataCopy = data;
-    dataCopy[id].isCheckboxShown = !dataCopy[id].isCheckboxShown;
-
-    setdata(dataCopy);
+    setdata((prev)=>{
+      return prev.map((item,index)=>{
+        return index===id?{...item,isCheckboxShown:!item.isCheckboxShown}:item
+      })
+    });
   };
 
   const handleCheckboxChangeFunction = () => {};
   const showAllCheckboxesFunction = () => {};
 
+  const [resultsData,setresultsData]=useState([
+    {
+      id:0,
+      name:"Apple iPhone 13 Pro",
+      image:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg",
+      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
+      rating:'1,40,762',
+      criticRating:'744',
+      star:4.4
+
+    },
+    {
+      id:1,
+      name:"Apple iPhone 12",
+      image:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg",
+      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
+      rating:'78,477',
+      criticRating:'286',
+      star:4.9
+
+    },
+    {
+      id:2,
+      name:"Samsung Galaxy F23",
+      image:"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-m23.jpg",
+      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
+      rating:'1,28,510',
+      criticRating:'988',
+      star:3.9
+
+    },
+    {
+      id:3,
+      name:"Asus ROG Phone 5s Pro",
+      image:"https://fdn2.gsmarena.com/vv/bigpic/asus-rog-phone-5s-pro.jpg",
+      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
+      rating:'6,26,574',
+      criticRating:'203',
+      star:4.1
+
+    }
+  ]);
+// console.log(data);
   return (
     <>
       <div className="results-parent">
@@ -224,10 +268,22 @@ const Results = () => {
           </div>
           <div className="section section2">
             <CustomizedBreadcrumbs/>
-            <h6>Showing 1 – 24 of 10,711 results within your search brackets </h6>
+            <h6>Showing 1 – 25 of 10,711 results within your search brackets </h6>
             <Divider className="mdivider" />
-              <ResultBox />
+              {resultsData.map((data)=>{
+                return(
+                <>
+                <ResultBox 
+              key={"Results"+data.id}
+              data={data}
+              
+              />
+              <Divider className="mdivider" />
+              </>
+              )
 
+              })}
+              
             
           </div>
         </div>

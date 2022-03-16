@@ -106,11 +106,12 @@
 }
 .results .resultBox{
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 25% 55% 20%;
     grid-template-rows: 90% 10%;
     /* background-color: grey; */
-    border: #000 solid 1px;
+    /* border: #000 solid 1px; */
     height: 300px;
+    padding: 20px;
 
 
 }
@@ -127,6 +128,13 @@
 .results .Result-Select-inputs:focus {
     border: none !important;
 
+}
+
+.results .resultBox .stars{
+    background-color: rgb(0, 3, 158);
+    width:max-content;
+    color: #fff;
+    padding: 2px 4px;
 }
 
 @media screen and (max-width:900px) {

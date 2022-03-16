@@ -19,7 +19,7 @@ const FilterBox = (props) => {
                 
                 <i className='bx bxs-chevron-down' onClick={(e)=>{
                     e.target.classList.toggle("rotateX180")
-                    props.toggleCheckboxFunction(props.data.seq)}}></i>
+                    props.toggleCheckboxFunction(props.data.id)}}></i>
 
             </div>
             {props.data.isCheckboxShown && <div className={"filterForms"} style={{marginLeft:'10px'}}>

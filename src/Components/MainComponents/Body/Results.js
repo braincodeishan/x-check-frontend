@@ -23,8 +23,7 @@ const Results = () => {
 
   const [data,setdata]=useState([
     {
-      seq:0,
-      id:"phones",
+      id:0,
       name:"Brands",
       value:['MI','Realme','Samsung','OnePlus','Apple','Vivo','HTC','Oppo','LG'],
       isCheckboxShown:false,
@@ -32,8 +31,7 @@ const Results = () => {
       isClearDisabled:true,
     },
     {
-      seq:1,
-      id:"processors",
+      id:1,
       name:"Processors",
       value:['SnapDragon','Kryto','Bionic','Intel'],
       isCheckboxShown:false,
@@ -41,8 +39,7 @@ const Results = () => {
       isClearDisabled:true,
     },
     {
-      seq:2,
-      id:"primarycamera",
+      id:2,
       name:"Primary Camera",
       value:['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
       isCheckboxShown:false,
@@ -50,8 +47,7 @@ const Results = () => {
       isClearDisabled:true,
     },
     {
-      seq:3,
-      id:"secondarycamera",
+      id:3,
       name:"Secondary Camera",
       value:['2MP','4MP','8MP','12MP','16MP','20MP','32MP','64MP','128MP'],
       isCheckboxShown:false,
@@ -59,7 +55,7 @@ const Results = () => {
       isClearDisabled:true,
     },
     {
-      seq:4,
+      id:4,
       id:"battery",
       name:"Battery",
       value:['>1000maH','>2000maH','>3000maH','>4000maH','>5000maH'],
@@ -68,8 +64,7 @@ const Results = () => {
       isClearDisabled:true,
     },
     {
-      seq:5,
-      id:"network",
+      id:5,
       name:"Network",
       value:['2G','3G','4G','5G'],
       isCheckboxShown:false,
@@ -78,10 +73,10 @@ const Results = () => {
     },
   ])
 
-  const toggleCheckboxFunction=(seq)=>{
-    var test=data;
-    test[seq]={...test[seq],isCheckboxShown:true}
-    setdata(test)
+  const toggleCheckboxFunction=(id)=>{
+    var dataCopy=data;
+    dataCopy[id].isCheckboxShown=!dataCopy[id].isCheckboxShown
+    setdata(dataCopy)
     
   }
 

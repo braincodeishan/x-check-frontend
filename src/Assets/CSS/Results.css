@@ -96,12 +96,23 @@
 
 
 
-.results .resultBox {
+.results .section2 {
     background-color: #fff;
     margin: 0px 5px;
     height: 100%;
     border-radius: 5px;
     border: 1px dashed rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+.results .resultBox{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 90% 10%;
+    /* background-color: grey; */
+    border: #000 solid 1px;
+    height: 300px;
+
+
 }
 
 .results .Result-Select-inputs {

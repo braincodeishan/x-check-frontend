@@ -7,7 +7,9 @@
 .rotate0{
     transform: rotate(0deg);
 }
-
+.cursor-pointer{
+    cursor: pointer;
+}
 #visual{
     position: absolute;
     left: 0;

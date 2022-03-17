@@ -32,27 +32,31 @@ function handleClick(event) {
   console.info('You clicked a breadcrumb.');
 }
 
-export default function CustomizedBreadcrumbs() {
+export default function CustomizedBreadcrumbs(props) {
   const Navigate = useNavigate()
   return (
     <div role="presentation" onClick={handleClick}>
-      <Breadcrumbs aria-label="breadcrumb" sx={{marginTop:'8px',
-      marginBottom:'10px'}}>
-        <StyledBreadcrumb
+      <Breadcrumbs aria-label="breadcrumb" sx={{marginTop:'8px',marginBottom:'10px'}}>
+        
+        {props.data.map((data,index)=>{
+          return (
+            <StyledBreadcrumb
           component="a"
           href="/"
-          label="Home"
-          icon={<HomeIcon fontSize="small" />}
+          label={data}
+          icon={data==="Home" && <HomeIcon fontSize="small" />}
           onClick={()=>{
-            Navigate("/")
+
+            {data==="Home"?Navigate("/"):Navigate("/"+props.data)}
           }}
-        />
-        
-        <StyledBreadcrumb
-          label="Results"
-          deleteIcon={<ExpandMoreIcon />}
+          deleteIcon={index===(props.data.length) && <ExpandMoreIcon />}
           onDelete={handleClick}
         />
+          )
+
+        })}
+        
+        
       </Breadcrumbs>
     </div>
   );

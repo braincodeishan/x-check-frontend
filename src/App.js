@@ -24,6 +24,7 @@ import Login from "./Components/MainComponents/Body/Login"
 import Footer from './Components/MainComponents/Footer/Footer';
 import LoveIndia from './Components/MainComponents/Footer/LoveIndia';
 import Results from './Components/MainComponents/Body/Results';
+import PhoneDetails from './Components/MainComponents/Body/PhoneDetails';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
                 <Route exact path="/" element={<Search />} />
                 <Route exact path="/Login" element={<Login />} />
                 <Route exact path="/Result" element={<Results />} />
+                <Route exact path="/PhoneDetails" element={<PhoneDetails />} />
                 <Route element={<ProtectedRoutes />}>
 
                 </Route>

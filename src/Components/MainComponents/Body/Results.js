@@ -5,11 +5,13 @@ import Divider from "@mui/material/Divider";
 import Slider from "@mui/material/Slider";
 import MenuItem from "@mui/material/MenuItem";
 import PhoneDetails from './PhoneDetails'
+import { useNavigate } from "react-router";
 import "../../../Assets/CSS/Results.css";
 import FilterBox from "../../SubComponents/FilterBox";
 import ResultBox from "../../SubComponents/ResultBox";
 import CustomizedBreadcrumbs from "../../SubComponents/CustomizedBreadcrumbs";
 const Results = () => {
+  const Navigate=useNavigate();
   const [isDetailOpen, setisDetailOpen]=useState({
     id:-1,
     pane:false
@@ -186,6 +188,7 @@ const Results = () => {
   const handleMoreDetailsFunction=(id)=>{
 
     setisDetailOpen((prev)=>{
+      Navigate("/PhoneDetails",{state:{data:isDetailOpen}})
       return {id:id,pane:!prev.pane}
     })
   
@@ -193,12 +196,12 @@ const Results = () => {
 // console.log(data);
   return (
     <>
-    {isDetailOpen.pane && 
+    {/* {isDetailOpen.pane && 
     <PhoneDetails
     data={isDetailOpen}
     handleMoreDetailsFunction={handleMoreDetailsFunction}
     
-    />}
+    />} */}
       <div className="results-parent">
         <div className="container results">
           <div className="section section1">

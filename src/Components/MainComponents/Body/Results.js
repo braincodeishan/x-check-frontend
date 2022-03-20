@@ -4,18 +4,15 @@ import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Slider from "@mui/material/Slider";
 import MenuItem from "@mui/material/MenuItem";
-import PhoneDetails from './PhoneDetails'
 import { useNavigate } from "react-router";
 import "../../../Assets/CSS/Results.css";
 import FilterBox from "../../SubComponents/FilterBox";
 import ResultBox from "../../SubComponents/ResultBox";
 import CustomizedBreadcrumbs from "../../SubComponents/CustomizedBreadcrumbs";
+import {resultsData} from '../../../Assets/Data/Data'
 const Results = () => {
   const Navigate=useNavigate();
-  const [isDetailOpen, setisDetailOpen]=useState({
-    id:-1,
-    pane:false
-  });
+  
   const [pricevalue, setpriceValue] = React.useState([10, 80]);
 
   const handleChange = (event, newValue) => {
@@ -120,88 +117,14 @@ const Results = () => {
   const handleCheckboxChangeFunction = () => {};
   const showAllCheckboxesFunction = () => {};
 
-  const [resultsData,setresultsData]=useState([
-    {
-      id:0,
-      name:"Apple iPhone 13 Pro",
-      image:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg",
-      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
-      rating:'1,40,762',
-      criticRating:'744',
-      star:4.4,
-      price:58000,
-      specification:{
-        technology:"GSM / CDMA / HSPA / EVDO / LTE / 5G",
-        twoG:"GSM 850 / 900 / 1800 / 1900 - SIM 1 & SIM 2 (dual-SIM) / CDMA 800 / 1900",
-        threeG:"HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 / CDMA2000 1xEV-DO",
-        fourG:"1, 2, 3, 4, 5, 7, 8, 12, 13, 17, 18, 19, 20, 25, 26, 28, 30, 32, 34, 38, 39, 40, 41, 42, 46, 48, 66 - A2643, A2644, A2645",
-        fiveG:"1, 2, 3, 5, 7, 8, 12, 20, 25, 28, 30, 38, 40, 41, 48, 66, 77, 78, 79 SA/NSA/Sub6 - A2643, A2644",
-        speed:"HSPA 42.2/5.76 Mbps, LTE-A, 5G, EV-DO Rev.A 3.1 Mbps",
-        announce:"2021, September 14",
-        status:"Available. Released 2021, September 24",
-        dimension:"160.8 x 78.1 x 7.7 mm (6.33 x 3.07 x 0.30 in)",
-        Weight:"240 g (8.47 oz)",
-        Build:"Glass front (Gorilla Glass), glass back (Gorilla Glass), stainless steel frame",
-        sim:"Single SIM (Nano-SIM and/or eSIM) or Dual SIM (Nano-SIM/eSIM, dual stand-by)",
-        phoneProtection:"IP68 dust/water resistant (up to 6m for 30 mins)",
-        display:""
-
-      },
-
-    },
-    {
-      id:1,
-      name:"Apple iPhone 12",
-      image:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg",
-      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
-      rating:'78,477',
-      criticRating:'286',
-      star:4.9,
-      price:38000
-
-    },
-    {
-      id:2,
-      name:"Samsung Galaxy F23",
-      image:"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-m23.jpg",
-      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
-      rating:'1,28,510',
-      criticRating:'988',
-      star:3.9,
-      price:18000
-
-
-    },
-    {
-      id:3,
-      name:"Asus ROG Phone 5s Pro",
-      image:"https://fdn2.gsmarena.com/vv/bigpic/asus-rog-phone-5s-pro.jpg",
-      highlights:["2 GB RAM | 32 GB ROM | Expandable Upto 256 GB","16.51 cm (6.5 inch) HD+ Display","8MP Rear Camera | 5MP Front Camera","5000 mAh Battery","Octa-core Processor"],
-      rating:'6,26,574',
-      criticRating:'203',
-      star:4.1,
-      price:78000
-
-    }
-  ]);
+  
 
   const handleMoreDetailsFunction=(id)=>{
-
-    setisDetailOpen((prev)=>{
-      Navigate("/PhoneDetails",{state:{data:isDetailOpen}})
-      return {id:id,pane:!prev.pane}
-    })
-  
+    Navigate(`/PhoneDetails/${id}`)
   };
-// console.log(data);
+
   return (
     <>
-    {/* {isDetailOpen.pane && 
-    <PhoneDetails
-    data={isDetailOpen}
-    handleMoreDetailsFunction={handleMoreDetailsFunction}
-    
-    />} */}
       <div className="results-parent">
         <div className="container results">
           <div className="section section1">

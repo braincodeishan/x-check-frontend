@@ -6,6 +6,7 @@ import './App.css';
 import './Assets/CSS/Scrollbar.css'
 import './Assets/CSS/Common.css'
 import './Assets/CSS/Misc.css'
+// import './Assets/CSS/Bootstrap.css'
 
 // Context imports
 import ProtectedRoutes from './Contexts/ProtectedRoutes';
@@ -39,7 +40,7 @@ function App() {
                 <Route exact path="/" element={<Search />} />
                 <Route exact path="/Login" element={<Login />} />
                 <Route exact path="/Result" element={<Results />} />
-                <Route exact path="/PhoneDetails" element={<PhoneDetails />} />
+                <Route exact path="/PhoneDetails/:id" element={<PhoneDetails />} />
                 <Route element={<ProtectedRoutes />}>
 
                 </Route>

@@ -66,6 +66,10 @@ const PhoneDetails = () => {
     <div className='PhoneDetails container' >
       
       <div className="PDsection1">
+        
+        <div className="PDdisplayImage">
+          <img src={res.image} alt={res.name} srcset="" />
+        </div>
         <div className="PDselectImage">
           <ul>
             <li><img src={res.image} alt={res.name} srcset="" /></li>
@@ -75,12 +79,24 @@ const PhoneDetails = () => {
             <li><img src={res.image} alt={res.name} srcset="" /></li>
           </ul>
         </div>
-        <div className="PDdisplayImage">
-          <img src={res.image} alt={res.name} srcset="" />
+        <div className="PDbuttons">
+            <img src={amazonImg} alt="" srcset="" />
+            <h5>Rs. {res.price}</h5>
+            <Button variant="contained" color="success">
+              Buy Now!
+            </Button>
+            <img src={flipkartImg} alt="" srcset="" />
+            <h5>Rs. {res.price}</h5>
+            <Button variant="contained" color="success">
+              Buy Now!
+            </Button>
+            <img src={tataCliqImg} alt="" srcset="" />
+            <h5>Rs. {res.price}</h5>
+            <Button variant="contained" color="success">
+              Buy Now!
+            </Button>
 
-
-
-        </div>
+          </div>
       </div>
       <div className="PDsection2">
 
@@ -92,24 +108,7 @@ const PhoneDetails = () => {
         <div className="PDbody">
           <h4>Details</h4>
           <p style={{ textAlign: 'justify' }}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam ab quaerat delectus at ipsam cupiditate consequatur sunt ea nostrum neque iste nulla qui, perferendis quod fuga sint ex sit temporibus molestiae iusto, aliquid enim molestias. At, commodi vitae totam ducimus sint nobis, aut repellendus, animi deleniti eius suscipit doloremque optio?</p>
-          <div className="PDbuttons">
-            <h5>Rs. {res.price}</h5>
-            <img src={amazonImg} alt="" srcset="" />
-            <Button variant="contained" color="success">
-              Buy Now!
-            </Button>
-            <h5>Rs. {res.price}</h5>
-            <img src={flipkartImg} alt="" srcset="" />
-            <Button variant="contained" color="success">
-              Buy Now!
-            </Button>
-            <h5>Rs. {res.price}</h5>
-            <img src={tataCliqImg} alt="" srcset="" />
-            <Button variant="contained" color="success">
-              Buy Now!
-            </Button>
-
-          </div>
+          
           <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

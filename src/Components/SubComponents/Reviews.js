@@ -14,28 +14,18 @@ import ShareIcon from "@mui/icons-material/Share";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const showImage = (name, key) => {
-  if (key) {
-    return (
+const showImage = (name) => {
+  return (
       <CardMedia
         component="img"
         // height="194"
         image={name}
         alt={name}
-        sx={{ width: "200px", height: "auto" }}
+        sx={{ width: "auto", height: "200px", marginLeft:'15px' }}
       />
     );
-  } else {
-    return (
-      <CardMedia
-        component="img"
-        height="194"
-        image={name}
-        alt={name}
-        sx={{ width: "auto", height: "200px" }}
-      />
-    );
-  }
+  
+  
 };
 
 const Reviews = (props) => {
@@ -64,7 +54,7 @@ const Reviews = (props) => {
           </div>
           <h5>{props.subTitle}</h5>
         </div>
-        {props.image && showImage(props.image, null)}
+        {props.image && showImage(props.image)}
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {props.description}

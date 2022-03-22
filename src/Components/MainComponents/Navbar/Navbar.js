@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import {LoginContext} from '../../../Contexts/Context';
 import { Link } from 'react-router-dom'
 import '../../../Assets/CSS/Sidebar.css'
@@ -164,7 +164,7 @@ const Navbar = () => {
             <div className="profile-details">
               <div className="profile-content">
                 {!Login.user.avatar?<i className='bx bxs-user' ></i>:
-                <img src={Login.user.avatar} alt="profileImg"/> }
+                <img src={Login.user.avatar} alt="profileImg" className='avatar'/> }
               </div>
               <div className="name-job">
                 <div className="profile_name">Hi! {Login.user.name}</div>

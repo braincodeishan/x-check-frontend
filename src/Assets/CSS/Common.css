@@ -55,3 +55,11 @@
   
 }
 /*************************** Logo *********************************/
+
+
+.animateZoom{
+    transition: all ease-in-out 0.3s;
+}
+.animateZoom:hover{
+    transform: scale(1.10);
+}

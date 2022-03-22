@@ -151,6 +151,9 @@
 .PD-progressbar{
     margin-top: 8px;
 }
+.PD-imageList{
+    padding: 10px;
+}
 
 .ImageViewer{
     z-index: 101;

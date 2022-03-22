@@ -6,7 +6,7 @@ const ImageViewer = (props) => {
     <div className="ImageViewer">
         <div className="IV-Box">
             <CancelIcon
-            className='IV-Cancel'
+            className='IV-Cancel animateZoom'
             onClick={()=>{props.setshowImage(null)}}
             />
             <div className="IV-ImageBox">

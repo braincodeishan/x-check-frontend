@@ -22,7 +22,9 @@
     .sidebar.close i{
       opacity: 0;
     }
-    
+    .sidebar.close .avatar{
+      opacity: 0;
+    }
        
   }
   

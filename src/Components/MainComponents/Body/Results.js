@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
@@ -10,7 +10,9 @@ import FilterBox from "../../SubComponents/FilterBox";
 import ResultBox from "../../SubComponents/ResultBox";
 import CustomizedBreadcrumbs from "../../SubComponents/CustomizedBreadcrumbs";
 import {resultsData} from '../../../Assets/Data/Data'
+
 const Results = () => {
+  
   const Navigate=useNavigate();
   
   const [pricevalue, setpriceValue] = React.useState([10, 80]);

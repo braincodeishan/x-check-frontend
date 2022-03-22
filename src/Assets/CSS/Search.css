@@ -1,21 +1,18 @@
 
 .Search-Parent{
   width: 100%;
-  min-height:40em;
-  display: flex;
-    /* justify-content: center; */
-    align-items: flex-start;
-    background: url('../Images/facets.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  min-height:80vh;
+  background: url('../Images/facets.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .search{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  
     
   }
   .Search-Box{
@@ -28,6 +25,8 @@
   padding: 30px;
   border-radius: 10px;
   z-index: 1;
+  margin-top: 20px;
+  margin-bottom: 20px;
   }
   
   .search .bx{

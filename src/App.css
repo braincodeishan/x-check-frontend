@@ -27,9 +27,9 @@ body{
 
 }
 .body{
-  width:calc(100vw-78px);
+  width: calc(100% - 78px);
     margin-left: 78px;
-    min-height: 60vh;
+    min-height: 80vh;
     position: relative;
     overflow-x: hidden;
 }

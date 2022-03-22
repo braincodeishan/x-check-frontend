@@ -26,6 +26,8 @@ import Footer from './Components/MainComponents/Footer/Footer';
 import LoveIndia from './Components/MainComponents/Footer/LoveIndia';
 import Results from './Components/MainComponents/Body/Results';
 import PhoneDetails from './Components/MainComponents/Body/PhoneDetails';
+import ComparePhones from './Components/MainComponents/Body/ComparePhones';
+import CompareIcons from './Components/SubComponents/CompareIcons';
 
 function App() {
   return (
@@ -41,12 +43,15 @@ function App() {
                 <Route exact path="/Login" element={<Login />} />
                 <Route exact path="/Result" element={<Results />} />
                 <Route exact path="/PhoneDetails/:id" element={<PhoneDetails />} />
+                <Route exact path="/Compare" element={<ComparePhones />} />
+
                 <Route element={<ProtectedRoutes />}>
 
                 </Route>
               </Routes>
 
             </div>
+            <CompareIcons/>
             <LoveIndia/>
             <Footer />
           </MobileDataProvider>

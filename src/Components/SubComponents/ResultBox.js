@@ -1,14 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Button } from "@mui/material";
 import { FormGroup } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
+import {LoginContext} from '../../Contexts/Context'
 const ResultBox = (props) => {
+  const Login=useContext(LoginContext)
   const [heart, setHeart] = useState(false)
   const handleWishlistChange = () => {
     setHeart(!heart);
+  }
+
+  const handleCheckbox=(id)=>{
+    const newVal=[];
+    let i=0;
+    for(i; i<4;i++){
+    if(Login.user.comparePhones[i]===''){
+      newVal[i]=id+"";
+    }else {
+      newVal[i]=Login.user.comparePhones[i]
+    }
+
+    }
+  
+    Login.setUser((prev)=>{
+      return {...prev, ['comparePhones']:newVal}
+    })
   }
   return (
     <div className="resultBox">
@@ -71,7 +90,7 @@ const ResultBox = (props) => {
           <p style={{fontSize:'11px'}}>This is the best price found. Dont forget to check the discounts.</p>
           
           <FormGroup>
-            <FormControlLabel control={<Checkbox default />} label="Add to compare" />
+            <FormControlLabel control={<Checkbox default onClick={()=>{handleCheckbox(props.data.id)}}/>} label="Add to compare" />
             
           </FormGroup>
           <Button variant="contained" color="success">

@@ -82,11 +82,11 @@ const PhoneDetails = () => {
           </div>
           <div className="PDselectImage">
             <ul>
-              <li><img src={res.image} alt={res.name} srcset="" /></li>
-              <li><img src={res.image} alt={res.name} srcset="" /></li>
-              <li><img src={res.image} alt={res.name} srcset="" /></li>
-              <li><img src={res.image} alt={res.name} srcset="" /></li>
-              <li><img src={res.image} alt={res.name} srcset="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
             </ul>
           </div>
           <div className="PDbuttons">
@@ -157,7 +157,7 @@ const PhoneDetails = () => {
                         srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         alt={item.title}
                         loading="lazy"
-                        className='cursor-pointer'
+                        className='cursor-pointer animateZoom PD-imageList'
                         onClick={() => { showMyImage(item.img) }}
                       />
                     </ImageListItem>
@@ -175,7 +175,7 @@ const PhoneDetails = () => {
                   <div className="PD-XCheckNumber">
                   <EmojiEventsIcon sx={{fontSize:'100px', justifyContent:'center', alignSelf:'center'}}/>
                   <h3>X-Check Score</h3>
-                    <h2>1040</h2>
+                    <h2 className='animateZoom'>1040</h2>
                   </div>
                   <div>
                   {progress.map((data, index) => {
@@ -201,7 +201,7 @@ const PhoneDetails = () => {
                   <div className="PD-XCheckNumber">
                   <EmojiEventsIcon sx={{fontSize:'100px', justifyContent:'center', alignSelf:'center'}}/>
                   <h3>X-Check Score</h3>
-                    <h2>1040</h2>
+                    <h2 className='animateZoom'>1040</h2>
                   </div>
                   <div>
                   {progress.map((data, index) => {

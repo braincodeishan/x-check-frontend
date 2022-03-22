@@ -1,45 +1,38 @@
 import React, { useState, useEffect, useContext } from 'react'
 import {LoginContext} from '../../../Contexts/Context';
-import { LogoWidth } from '../../../Contexts/Context';
 import { Link } from 'react-router-dom'
-import Alert from '../../SubComponents/Alert';
 import '../../../Assets/CSS/Sidebar.css'
+
+
 const Navbar = () => {
-  const logoWidth=useContext(LogoWidth)
+  
   const Login = useContext(LoginContext)
   const [sidebarclass, setsidebarclass] = useState("close");
   const [menu, setmenu] = useState("bx-menu");
 
-  useEffect(() => {
-    let arrow = document.querySelectorAll(".arrow");
-    for (var i = 0; i < arrow.length; i++) {
-      arrow[i].addEventListener("click", (e) => {
-        let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-        arrowParent.classList.toggle("showMenu");
-      });
-    }
     
-  }, []);
-
   const logOut = async() => {
-    const logout= await fetch("http://localhost:3001/logout", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
+    // const logout= await fetch("http://localhost:3001/logout", {
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "application/json",
 
-            },
-            credentials: "include",
+    //         },
+    //         credentials: "include",
 
-        });
-        if(logout.status===200){
+    //     });
+    //     if(logout.status===200){
             
-            <Alert msg={"Logged Out"} msgtype={"alert-success"} />
+    //         <Alert msg={"Logged Out"} msgtype={"alert-success"} />
             
-        }
+    //     }
     Login.changelogin(false);
   }
 
-
+  const dropDown=(e)=>{
+    e.target.parentElement.parentElement.classList.toggle("showMenu")
+      }
+    
 
 
   const showLogin = () => {
@@ -50,7 +43,7 @@ const Navbar = () => {
             <i className='bx bxs-key bx-tada' ></i>
             <span className="link_name">Login</span>
           </Link>
-          <i className='bx bxs-chevron-down arrow' ></i>
+          <i className='bx bxs-chevron-down arrow' onClick={(e)=>{dropDown(e)}}></i>
         </div>
         <ul className="sub-menu">
           <li><Link className="link_name" to="#">Login</Link></li>
@@ -76,15 +69,13 @@ const Navbar = () => {
       <div className={"sidebar " + sidebarclass} id='sidebar'>
         <div className="logo-details">
         <i className='bx bxl-xing'></i>
-          {/* <i className='bx bxl-magento bx-spin' ></i> */}
-          {/* <i className='bx bxs-brain bx-spin' ></i> */}
-          {/* <i className='bx bxl-c-plus-plus'></i> */}
+          
           <span className="logo_name">Check</span>
           <i className={'bx ' + menu} id="btn" onClick={sidebarclose}></i>
         </div>
         <ul className="nav-links">
           {showLogin()}
-          <li onClick={()=>{logoWidth.setlogoWidth(150)}}>
+          <li>
             <Link to="/">
               <i className='bx bx-grid-alt' ></i>
               <span className="link_name">Home</span>
@@ -100,7 +91,7 @@ const Navbar = () => {
                 {/* <i className='bx bx-collection' ></i> */}
                 <span className="link_name">My Phones</span>
               </Link>
-              <i className='bx bxs-chevron-down arrow' ></i>
+              <i className='bx bxs-chevron-down arrow' onClick={(e)=>{dropDown(e)}}></i>
             </div>
             <ul className="sub-menu">
               <li><Link className="link_name" to="#">My Phones</Link></li>
@@ -116,7 +107,7 @@ const Navbar = () => {
                 {/* <i className='bx bx-book-alt' ></i> */}
                 <span className="link_name">News</span>
               </Link>
-              <i className='bx bxs-chevron-down arrow' ></i>
+              <i className='bx bxs-chevron-down arrow' onClick={(e)=>{dropDown(e)}}></i>
             </div>
             <ul className="sub-menu">
               <li><Link className="link_name" to="#">News</Link></li>
@@ -132,7 +123,7 @@ const Navbar = () => {
                 {/* <i className='bx bx-pie-chart-alt-2' ></i> */}
                 <span className="link_name">Loot</span>
               </Link>
-              <i className='bx bxs-chevron-down arrow' ></i>
+              <i className='bx bxs-chevron-down arrow' onClick={(e)=>{dropDown(e)}}></i>
             </div>
             <ul className="sub-menu">
               <li><Link className="link_name" to="#">Loot</Link></li>
@@ -172,14 +163,14 @@ const Navbar = () => {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <i className='bx bxs-user' ></i>
-                {/* <img src="image/profile.jpg" alt="profileImg"/> */}
+                {!Login.user.avatar?<i className='bx bxs-user' ></i>:
+                <img src={Login.user.avatar} alt="profileImg"/> }
               </div>
               <div className="name-job">
-                <div className="profile_name">Hi! Ishan Dev</div>
+                <div className="profile_name">Hi! {Login.user.name}</div>
                 
               </div>
-              <i className='bx bx-log-out' onClick={() => { logOut() }}></i>
+              {Login.isLoggedin &&<i className='bx bx-log-out' onClick={() => { logOut() }}></i>}
             </div>
           </li>
         </ul>

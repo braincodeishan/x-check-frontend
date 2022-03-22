@@ -5,6 +5,9 @@
   display: flex;
     /* justify-content: center; */
     align-items: flex-start;
+    background: url('../Images/facets.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .search{
     display: flex;

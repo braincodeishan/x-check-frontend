@@ -207,9 +207,10 @@
     position: fixed;
     bottom: 0;
     width: 300px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background: #1d1b31;
     padding: 12px 0;
     transition: all 0.5s ease;
@@ -232,28 +233,27 @@
     margin: 0 14px 0 12px;
     background: #1d1b31;
     transition: all 0.5s ease;
+    z-index: 3;
   }
   .sidebar.close .profile-details img{
     padding: 10px;
   }
-  .sidebar .profile-details .profile_name,
-  .sidebar .profile-details .job{
+  .sidebar .profile-details .profile_name{
+  
     color: #fff;
     font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
   }
   .sidebar.close .profile-details i,
-  .sidebar.close .profile-details .profile_name,
-  .sidebar.close .profile-details .job{
+  .sidebar.close .profile-details .profile_name{
+  
     display: none;
   }
   .sidebar.close .profile-details .bxs-user{
     display: block;
   }
-  .sidebar .profile-details .job{
-    font-size: 12px;
-  }
+  
   .sidebar .profile-details .bx-log-out:hover{
     background-color: rgba(7, 9, 31, 0.829);
     border-radius: 5px;

@@ -1,8 +1,10 @@
+// THIS IS THE BACKGROUND FOR HOME PAGE
+
+
 import React, {memo} from 'react'
 import ReactJSXWrapper from './ReactJSXWrapper'
 import img1 from '../../Assets/Images/1.png'
-// import img2 from '../../../Assets/Images/2.png'
-// import img3 from '../../../Assets/Images/3.png'
+
 import img4 from '../../Assets/Images/4.png'
 const Background = (props) => {
   const IMG1=ReactJSXWrapper(<div className='plx-block-1 entrance-left'>

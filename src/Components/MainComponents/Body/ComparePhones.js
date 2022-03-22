@@ -1,8 +1,11 @@
 import React from 'react'
-
+import '../../../Assets/CSS/ComparePhones.css'
 const ComparePhones = () => {
   return (
-    <div>ComparePhones</div>
+    <div className='ComparePhones'>
+      compare Phones
+
+    </div>
   )
 }
 

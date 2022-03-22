@@ -9,7 +9,8 @@
 
 .PDsection1{
     display: grid;
-    max-height: 60vh;
+    /* max-height: 200vh; */
+    height: fit-content;
     grid-template-rows: 75% 25%;
 
 }
@@ -79,6 +80,7 @@
     grid-template-rows: 25% 25% 25% 25%;
     grid-gap: 5px;    
     height:150px;
+    padding: 10px;
 }
 
 .PDbuttons img{
@@ -117,3 +119,79 @@
     display: grid;
     grid-template-columns: 50% 50%;
 } */
+.PD-reviewsBar{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 5px;
+}
+.PD-reviewsBar h6{
+    text-align: right;
+}
+.PD-reviewsBar .progressbars{
+    display: grid;
+    grid-template-columns: 10% 50% 40%;
+    grid-template-rows: auto;
+    grid-gap: 5px;
+
+}
+.PD-XCheckNumber{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 0.5px dashed rgba(0,0,0,0.3);
+    
+}
+.PD-XCheckNumber h2{
+    background-color: rgb(0,3,158);
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+.PD-progressbar{
+    margin-top: 8px;
+}
+
+.ImageViewer{
+    z-index: 101;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.IV-Box{
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    height:90%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.IV-Cancel{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.IV-ImageBox{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.IV-Images{
+    width: auto;
+    height: 100%;
+}

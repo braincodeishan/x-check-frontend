@@ -216,11 +216,11 @@ const Results = () => {
 
               {/* *************Filter Selection Renderer************* */}
 
-              {data.map((element) => {
+              {data.map((element,index) => {
                 return (
                   <>
                     <FilterBox
-                      key={"Filter" + element.id}
+                      key={index}
                       data={element}
                       toggleCheckboxFunction={toggleCheckboxFunction}
                       showAllCheckboxesFunction={showAllCheckboxesFunction}
@@ -239,15 +239,15 @@ const Results = () => {
             <CustomizedBreadcrumbs data={["Home","Results"]}/>
             <h6>Showing 1 – 25 of 10,711 results within your search brackets </h6>
             <Divider className="mdivider" />
-              {resultsData.map((data)=>{
+              {resultsData.map((data,index)=>{
                 return(
                 <>
                 <ResultBox 
-              key={"Results"+data.id}
+              key={index}
               data={data}
               handleMoreDetailsFunction={handleMoreDetailsFunction}
               />
-              <Divider className="mdivider" />
+              <Divider className="mdivider" key={index+"1"}/>
               </>
               )
 

@@ -41,7 +41,7 @@ const ResultBox = (props) => {
           <span>
             <p className="ratingandreviews">{props.data.rating} Ratings & {props.data.criticRating} critic reviews</p>
             <div className="stars">
-              {props.data.star}<i class='bx bxs-star' ></i>
+              {props.data.star}<i className='bx bxs-star' ></i>
             </div>
           </span>
         </div>

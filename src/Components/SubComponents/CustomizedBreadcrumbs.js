@@ -41,6 +41,7 @@ export default function CustomizedBreadcrumbs(props) {
         {props.data.map((data,index)=>{
           return (
             <StyledBreadcrumb
+            key={index}
           component="a"
           href="/"
           label={data}

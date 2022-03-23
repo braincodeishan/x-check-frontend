@@ -156,7 +156,7 @@
 }
 
 .ImageViewer{
-    z-index: 101;
+    z-index: 12;
     position: fixed;
     left: 0;
     right: 0;

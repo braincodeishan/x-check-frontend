@@ -2,6 +2,40 @@
     position: fixed;
     bottom: 40px;
     right: 40px;
-    z-index: 3;
+    z-index: 11;
     
 }
+
+.ComparePhones{
+    position: relative;
+    background-color: rgba(189, 148, 255, 0.1);
+    padding: 30px;
+}
+
+.CP-Box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fff;
+    min-height: 90vh;
+    /* width: 90%; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 1%;
+}
+
+.CP-Box .compareDivs{
+    border-radius: 5px;
+    /* border-right: 1px dashed rgba(0,0,0); */
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1) ;
+    min-width: 29%;
+    /* background-color: red; */
+    width:fit-content;
+    padding: 8px;
+}
+
+.CP-Box .compareDivs:first-of-type{
+    /* min-width: 0; */
+    min-width: 10%;
+}
+

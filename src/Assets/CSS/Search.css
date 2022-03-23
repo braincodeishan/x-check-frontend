@@ -17,7 +17,7 @@
   }
   .Search-Box{
   width:60%;
-  background-color: #C0F0EC;
+  background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   /* justify-content: center; */

@@ -41,21 +41,21 @@ Navigate('/');
                     <img
                       src={InstagramIcon}
                       alt={InstagramIcon}
-                      srcset={InstagramIcon}
+                      srcSet={InstagramIcon}
                       style={{ padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
                       className='animateZoom L-Image1 animateLeftIcons'
                     />
                     <img
                       src={TwitterIcon}
                       alt={TwitterIcon}
-                      srcset={TwitterIcon}
+                      srcSet={TwitterIcon}
                       style={{ width: '50px', padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
                       className='animateZoom L-Image2 animateLeftIcons'
                     />
                     <img
                       src={FacebookIcon}
                       alt={FacebookIcon}
-                      srcset={FacebookIcon}
+                      srcSet={FacebookIcon}
                       style={{ width: '50px', padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
                       className='animateZoom L-Image3 animateLeftIcons'
                     />

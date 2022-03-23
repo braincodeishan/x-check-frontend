@@ -1,6 +1,8 @@
 :root {
-  --primary-color: #2ec4b6;
-  --secondary-color: #C0F0EC;
+  /* --primary-color: #2ec4b6; */
+  /* --secondary-color: #C0F0EC; */
+  --primary-color: rgb(0,30,158);
+  --secondary-color: #e2d7ff;
   --third-color: #fff;
   --fourth-color: rgba(0,0,0,0.7);
   --fb-color: rgb(145, 145, 255);

@@ -10,7 +10,7 @@ const ImageViewer = (props) => {
             onClick={()=>{props.setshowImage(null)}}
             />
             <div className="IV-ImageBox">
-                <img src={props.image} alt={props.image} srcset={props.image} className='IV-Images'/>
+                <img src={props.image} alt={props.image} srcSet={props.image} className='IV-Images'/>
             </div>
         </div>
     </div>

@@ -78,29 +78,29 @@ const PhoneDetails = () => {
         <div className="PDsection1">
 
           <div className="PDdisplayImage">
-            <img src={res.image} alt={res.name} srcset="" />
+            <img src={res.image} alt={res.name} srcSet="" />
           </div>
           <div className="PDselectImage">
             <ul>
-              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
-              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
-              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
-              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
-              <li className='animateZoom'><img src={res.image} alt={res.name} srcset="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcSet="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcSet="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcSet="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcSet="" /></li>
+              <li className='animateZoom'><img src={res.image} alt={res.name} srcSet="" /></li>
             </ul>
           </div>
           <div className="PDbuttons">
-            <img src={amazonImg} alt="" srcset="" />
+            <img src={amazonImg} alt="" srcSet="" />
             <h5>Rs. {res.price}</h5>
             <Button variant="contained" color="success">
               Buy Now!
             </Button>
-            <img src={flipkartImg} alt="" srcset="" />
+            <img src={flipkartImg} alt="" srcSet="" />
             <h5>Rs. {res.price}</h5>
             <Button variant="contained" color="success">
               Buy Now!
             </Button>
-            <img src={tataCliqImg} alt="" srcset="" />
+            <img src={tataCliqImg} alt="" srcSet="" />
             <h5>Rs. {res.price}</h5>
             <Button variant="contained" color="success">
               Buy Now!

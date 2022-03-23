@@ -24,7 +24,7 @@ const handleSignin=()=>{
     name:"Ishan",
     cart:['1','3'],
     wishlist:['0'],
-    comparePhones:['0','1','2','3'],
+    comparePhones:['0','1','2'],
     avatar:"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
     likes:['2']
 });
@@ -43,7 +43,7 @@ Navigate('/');
               variant="outlined"
               sx={{ margin: '20px', width: '70%' }}
             >
-              {<img src={GoogleIcon} alt={GoogleIcon} srcset={GoogleIcon} style={{ width: '25px', marginRight: '10px' }} />}
+              {<img src={GoogleIcon} alt={GoogleIcon} srcSet={GoogleIcon} style={{ width: '25px', marginRight: '10px' }} />}
               Sign in with Google
             </Button>
           </div>
@@ -96,21 +96,21 @@ Navigate('/');
                     <img
                       src={InstagramIcon}
                       alt={InstagramIcon}
-                      srcset={InstagramIcon}
+                      srcSet={InstagramIcon}
                       style={{ padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
                       className='animateZoom L-Image1 animateLeftIcons'
                     />
                     <img
                       src={TwitterIcon}
                       alt={TwitterIcon}
-                      srcset={TwitterIcon}
+                      srcSet={TwitterIcon}
                       style={{ width: '50px', padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
                       className='animateZoom L-Image2 animateLeftIcons'
                     />
                     <img
                       src={FacebookIcon}
                       alt={FacebookIcon}
-                      srcset={FacebookIcon}
+                      srcSet={FacebookIcon}
                       style={{ width: '50px', padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
                       className='animateZoom L-Image3 animateLeftIcons'
                     />

@@ -39,7 +39,7 @@ const Navbar = () => {
     if (!Login.isLoggedin) {
       return (<li>
         <div className="iocn-link">
-          <Link to="#">
+          <Link to="/Login">
             <i className='bx bxs-key bx-tada' ></i>
             <span className="link_name">Login</span>
           </Link>

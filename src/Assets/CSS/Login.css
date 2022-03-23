@@ -1,0 +1,177 @@
+.Login{
+    background-color: rgba(189, 148, 255, 0.1);
+    padding: 30px;
+}
+.L-box{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 5px;
+    width: 90%;
+    /* height:90%; */
+    background-color: #fff;
+    z-index: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.FP-box{
+    min-height:90vh;
+}
+
+.L-section-primary{
+    padding:50px;
+    z-index: 10;
+    background-color: #fff;
+    
+
+}
+.L-box .bxl-xing{
+    color: rgb(0, 30, 158);
+    font-size: 30px;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+.L-emailLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.L-section-secondary{
+    z-index: 2;
+    background-color: rgb(89, 52, 255);
+    width: 100%;
+    /* height: 100%; */
+    /* max-height: 90vh; */
+    
+}
+.L-Login-bg{
+    background-image: url('../Images/Login-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.L-section-secondary .images{
+    position: relative;
+    display: grid;
+    grid-template-rows: 30% 30% 40%;
+    grid-gap: 5px;
+    height: 100%;
+}
+.L-section-secondary .section{
+    position: relative;
+    height: 33%;
+}
+
+
+
+
+.L-section-secondary .L-myCard .cardHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+.L-section-secondary .L-myCard{
+    position: absolute;
+    left:150%;
+    top:0%;
+    visibility: 0;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+    box-shadow: 5px 1px 10px 0px rgba(0, 0, 0, 0.3);
+    
+}
+
+.animateLeftCard1{
+    
+    min-width: 200px;
+    max-width: 200px;
+    transform: rotateZ(245deg);
+    animation: animateLeftCard1 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes animateLeftCard1 {
+    100%{
+        left:50%;
+        top: 30px;
+        transform: rotateX(0deg);
+        visibility: 1;
+        opacity: 1;
+        z-index: 5;
+    }
+}
+.animateLeftCard2{
+    min-width: 275px;
+    max-width: 275px;
+    transform: rotateZ(645deg);
+    animation: animateLeftCard2 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes animateLeftCard2 {
+    100%{
+        left:10%;
+        top:30px;
+        transform: rotateX(0deg);
+        visibility: 1;
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+
+
+
+
+.L-section-secondary .textbox{
+    position: absolute;
+    color: #fff;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+
+.L-section-secondary .textbox h5,
+.L-section-secondary .textbox p{
+text-align: center;
+}
+
+.L-section-secondary .icons{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.L-Image1,.L-Image2,.L-Image3{
+    position: relative;
+    width: 50px;
+    visibility: 0;
+    opacity: 0;
+    
+    transform: rotateZ(769deg);
+    animation: animateLeftIcons 1s ease-in-out 2s 1 forwards;
+}
+
+
+
+@keyframes animateLeftIcons {
+    100%{
+        /* transform: translate(10%,50%); */
+        /* width:50px; */
+        transform: rotateZ(0deg);
+        visibility: 1;
+        opacity: 1;
+    }
+}

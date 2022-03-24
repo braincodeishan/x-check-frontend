@@ -5,37 +5,64 @@ import { Button } from "@mui/material";
 import { FormGroup } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
-import {LoginContext} from '../../Contexts/Context'
+import { LoginContext } from '../../Contexts/Context'
 const ResultBox = (props) => {
-  const Login=useContext(LoginContext)
+  const Login = useContext(LoginContext)
   const [heart, setHeart] = useState(false)
+  
   const handleWishlistChange = () => {
     setHeart(!heart);
   }
 
-  const handleCheckbox=(id)=>{
-    const newVal=[];
-    let i=0;
-    for(i; i<4;i++){
-    if(Login.user.comparePhones[i]===''){
-      newVal[i]=id+"";
-    }else {
-      newVal[i]=Login.user.comparePhones[i]
-    }
 
+
+
+
+
+
+  const handleCheckbox = (id,isSelected) => {
+    if(Login.comparePhones.length>=3 &&isSelected){
+      alert("Already 3 Phones added! Cannot add more phones to compare")
+      return;
     }
-  
-    Login.setUser((prev)=>{
-      return {...prev, ['comparePhones']:newVal}
+    let idx=id+"";
+    if(isSelected){
+    Login.setComparePhones((prev)=>{
+      return [...prev,idx]
     })
-  }
+    }else{
+      Login.setComparePhones((prev)=>{
+        return prev.filter((data)=>{
+          return idx!==data
+          
+          })
+        })
+      }
+    }
+    // Login.changeComparePhones(id,isSelected)
+  
+
+
+
+    // const newVal = ['', '', '', ''];
+    // let i = 0;
+    // for (i = 0; i < 3; i++) {
+    //   if (Login.user.comparePhones[0] === '') {
+    //     newVal[0] = id + "";
+    //     break;
+    //   }
+    // }
+    // Login.setUser((prev) => {
+    //   return { ...prev, 'comparePhones': newVal }
+    // })
+  
   return (
     <div className="resultBox">
 
-      <div className="data phoneImage cursor-pointer" onClick={()=>{props.handleMoreDetailsFunction(props.data.id)}}>
+      <div className="data phoneImage cursor-pointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
         <img src={props.data.image} alt={props.data.name} style={{ height: 'auto', width: 'auto', justifyContent: 'center' }} />
       </div>
-      <div className="data phoneDetails cursor-pointer" onClick={()=>{props.handleMoreDetailsFunction(props.data.id)}}>
+      <div className="data phoneDetails cursor-pointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
         <h4>{props.data.name}</h4>
         <div className="reviews">
           <span>
@@ -87,11 +114,11 @@ const ResultBox = (props) => {
 
         <div className="priceSearch" style={{ marginTop: '40px' }}>
           <h2>Rs. {props.data.price}</h2>
-          <p style={{fontSize:'11px'}}>This is the best price found. Dont forget to check the discounts.</p>
-          
+          <p style={{ fontSize: '11px' }}>This is the best price found. Dont forget to check the discounts.</p>
+
           <FormGroup>
-            <FormControlLabel control={<Checkbox default onClick={()=>{handleCheckbox(props.data.id)}}/>} label="Add to compare" />
-            
+            <FormControlLabel control={<Checkbox default onChange={(e) => { handleCheckbox(props.data.id,e.target.checked) }} />} label="Add to compare" />
+
           </FormGroup>
           <Button variant="contained" color="success">
             Buy Now!

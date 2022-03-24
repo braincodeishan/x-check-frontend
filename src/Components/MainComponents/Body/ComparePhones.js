@@ -1,16 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { LoginContext } from "../../../Contexts/Context";
 import "../../../Assets/CSS/ComparePhones.css";
 import { resultsData } from "../../../Assets/Data/Data";
 import { Divider } from "@mui/material";
 import { Grid } from "@mui/material";
 import CompareBox from '../../SubComponents/CompareBox'
+import {useNavigate} from "react-router";
 const ComparePhones = () => {
+  const Navigate=useNavigate()
   const Login = useContext(LoginContext);
+  useEffect(() => {
+    if(Login.comparePhones[0]===''||Login.comparePhones[0]===undefined){
+      Navigate('/')
+    }
+  })
+  
   const [res, setRes] = useState([
-    resultsData[Login.user.comparePhones[0]],
-    resultsData[Login.user.comparePhones[1]],
-    resultsData[Login.user.comparePhones[2]],
+    resultsData[Login.comparePhones[0]],
+    resultsData[Login.comparePhones[1]],
+    resultsData[Login.comparePhones[2]],
   ]);
   console.log(res)
 

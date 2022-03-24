@@ -27,13 +27,14 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
   };
 }); // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
-}
+
 
 export default function CustomizedBreadcrumbs(props) {
   const Navigate = useNavigate()
+
+  function handleClick(event) {
+    Navigate("/")
+  }
   return (
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs aria-label="breadcrumb" sx={{marginTop:'8px',marginBottom:'10px'}}>
@@ -48,9 +49,9 @@ export default function CustomizedBreadcrumbs(props) {
           icon={data==="Home" && <HomeIcon fontSize="small" />}
           onClick={()=>{
 
-            {data==="Home"?Navigate("/"):Navigate("/"+props.data)}
+            {data==="Home"?Navigate("/"):Navigate(props.data)}
           }}
-          deleteIcon={index===(props.data.length) && <ExpandMoreIcon />}
+          deleteIcon={index!==(props.data.length-1) && <ExpandMoreIcon />}
           onDelete={handleClick}
         />
           )

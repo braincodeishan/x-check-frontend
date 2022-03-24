@@ -1,3 +1,4 @@
+
 import React, { useState, createContext } from 'react'
 
 //Create Context here
@@ -17,12 +18,12 @@ const LoginProvider = (props) => {
         username:"Guest",
         JWT:"",
         name:"Guest",
-        cart:[''],
-        wishlist:[''],
-        comparePhones:[''],
-        avatar:"",
-        likes:['']
+        avatar:""
     });
+    const [comparePhones,setComparePhones]=useState([])
+    const [cart,setCart]=useState([])
+    const [wishlist,setWishlist]=useState([])
+    const [likes,setLikes]=useState([])
     const changelogin = async (val) => {
         setisLoggedin(val);
         !val && setUser({
@@ -36,8 +37,26 @@ const LoginProvider = (props) => {
             likes:['']
         })
     }
+
+    const changeComparePhones=(id,isSelected)=>{
+        if(isSelected){
+            setComparePhones(...comparePhones,id )
+        }else{
+
+        }
+    }
+
+
     return (
-        <LoginContext.Provider value={{ isLoggedin, changelogin, user , setUser }}>
+        <LoginContext.Provider 
+        value={{ 
+            isLoggedin, changelogin, 
+            user , setUser, 
+            comparePhones, setComparePhones,changeComparePhones,
+            cart,setCart,
+            wishlist,setWishlist,
+            likes,setLikes
+            }}>
             {props.children}
         </LoginContext.Provider>
 

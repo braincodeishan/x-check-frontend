@@ -22,12 +22,12 @@ const handleSignin=()=>{
     username:"braincodeishan",
     JWT:"",
     name:"Ishan",
-    cart:['1','3'],
-    wishlist:['0'],
-    comparePhones:['0','1'],
     avatar:"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-    likes:['2']
-});
+  });
+  Login.setCart(['1','3'])
+  Login.setLikes(['2'])
+  Login.setWishlist(['0'])
+  Login.setComparePhones(['0','1'])
   Login.changelogin(true);
 Navigate('/');
 }

@@ -17,17 +17,7 @@ const Results = () => {
   
   const [pricevalue, setpriceValue] = React.useState([10, 80]);
 
-  const handleChange = (event, newValue) => {
-    setpriceValue(newValue);
-  };
-  const handleChange1 = (e) => {
-    setpriceValue([e.target.value / 500, pricevalue[1]]);
-  };
-  const handleChange2 = (e) => {
-    setpriceValue([pricevalue[0], e.target.value / 500]);
-  };
-
-  const [data, setdata] = useState([
+   const [data, setdata] = useState([
     {
       id: 0,
       name: "Brands",
@@ -108,22 +98,9 @@ const Results = () => {
     },
   ]);
 
-  const toggleCheckboxFunction = (id) => {
-    setdata((prev)=>{
-      return prev.map((item,index)=>{
-        return index===id?{...item,isCheckboxShown:!item.isCheckboxShown}:item
-      })
-    });
-  };
-
   const handleCheckboxChangeFunction = () => {};
-  const showAllCheckboxesFunction = () => {};
-
   
-
-  const handleMoreDetailsFunction=(id)=>{
-    Navigate(`/PhoneDetails/${id}`)
-  };
+  const showAllCheckboxesFunction = () => {};
 
   return (
     <>
@@ -151,7 +128,9 @@ const Results = () => {
                   <Slider
                     getAriaLabel={() => "Price range"}
                     value={pricevalue}
-                    onChange={handleChange}
+                    onChange={(event, newValue) => {
+                      setpriceValue(newValue);
+                    }}
                     className="slider"
                   />
                   <div className="inputBox">
@@ -161,7 +140,9 @@ const Results = () => {
                       label="From"
                       select
                       value={pricevalue[0] * 500}
-                      onChange={handleChange1}
+                      onChange={(e) => {
+                        setpriceValue([e.target.value / 500, pricevalue[1]]);
+                      }}
                     >
                       <MenuItem
                         value={pricevalue[0] * 500}
@@ -189,7 +170,9 @@ const Results = () => {
                       label="To"
                       select
                       value={pricevalue[1] * 500}
-                      onChange={handleChange2}
+                      onChange={(e) => {
+                        setpriceValue([pricevalue[0], e.target.value / 500]);
+                      }}
                     >
                       <MenuItem
                         value={pricevalue[1] * 500}
@@ -222,7 +205,14 @@ const Results = () => {
                     <FilterBox
                       key={index}
                       data={element}
-                      toggleCheckboxFunction={toggleCheckboxFunction}
+                      toggleCheckboxFunction={
+                        (id) => {
+                        setdata((prev)=>{
+                          return prev.map((item,index)=>{
+                            return index===id?{...item,isCheckboxShown:!item.isCheckboxShown}:item
+                          })
+                        });
+                      }}
                       showAllCheckboxesFunction={showAllCheckboxesFunction}
                       handleCheckboxChangeFunction={
                         handleCheckboxChangeFunction
@@ -245,7 +235,9 @@ const Results = () => {
                 <ResultBox 
               key={index}
               data={data}
-              handleMoreDetailsFunction={handleMoreDetailsFunction}
+              handleMoreDetailsFunction={(id)=>{
+                Navigate(`/PhoneDetails/${id}`)
+              }}
               />
               <Divider className="mdivider" key={index+"1"}/>
               </>

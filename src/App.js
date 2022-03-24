@@ -29,7 +29,7 @@ import PhoneDetails from './Components/MainComponents/Body/PhoneDetails';
 import ComparePhones from './Components/MainComponents/Body/ComparePhones';
 import CompareIcons from './Components/SubComponents/CompareIcons';
 import ForgotPassword from './Components/MainComponents/Body/ForgotPassword';
-
+import Register from './Components/MainComponents/Body/Register'
 
 
 function App() {
@@ -44,6 +44,7 @@ function App() {
               <Routes>
                 <Route exact path="/" element={<Search />} />
                 <Route exact path="/Login" element={<Login />} />
+                <Route exact path="/Register" element={<Register/>} />
                 <Route exact path="/Forgot-Passwords" element={<ForgotPassword />} />
                 <Route exact path="/Result" element={<Results />} />
                 <Route exact path="/PhoneDetails/:id" element={<PhoneDetails />} />

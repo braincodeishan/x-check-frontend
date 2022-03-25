@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Button, Divider } from '@mui/material'
 import TextField from '@mui/material/TextField';
 
@@ -13,6 +13,11 @@ import {SnackbarAlert} from '../../SubComponents/Alert'
 import '../../../Assets/CSS/Login.css'
 
 const ForgotPassword = () => {
+  const Login=useContext(LoginContext)
+  
+  useEffect(() => {
+    Login.setLastLocation('/Forgot-Passwords')
+  })
 
   const [openSnack, setopenSnack] = useState({
     show:false,
@@ -27,7 +32,6 @@ const ForgotPassword = () => {
 
   })
   const Navigate = useNavigate();
-  const Login = useContext(LoginContext);
   const handlePWChange = () => {
     setOtp({
       otpGenerated: Math.round(Math.random() * 1000000) + "",
@@ -72,11 +76,7 @@ const ForgotPassword = () => {
 
  return (
     <>
-    <SnackbarAlert {...openSnack} setopenSnack={(val)=>{
-      setopenSnack((prev)=>{
-        return {...prev,'show':val}
-      })
-    }}/>
+    <SnackbarAlert {...openSnack} setopenSnack={setopenSnack}/>
     <div className='Login '>
       <div className="L-box container FP-box">
 

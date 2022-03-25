@@ -1,6 +1,6 @@
 //03
 
-import React, { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 // import CancelIcon from '@mui/icons-material/Cancel';
 import { Button } from '@mui/material';
 import amazonImg from '../../../Assets/Images/Amazon.png'
@@ -16,7 +16,7 @@ import { LinearProgress } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-// import TableHead from '@mui/material/TableHead';
+
 import TableRow from '@mui/material/TableRow';
 import { useParams } from 'react-router';
 import '../../../Assets/CSS/PhoneDetails.css'
@@ -26,8 +26,14 @@ import { itemData } from '../../../Assets/Data/Data'
 import Reviews from '../../SubComponents/Reviews'
 import ImageViewer from '../../SubComponents/ImageViewer';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-const PhoneDetails = () => {
 
+import {LoginContext} from '../../../Contexts/Context'
+
+const PhoneDetails = () => {
+  const Login=useContext(LoginContext)
+  useEffect(() => {
+    Login.setLastLocation('/PhoneDetails/:id')
+  })
   const { id } = useParams();
 
   const [showImage, setshowImage] = useState(null)

@@ -2,7 +2,7 @@ import React, { useContext, useState,useEffect } from "react";
 import { LoginContext } from "../../../Contexts/Context";
 import "../../../Assets/CSS/ComparePhones.css";
 import { resultsData } from "../../../Assets/Data/Data";
-import { Divider } from "@mui/material";
+
 import { Grid } from "@mui/material";
 import CompareBox from '../../SubComponents/CompareBox'
 import {useNavigate} from "react-router";
@@ -13,6 +13,9 @@ const ComparePhones = () => {
     if(Login.comparePhones[0]===''||Login.comparePhones[0]===undefined){
       Navigate('/')
     }
+  })
+  useEffect(() => {
+    Login.setLastLocation('/Compare')
   })
   
   const [res, setRes] = useState([

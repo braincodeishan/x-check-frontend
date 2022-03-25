@@ -95,7 +95,7 @@ const Navbar = () => {
             </div>
             <ul className="sub-menu">
               <li><Link className="link_name" to="#">My Phones</Link></li>
-              <li><Link to="/PaidLeave">WishLists</Link></li>
+              <li><Link to="/Wishlist">WishLists</Link></li>
               <li><Link to="/LeaveOrders">Watching</Link></li>
               <li><Link to="/SeniorityList">Price History</Link></li>
             </ul>

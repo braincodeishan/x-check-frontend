@@ -8,16 +8,29 @@ import { FormControlLabel } from "@mui/material";
 import { LoginContext } from '../../Contexts/Context'
 const ResultBox = (props) => {
   const Login = useContext(LoginContext)
-  const [heart, setHeart] = useState(false)
-  
-  const handleWishlistChange = () => {
+  const [isChecked,setIsChecked]=useState(()=>{
+    return Login.comparePhones.includes(props.data.id.toString())
+  })
+  const [heart,setHeart]=useState(()=>{
+    return Login.wishlist.includes(props.data.id.toString())
+  })
+
+
+  const handleWishlistChange = (id) => {
     setHeart(!heart);
+    if(!heart){
+      Login.setWishlist((prev)=>{
+        return [...prev,id.toString()]
+      })
+    }else{
+      Login.setWishlist((prev)=>{
+        return prev.filter((data)=>{
+          return (id.toString())!==data
+          
+          })
+        })
+    }
   }
-
-
-
-
-
 
 
   const handleCheckbox = (id,isSelected) => {
@@ -26,6 +39,7 @@ const ResultBox = (props) => {
       return;
     }
     let idx=id+"";
+    setIsChecked(isSelected)
     if(isSelected){
     Login.setComparePhones((prev)=>{
       return [...prev,idx]
@@ -39,22 +53,7 @@ const ResultBox = (props) => {
         })
       }
     }
-    // Login.changeComparePhones(id,isSelected)
-  
-
-
-
-    // const newVal = ['', '', '', ''];
-    // let i = 0;
-    // for (i = 0; i < 3; i++) {
-    //   if (Login.user.comparePhones[0] === '') {
-    //     newVal[0] = id + "";
-    //     break;
-    //   }
-    // }
-    // Login.setUser((prev) => {
-    //   return { ...prev, 'comparePhones': newVal }
-    // })
+ 
   
   return (
     <div className="resultBox">
@@ -96,7 +95,7 @@ const ResultBox = (props) => {
               padding: '5px',
               boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
             }}
-            onClick={handleWishlistChange}
+            onClick={()=>handleWishlistChange(props.data.id)}
           /> :
           <FavoriteBorderIcon
             sx={{
@@ -109,7 +108,7 @@ const ResultBox = (props) => {
               padding: '5px',
               boxShadow: '0 2px 5px rgba(0,0,0,0.3)'
             }}
-            onClick={handleWishlistChange}
+            onClick={()=>handleWishlistChange(props.data.id)}
           />}
 
         <div className="priceSearch" style={{ marginTop: '40px' }}>
@@ -117,7 +116,12 @@ const ResultBox = (props) => {
           <p style={{ fontSize: '11px' }}>This is the best price found. Dont forget to check the discounts.</p>
 
           <FormGroup>
-            <FormControlLabel control={<Checkbox default onChange={(e) => { handleCheckbox(props.data.id,e.target.checked) }} />} label="Add to compare" />
+            <FormControlLabel control={
+            <Checkbox 
+            default 
+            checked={isChecked}
+              
+            onChange={(e) => { handleCheckbox(props.data.id,e.target.checked) }} />} label="Add to compare" />
 
           </FormGroup>
           <Button variant="contained" color="success">

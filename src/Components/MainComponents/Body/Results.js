@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useContext, useState, useEffect } from 'react'
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
@@ -10,8 +10,13 @@ import FilterBox from "../../SubComponents/FilterBox";
 import ResultBox from "../../SubComponents/ResultBox";
 import CustomizedBreadcrumbs from "../../SubComponents/CustomizedBreadcrumbs";
 import {resultsData} from '../../../Assets/Data/Data'
+import { LoginContext } from '../../../Contexts/Context';
 
 const Results = () => {
+  const Login = useContext(LoginContext)
+  useEffect(() => {
+    Login.setLastLocation('/Result')
+  })
   
   const Navigate=useNavigate();
   
@@ -98,6 +103,7 @@ const Results = () => {
     },
   ]);
 
+  
   const handleCheckboxChangeFunction = () => {};
   
   const showAllCheckboxesFunction = () => {};
@@ -213,10 +219,7 @@ const Results = () => {
                           })
                         });
                       }}
-                      showAllCheckboxesFunction={showAllCheckboxesFunction}
-                      handleCheckboxChangeFunction={
-                        handleCheckboxChangeFunction
-                      }
+                      handleCheckboxChangeFunction={handleCheckboxChangeFunction}
                     />
                     <Divider className="mdivider" />
                   </>

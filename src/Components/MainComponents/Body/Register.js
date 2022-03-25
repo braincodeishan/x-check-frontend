@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Button, Divider } from '@mui/material'
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom'
@@ -13,12 +13,13 @@ import { useNavigate } from 'react-router';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import '../../../Assets/CSS/Login.css'
 
-const Login = () => {
+const Register = () => {
   const Navigate = useNavigate();
   
   const handleSignin = () => {
     Navigate('/Login');
   }
+
   return (
     <div className='Login '>
       <div className="L-box container">
@@ -132,4 +133,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register

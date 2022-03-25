@@ -1,11 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 const FilterBox = (props) => {
-    // const id=props.id;
-    // console.log(props.data);
+    const [showMore,setShowMore]=useState('hidden')
+    
+    
     return (
         <div className="subsection">
             <div className="subheading">
@@ -29,10 +30,17 @@ const FilterBox = (props) => {
                     if(index<5){
                         return <FormControlLabel key={index} control={<Checkbox default name={props.data.name} onChange={props.handleCheckboxChangeFunction}/>} label={val} className="FilterCheckboxes"/>
                     }else{
-                        return <FormControlLabel key={index} control={<Checkbox default />} label={val} className="FilterCheckboxes hidden"/>
+                        return <FormControlLabel key={index} control={<Checkbox default />} label={val} className={"FilterCheckboxes "+showMore}/>
                     }
                 })}
-                {props.data.value.length>5 && <Button variant="text" className="subbutton" onClick={props.showAllCheckboxesFunction}>Show All</Button>}
+                {showMore==='hidden'&& props.data.value.length>5 && <Button variant="text" className="subbutton" onClick={ ()=>{
+                    setShowMore('')
+                }}>
+                    Show All</Button>}
+                {showMore==='' && <Button variant="text" className="subbutton" onClick={ ()=>{
+                    setShowMore('hidden')
+                }}>
+                    Show Less</Button>}
             </FormGroup>
             </div>}
         </div>

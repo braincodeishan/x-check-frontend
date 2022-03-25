@@ -1,6 +1,6 @@
 // Generates the Alert
 
-import React, {useState} from 'react'
+import React from 'react'
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
@@ -38,7 +38,9 @@ export const SnackbarAlert = (props) => {
         return;
       }
   
-      props.setopenSnack(false)
+      props.setopenSnack((prev)=>{
+        return {...prev,'show':false}
+      })
     };
   return (
     <Snackbar open={props.show} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{vertical:'top',horizontal :'center'}}>

@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { LoginContext,useMisc } from "../../../Contexts/Context";
+import React, { useEffect } from "react";
+import { useLogin,useMisc } from "../../../Contexts/Context";
 import ResultBox from "../../SubComponents/ResultBox";
 import { resultsData } from "../../../Assets/Data/Data";
 import { useNavigate } from "react-router";
@@ -9,7 +9,7 @@ import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import ShopIcon from '@mui/icons-material/Shop';
 import { Button } from "@mui/material";
 const Wishlist = () => {
-  const Login = useContext(LoginContext);
+  const Login = useLogin();
   const {setLastLocation}=useMisc()
   const Navigate = useNavigate();
 

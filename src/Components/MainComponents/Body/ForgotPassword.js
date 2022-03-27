@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Divider } from '@mui/material'
 import TextField from '@mui/material/TextField';
 
@@ -7,13 +7,13 @@ import MyCard from '../../SubComponents/MyCard'
 import InstagramIcon from '../../../Assets/Icons/instagram.webp';
 import TwitterIcon from '../../../Assets/Icons/twitter.png';
 import FacebookIcon from '../../../Assets/Icons/facebook.webp';
-import { LoginContext, useMisc } from '../../../Contexts/Context'
+import { useLogin, useMisc } from '../../../Contexts/Context'
 import { useNavigate } from 'react-router';
 import {SnackbarAlert} from '../../SubComponents/Alert'
 import '../../../Assets/CSS/Login.css'
 
 const ForgotPassword = () => {
-  const Login=useContext(LoginContext)
+  const Login = useLogin();
   const {setLastLocation}=useMisc();
   useEffect(() => {
     setLastLocation('/Forgot-Passwords')

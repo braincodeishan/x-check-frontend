@@ -1,5 +1,5 @@
-import React, { useContext, useState,useEffect } from "react";
-import { LoginContext, useMisc } from "../../../Contexts/Context";
+import React, { useState,useEffect } from "react";
+import { useLogin, useMisc } from "../../../Contexts/Context";
 import "../../../Assets/CSS/ComparePhones.css";
 import { resultsData } from "../../../Assets/Data/Data";
 
@@ -8,8 +8,8 @@ import CompareBox from '../../SubComponents/CompareBox'
 import {useNavigate} from "react-router";
 const ComparePhones = () => {
   const Navigate=useNavigate()
-  const Login = useContext(LoginContext);
-  const {LastLocation,setLastLocation}=useMisc()
+  const Login = useLogin();
+  const {setLastLocation}=useMisc()
   useEffect(() => {
     if(Login.comparePhones[0]===''||Login.comparePhones[0]===undefined){
       Navigate('/')

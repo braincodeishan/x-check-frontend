@@ -1,6 +1,6 @@
 //03
 
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 // import CancelIcon from '@mui/icons-material/Cancel';
 import { Button } from '@mui/material';
 import amazonImg from '../../../Assets/Images/Amazon.png'
@@ -27,10 +27,10 @@ import Reviews from '../../SubComponents/Reviews'
 import ImageViewer from '../../SubComponents/ImageViewer';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
-import {LoginContext,useMisc} from '../../../Contexts/Context'
+import {useLogin,useMisc} from '../../../Contexts/Context'
 
 const PhoneDetails = () => {
-  const Login=useContext(LoginContext)
+  const Login = useLogin();
   const {setLastLocation}=useMisc()
   useEffect(() => {
     setLastLocation('/PhoneDetails/:id')

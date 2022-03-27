@@ -10,6 +10,10 @@
 .cursor-pointer{
     cursor: pointer;
 }
+
+.zIndex15{
+    z-index: 15;
+}
 #visual{
     position: absolute;
     left: 0;
@@ -45,7 +49,7 @@
 }
 .logo{
     transition: all ease-in-out 0.3s;
-    /* z-index: 10; */
+    
 }
 
 @media screen and (max-width:480px) {

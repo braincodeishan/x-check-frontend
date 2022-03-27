@@ -1,6 +1,9 @@
 import React, { useState, createContext, useContext } from "react";
 import { ResultFilter } from "../Assets/Data/Data";
+
 //Create Context here
+
+
 const LoginContext = createContext();
 export { LoginContext };
 
@@ -13,21 +16,22 @@ export { Misc };
 const MobileData = createContext();
 export { MobileData };
 
-const LastLocation = createContext();
-export { LastLocation };
 
 
-
-const useLoginContext=()=>{
+const useLogin=()=>{
   return useContext(LoginContext)
 }
-export {useLoginContext }
+export {useLogin }
 
 const useMisc=()=>{
   return useContext(Misc)
 }
 export {useMisc }
 
+const useMobileData=()=>{
+  return useContext(MobileData)
+}
+export {useMobileData }
 
 
 //Create Providers here

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Button, Divider } from '@mui/material'
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -10,13 +10,13 @@ import GoogleIcon from '../../../Assets/Icons/google.png';
 import InstagramIcon from '../../../Assets/Icons/instagram.webp';
 import TwitterIcon from '../../../Assets/Icons/twitter.png';
 import FacebookIcon from '../../../Assets/Icons/facebook.webp';
-import {LoginContext,useMisc} from '../../../Contexts/Context'
+import {useLogin,useMisc} from '../../../Contexts/Context'
 import { useNavigate } from 'react-router';
 import '../../../Assets/CSS/Login.css'
 
 const Login = () => {
 const Navigate=useNavigate();
-  const Login = useContext(LoginContext);
+const Login = useLogin();
   const {LastLocation}=useMisc()
 const handleSignin=()=>{
   Login.setUser({

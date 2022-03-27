@@ -99,9 +99,11 @@ const ContactUs = () => {
               variant="standard"
             />
           </div>
-          <Button variant="contained" color="success" className="">
-            Submit
-          </Button>
+          <div className="buttonBox d-flex justify-content-center align-items-center mt-5">
+            <Button variant="contained" color="primary" className="px-5 py-2">
+              Submit
+            </Button>
+          </div>
         </div>
       </div>
     </div>

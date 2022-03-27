@@ -1,18 +1,22 @@
-export const priceData = [
-  { value: 0, label: "0", color: "#00B8D9" },
-  { value: 1000, label: "1000", color: "#0052CC" },
-  { value: 2000, label: "2000", color: "#5243AA" },
-  { value: 5000, label: "5000", color: "#FF8B00" },
-  { value: 10000, label: "10000", color: "#FFC400" },
-  { value: 15000, label: "15000", color: "#36B37E" },
-  { value: 20000, label: "20000", color: "#00875A" },
-  { value: 25000, label: "25000", color: "#253858" },
-  { value: 30000, label: "30000", color: "#666666" },
-  { value: 35000, label: "35000", color: "#666666" },
-  { value: 40000, label: "40000", color: "#666666" },
-];
+// export const priceData = [
+//   { value: 0, label: "0", color: "#00B8D9" },
+//   { value: 1000, label: "1000", color: "#0052CC" },
+//   { value: 2000, label: "2000", color: "#5243AA" },
+//   { value: 5000, label: "5000", color: "#FF8B00" },
+//   { value: 10000, label: "10000", color: "#FFC400" },
+//   { value: 15000, label: "15000", color: "#36B37E" },
+//   { value: 20000, label: "20000", color: "#00875A" },
+//   { value: 25000, label: "25000", color: "#253858" },
+//   { value: 30000, label: "30000", color: "#666666" },
+//   { value: 35000, label: "35000", color: "#666666" },
+//   { value: 40000, label: "40000", color: "#666666" },
+// ];
 
-export const processors = [
+export const priceData = ['0', '1000', '2000', '5000', '10000', '15000', '20000', '25000', '30000', '35000', '40000'];
+
+
+
+export const processorsData = [
   { value: "Snapdragon 855", label: "Snapdragon 855" },
   { value: "Snapdragon 755", label: "Snapdragon 755" },
   { value: "Snapdragon 745", label: "Snapdragon 745" },
@@ -23,27 +27,51 @@ export const processors = [
   { value: "Intel 4710K", label: "Intel 4710K" },
 ];
 
-export const RAM = [
-  { label: "2006", value: 1 },
-  { label: "2008", value: 2 },
-  { label: "1993", value: 3 },
-  { label: "1988", value: 4 },
-  { label: "2010", value: 5 },
-  { label: "2010", value: 6 },
-  { label: "1996", value: 7 },
-  { label: "2012", value: 8 },
+export const RAMData = [
+  { label: "2GB", value: "2GB" },
+  { label: "4GB", value: "4GB" },
+  { label: "6GB", value: "6GB" },
+  { label: "8GB", value: "8GB" },
+  { label: "12GB", value: "12GB" },
+  
 ];
 
-export const camera = [
-  { label: ">64MP", value: 8 },
-  { label: "64MP", value: 1 },
-  { label: "32MP", value: 2 },
-  { label: "16MP", value: 3 },
-  { label: "8MP", value: 4 },
-  { label: "4MP", value: 5 },
-  { label: "2MP", value: 6 },
-  { label: "1MP", value: 7 },
+export const cameraData = [
+  { label: ">64MP", value: '>64MP' },
+  { label: "64MP", value: "64MP" },
+  { label: "32MP", value: "32MP" },
+  { label: "16MP", value: "16MP" },
+  { label: "8MP", value: "8MP" },
+  { label: "4MP", value: "4MP" },
+  { label: "2MP", value: "2MP" },
+  { label: "1MP", value: "1MP" },
 ];
+
+export const displayData = [
+  { label: "IPS Display", value: "IPS Display" },
+  { label: "Amoled Display", value: "Amoled Display" },
+  { label: "Retina Display", value: "Retina Display" },
+  { label: "60Hz", value: "60Hz" },
+  { label: "90Hz", value: "90Hz" },
+  { label: "120Hz", value: "120Hz" }
+];
+
+export const networkData = [
+  { label: "5G", value: "5G" },
+  { label: "4G", value: "4G" },
+  { label: "3G", value: "3G" },
+  { label: "2G", value: "2G" }
+]
+
+export const brandData = [
+  { label: "Samsung", value: "Samsung" },
+  { label: "Apple", value: "Apple" },
+  { label: "Xiaomi", value: "Xiaomi" },
+  { label: "Oneplus", value: "Oneplus" },
+  { label: "Oppo", value: "Oppo" },
+  { label: "Vivo", value: "Vivo" }
+]
+
 
 export const resultsData = [
   {
@@ -808,7 +836,7 @@ export const MobileMaker = [
 ];
 
 
-export const ResultFilter=[
+export const ResultFilter = [
   {
     id: 0,
     name: "Brands",
@@ -890,4 +918,4 @@ export const ResultFilter=[
 ]
 
 
-export const MenuItemData=['1000','5000','10000','15000','20000','25000','30000','35000','40000','50000'];
+export const MenuItemData = ['1000', '5000', '10000', '15000', '20000', '25000', '30000', '35000', '40000', '50000'];

@@ -33,7 +33,7 @@ const FilterBox = (props) => {
                 
                 {props.data.value.map((val,index)=>{
                     if(index<5){
-                        return <FormControlLabel key={index} control={<Checkbox default name={props.data.name} onChange={handleCheckboxChangeFunction}/>} label={val} className="FilterCheckboxes"/>
+                        return <FormControlLabel key={index} control={<Checkbox default name={props.data.name} value={val} onChange={()=>handleCheckboxChangeFunction()}/>} label={val} className="FilterCheckboxes"/>
                     }else{
                         return <FormControlLabel key={index} control={<Checkbox default />} label={val} className={"FilterCheckboxes "+showMore}/>
                     }

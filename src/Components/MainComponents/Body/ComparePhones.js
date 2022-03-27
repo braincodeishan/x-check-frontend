@@ -1,5 +1,5 @@
 import React, { useContext, useState,useEffect } from "react";
-import { LoginContext } from "../../../Contexts/Context";
+import { LoginContext, useMisc } from "../../../Contexts/Context";
 import "../../../Assets/CSS/ComparePhones.css";
 import { resultsData } from "../../../Assets/Data/Data";
 
@@ -9,13 +9,14 @@ import {useNavigate} from "react-router";
 const ComparePhones = () => {
   const Navigate=useNavigate()
   const Login = useContext(LoginContext);
+  const {LastLocation,setLastLocation}=useMisc()
   useEffect(() => {
     if(Login.comparePhones[0]===''||Login.comparePhones[0]===undefined){
       Navigate('/')
     }
   })
   useEffect(() => {
-    Login.setLastLocation('/Compare')
+    setLastLocation('/Compare')
   })
   
   const [res, setRes] = useState([

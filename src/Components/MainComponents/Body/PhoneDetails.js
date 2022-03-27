@@ -27,12 +27,13 @@ import Reviews from '../../SubComponents/Reviews'
 import ImageViewer from '../../SubComponents/ImageViewer';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
-import {LoginContext} from '../../../Contexts/Context'
+import {LoginContext,useMisc} from '../../../Contexts/Context'
 
 const PhoneDetails = () => {
   const Login=useContext(LoginContext)
+  const {setLastLocation}=useMisc()
   useEffect(() => {
-    Login.setLastLocation('/PhoneDetails/:id')
+    setLastLocation('/PhoneDetails/:id')
   })
   const { id } = useParams();
 
@@ -79,11 +80,11 @@ const PhoneDetails = () => {
   return (
     <>
       {showImage && <ImageViewer image={showImage} setshowImage={setshowImage} />}
-      <div className='PhoneDetails container' >
+      <div className='PhoneDetails container mt-4' >
 
         <div className="PDsection1">
 
-          <div className="PDdisplayImage">
+          <div className="PDdisplayImage mt-4">
             <img src={res.image} alt={res.name} srcSet="" />
           </div>
           <div className="PDselectImage">

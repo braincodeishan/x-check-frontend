@@ -6,14 +6,15 @@ import "./App.css";
 import "./Assets/CSS/Scrollbar.css";
 import "./Assets/CSS/Common.css";
 import "./Assets/CSS/Misc.css";
-// import './Assets/CSS/Bootstrap.css'
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/boxicons/css/boxicons.min.css";
 
 // Context imports
 import ProtectedRoutes from "./Contexts/ProtectedRoutes";
-// import { LastLocationProvider } from "./Contexts/Context";
-import { LogoWidthProvider } from "./Contexts/Context";
+import { MiscProvider } from "./Contexts/Context";
 import { MobileDataProvider } from "./Contexts/Context";
 import { LoginProvider } from "./Contexts/Context";
+
 
 // Routes import
 import { Routes, Route } from "react-router-dom";
@@ -32,14 +33,15 @@ import CompareIcons from "./Components/SubComponents/CompareIcons";
 import ForgotPassword from "./Components/MainComponents/Body/ForgotPassword";
 import Register from "./Components/MainComponents/Body/Register";
 import Wishlist from "./Components/MainComponents/Body/Wishlist";
+import ContactUs from "./Components/MainComponents/Body/ContactUs";
 
 function App() {
   return (
     <div className="App">
       <LoginProvider>
-        <LogoWidthProvider>
+        <MiscProvider>
           <MobileDataProvider>
-            {/* <LastLocationProvider> */}
+            
               <Navbar />
               <div className="body">
                 <Header />
@@ -59,6 +61,7 @@ function App() {
                     element={<PhoneDetails />}
                   />
                   <Route exact path="/Compare" element={<ComparePhones />} />
+                  <Route exact path="/Contact" element={<ContactUs />} />
 
                   <Route element={<ProtectedRoutes />}>
                     <Route exact path="/Wishlist" element={<Wishlist />} />
@@ -68,9 +71,9 @@ function App() {
               <CompareIcons />
               <LoveIndia />
               <Footer />
-            {/* </LastLocationProvider> */}
+            
           </MobileDataProvider>
-        </LogoWidthProvider>
+        </MiscProvider>
       </LoginProvider>
     </div>
   );

@@ -48,6 +48,7 @@
     width: 100%;
     border-right: 1px dashed rgba(0,0,0,0.3);
     border-left: 1px dashed rgba(0,0,0,0.3);
+    border-top: 1px dashed rgba(0,0,0,0.3);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -7,16 +7,16 @@ import MyCard from '../../SubComponents/MyCard'
 import InstagramIcon from '../../../Assets/Icons/instagram.webp';
 import TwitterIcon from '../../../Assets/Icons/twitter.png';
 import FacebookIcon from '../../../Assets/Icons/facebook.webp';
-import { LoginContext } from '../../../Contexts/Context'
+import { LoginContext, useMisc } from '../../../Contexts/Context'
 import { useNavigate } from 'react-router';
 import {SnackbarAlert} from '../../SubComponents/Alert'
 import '../../../Assets/CSS/Login.css'
 
 const ForgotPassword = () => {
   const Login=useContext(LoginContext)
-  
+  const {setLastLocation}=useMisc();
   useEffect(() => {
-    Login.setLastLocation('/Forgot-Passwords')
+    setLastLocation('/Forgot-Passwords')
   })
 
   const [openSnack, setopenSnack] = useState({

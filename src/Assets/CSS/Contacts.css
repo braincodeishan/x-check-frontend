@@ -1,0 +1,34 @@
+.Contacts .Icons:hover{
+    color:#fa949d
+}
+.bg-primary-image{
+    background-color: #3e2093;
+}
+
+.Contacts .bg{
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 40%;
+    background: url('../Images/Contacts.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ContactInfo{
+    
+    position: relative;
+    width: 480px;
+    height: 600px;
+}
+.ContactBox{
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);
+    padding: 10px;
+    background-color: #fff;
+}
+
+.ContactInfo div,.ContactInfo .Icons{
+    z-index: 2;
+}

@@ -1,10 +1,15 @@
 import React,{useState} from 'react'
+import { useMisc } from '../../Contexts/Context';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 const FilterBox = (props) => {
+    const {Filter,setFilter}=useMisc()
     const [showMore,setShowMore]=useState('hidden')
+    const handleCheckboxChangeFunction=()=>{
+        
+    }
     
     
     return (
@@ -28,7 +33,7 @@ const FilterBox = (props) => {
                 
                 {props.data.value.map((val,index)=>{
                     if(index<5){
-                        return <FormControlLabel key={index} control={<Checkbox default name={props.data.name} onChange={props.handleCheckboxChangeFunction}/>} label={val} className="FilterCheckboxes"/>
+                        return <FormControlLabel key={index} control={<Checkbox default name={props.data.name} onChange={handleCheckboxChangeFunction}/>} label={val} className="FilterCheckboxes"/>
                     }else{
                         return <FormControlLabel key={index} control={<Checkbox default />} label={val} className={"FilterCheckboxes "+showMore}/>
                     }

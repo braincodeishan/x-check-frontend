@@ -1,11 +1,11 @@
 import React,{useContext} from 'react'
-import { LogoWidth } from '../../Contexts/Context'
+
 
 const Logo = () => {
-	const logoWidth= useContext(LogoWidth)
+	
 	return (
 		<>
-			<div className={'logo'} style={{width: logoWidth.logoWidth+"px"}}>
+			<div className={'logo'} style={{width: "150px"}}>
 				<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 					viewBox="100 250 1680 580" style={{ enableBackground: "new 0 0 1920 1080" }} space="preserve">
 

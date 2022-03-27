@@ -1,17 +1,34 @@
-import React, { useState, createContext } from "react";
-
+import React, { useState, createContext, useContext } from "react";
+import { ResultFilter } from "../Assets/Data/Data";
 //Create Context here
 const LoginContext = createContext();
 export { LoginContext };
 
-const LogoWidth = createContext();
-export { LogoWidth };
+
+
+
+const Misc = createContext();
+export { Misc };
 
 const MobileData = createContext();
 export { MobileData };
 
-// const LastLocation = createContext();
-// export { LastLocation };
+const LastLocation = createContext();
+export { LastLocation };
+
+
+
+const useLoginContext=()=>{
+  return useContext(LoginContext)
+}
+export {useLoginContext }
+
+const useMisc=()=>{
+  return useContext(Misc)
+}
+export {useMisc }
+
+
 
 //Create Providers here
 
@@ -26,7 +43,7 @@ const LoginProvider = (props) => {
   const [comparePhones, setComparePhones] = useState([]);
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
-  const [LastLocation, setLastLocation] = useState("");
+  
 
   const changelogin = async (val) => {
     setisLoggedin(val);
@@ -56,9 +73,7 @@ const LoginProvider = (props) => {
         setCart,
         wishlist,
         setWishlist,
-        LastLocation,
-        setLastLocation
-
+        
       }}
     >
       {props.children}
@@ -67,16 +82,34 @@ const LoginProvider = (props) => {
 };
 export { LoginProvider };
 
-const LogoWidthProvider = (props) => {
+const MiscProvider = (props) => {
   const [logoWidth, setlogoWidth] = useState(150);
+  const [LastLocation, setLastLocation] = useState("");
+  const [Filter,setFilter]=useState({
+    price:[],
+    brands:[],
+    Processors:[],
+    PrimaryCamera:[],
+    SecondaryCamera:[],
+    Battery:[],
+    Network:[]
+  })
   return (
-    <LogoWidth.Provider value={{ logoWidth, setlogoWidth }}>
+    <Misc.Provider value={{ 
+      logoWidth, 
+      setlogoWidth,
+      LastLocation,
+      setLastLocation,
+      Filter,
+      setFilter
+    
+    }}>
       {props.children}
-    </LogoWidth.Provider>
+    </Misc.Provider>
   );
 };
 
-export { LogoWidthProvider };
+export { MiscProvider };
 
 const MobileDataProvider = (props) => {
   const [mobileData, setmobileData] = useState([]);
@@ -89,16 +122,6 @@ const MobileDataProvider = (props) => {
 
 export { MobileDataProvider };
 
-// const LastLocationProvider = (props) => {
-//   const [LastLocation, setLastLocation] = useState("");
-//   return (
-//     <LastLocation.Provider value={{ LastLocation, setLastLocation }}>
-//       {props.children}
-//     </LastLocation.Provider>
-//   );
-// };
-
-// export { LastLocationProvider };
 
 
 

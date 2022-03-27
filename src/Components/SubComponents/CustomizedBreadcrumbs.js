@@ -42,16 +42,16 @@ export default function CustomizedBreadcrumbs(props) {
         {props.data.map((data,index)=>{
           return (
             <StyledBreadcrumb
-            key={index}
+            key={"2"}
           component="a"
           href="/"
           label={data}
-          icon={data==="Home" && <HomeIcon fontSize="small" />}
+          icon={data==="Home" ? <HomeIcon fontSize="small" />:<></>}
           onClick={()=>{
 
             {data==="Home"?Navigate("/"):Navigate(props.data)}
           }}
-          deleteIcon={index!==(props.data.length-1) && <ExpandMoreIcon />}
+          deleteIcon={index!==(props.data.length-1)? <ExpandMoreIcon />:<></>}
           onDelete={handleClick}
         />
           )

@@ -10,13 +10,14 @@ import GoogleIcon from '../../../Assets/Icons/google.png';
 import InstagramIcon from '../../../Assets/Icons/instagram.webp';
 import TwitterIcon from '../../../Assets/Icons/twitter.png';
 import FacebookIcon from '../../../Assets/Icons/facebook.webp';
-import {LoginContext} from '../../../Contexts/Context'
+import {LoginContext,useMisc} from '../../../Contexts/Context'
 import { useNavigate } from 'react-router';
 import '../../../Assets/CSS/Login.css'
 
 const Login = () => {
 const Navigate=useNavigate();
   const Login = useContext(LoginContext);
+  const {LastLocation}=useMisc()
 const handleSignin=()=>{
   Login.setUser({
     username:"braincodeishan",
@@ -28,7 +29,7 @@ const handleSignin=()=>{
   Login.setWishlist(['2'])
   Login.setComparePhones(['0','1'])
   Login.changelogin(true);
-Navigate(Login.LastLocation);
+Navigate(LastLocation);
 }
   return (
     <div className='Login '>

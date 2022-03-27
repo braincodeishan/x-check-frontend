@@ -2,6 +2,7 @@
   /* --primary-color: #2ec4b6; */
   /* --secondary-color: #C0F0EC; */
   --primary-color: rgb(0,30,158);
+  --bg-color:rgba(189, 148, 255, 0.1);
   --secondary-color: #e2d7ff;
   --third-color: #fff;
   --fourth-color: rgba(0,0,0,0.7);
@@ -24,6 +25,7 @@
 body{
     position: relative;
     overflow-x: hidden;
+    /* background-color: var(--bg-color); */
     
     
 
@@ -34,6 +36,7 @@ body{
     min-height: 80vh;
     position: relative;
     overflow-x: hidden;
+    background-color: var(--bg-color);
 }
 
 

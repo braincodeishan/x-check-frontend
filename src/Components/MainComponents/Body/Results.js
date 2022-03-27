@@ -10,98 +10,20 @@ import FilterBox from "../../SubComponents/FilterBox";
 import ResultBox from "../../SubComponents/ResultBox";
 import CustomizedBreadcrumbs from "../../SubComponents/CustomizedBreadcrumbs";
 import {resultsData} from '../../../Assets/Data/Data'
-import { LoginContext } from '../../../Contexts/Context';
-
+import { LoginContext, useMisc } from '../../../Contexts/Context';
+import {ResultFilter} from '../../../Assets/Data/Data'
 const Results = () => {
   const Login = useContext(LoginContext)
+  const {setLastLocation,Filter,setFilter}=useMisc()
   useEffect(() => {
-    Login.setLastLocation('/Result')
+    setLastLocation('/Result')
   })
   
   const Navigate=useNavigate();
   
   const [pricevalue, setpriceValue] = React.useState([10, 80]);
 
-   const [data, setdata] = useState([
-    {
-      id: 0,
-      name: "Brands",
-      value: [
-        "MI",
-        "Realme",
-        "Samsung",
-        "OnePlus",
-        "Apple",
-        "Vivo",
-        "HTC",
-        "Oppo",
-        "LG",
-      ],
-      isCheckboxShown: false,
-      isDataSelected: "",
-      isClearDisabled: true,
-    },
-    {
-      id: 1,
-      name: "Processors",
-      value: ["SnapDragon", "Kryto", "Bionic", "Intel"],
-      isCheckboxShown: false,
-      isDataSelected: "",
-      isClearDisabled: true,
-    },
-    {
-      id: 2,
-      name: "Primary Camera",
-      value: [
-        "2MP",
-        "4MP",
-        "8MP",
-        "12MP",
-        "16MP",
-        "20MP",
-        "32MP",
-        "64MP",
-        "128MP",
-      ],
-      isCheckboxShown: false,
-      isDataSelected: "",
-      isClearDisabled: true,
-    },
-    {
-      id: 3,
-      name: "Secondary Camera",
-      value: [
-        "2MP",
-        "4MP",
-        "8MP",
-        "12MP",
-        "16MP",
-        "20MP",
-        "32MP",
-        "64MP",
-        "128MP",
-      ],
-      isCheckboxShown: false,
-      isDataSelected: "",
-      isClearDisabled: true,
-    },
-    {
-      id: 4,
-      name: "Battery",
-      value: [">1000maH", ">2000maH", ">3000maH", ">4000maH", ">5000maH"],
-      isCheckboxShown: false,
-      isDataSelected: "",
-      isClearDisabled: true,
-    },
-    {
-      id: 5,
-      name: "Network",
-      value: ["2G", "3G", "4G", "5G"],
-      isCheckboxShown: false,
-      isDataSelected: "",
-      isClearDisabled: true,
-    },
-  ]);
+   const [data, setdata] = useState(ResultFilter);
 
   
   const handleCheckboxChangeFunction = () => {};
@@ -110,22 +32,22 @@ const Results = () => {
 
   return (
     <>
-      <div className="results-parent">
+      {/* <div className="results-parent"> */}
         <div className="container results">
           <div className="section section1">
             <div className="filterBox">
               <div className="mainheading">
                 <h4>Filters</h4>
-                <Button variant="text" className="mainbutton">
+                <Button variant="text" className="mainbutton" key={'Button1'}>
                   Clear All
                 </Button>
               </div>
-              <Divider className="mdivider" />
+              <Divider className="mdivider" key={'Divider1'}/>
               {/* ************* Price Slider*********** */}
               <div className="subsection">
                 <div className="subheading">
                   <h6>Price</h6>
-                  <Button variant="text" className="subbutton">
+                  <Button variant="text" className="subbutton" key={'Button2'}>
                     Clear
                   </Button>
                 </div>
@@ -141,6 +63,7 @@ const Results = () => {
                   />
                   <div className="inputBox">
                     <TextField
+                    key={"FirstSelect"}
                       id="select"
                       className="inputField"
                       label="From"
@@ -171,6 +94,7 @@ const Results = () => {
                   </div>
                   <div className="inputBox">
                     <TextField
+                    key={"SecondSelect"}
                       id="select"
                       className="inputField"
                       label="To"
@@ -209,7 +133,7 @@ const Results = () => {
                 return (
                   <>
                     <FilterBox
-                      key={index}
+                      key={index+Math.random()}
                       data={element}
                       toggleCheckboxFunction={
                         (id) => {
@@ -219,9 +143,9 @@ const Results = () => {
                           })
                         });
                       }}
-                      handleCheckboxChangeFunction={handleCheckboxChangeFunction}
+                      
                     />
-                    <Divider className="mdivider" />
+                    <Divider className="mdivider" key={"1"} />
                   </>
                 );
               })}
@@ -236,7 +160,7 @@ const Results = () => {
                 return(
                 <>
                 <ResultBox 
-              key={index}
+              key={index+"asas"}
               data={data}
               handleMoreDetailsFunction={(id)=>{
                 Navigate(`/PhoneDetails/${id}`)
@@ -251,7 +175,7 @@ const Results = () => {
             
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 };

@@ -1,4 +1,4 @@
-export const price = [
+export const priceData = [
   { value: 0, label: "0", color: "#00B8D9" },
   { value: 1000, label: "1000", color: "#0052CC" },
   { value: 2000, label: "2000", color: "#5243AA" },
@@ -806,3 +806,88 @@ export const MobileMaker = [
   { label: "YU" },
   { label: "ZTE" },
 ];
+
+
+export const ResultFilter=[
+  {
+    id: 0,
+    name: "Brands",
+    value: [
+      "MI",
+      "Realme",
+      "Samsung",
+      "OnePlus",
+      "Apple",
+      "Vivo",
+      "HTC",
+      "Oppo",
+      "LG",
+    ],
+    isCheckboxShown: false,
+    isDataSelected: "",
+    isClearDisabled: true,
+  },
+  {
+    id: 1,
+    name: "Processors",
+    value: ["SnapDragon", "Kryto", "Bionic", "Intel"],
+    isCheckboxShown: false,
+    isDataSelected: "",
+    isClearDisabled: true,
+  },
+  {
+    id: 2,
+    name: "Primary Camera",
+    value: [
+      "2MP",
+      "4MP",
+      "8MP",
+      "12MP",
+      "16MP",
+      "20MP",
+      "32MP",
+      "64MP",
+      "128MP",
+    ],
+    isCheckboxShown: false,
+    isDataSelected: "",
+    isClearDisabled: true,
+  },
+  {
+    id: 3,
+    name: "Secondary Camera",
+    value: [
+      "2MP",
+      "4MP",
+      "8MP",
+      "12MP",
+      "16MP",
+      "20MP",
+      "32MP",
+      "64MP",
+      "128MP",
+    ],
+    isCheckboxShown: false,
+    isDataSelected: "",
+    isClearDisabled: true,
+  },
+  {
+    id: 4,
+    name: "Battery",
+    value: [">1000maH", ">2000maH", ">3000maH", ">4000maH", ">5000maH"],
+    isCheckboxShown: false,
+    isDataSelected: "",
+    isClearDisabled: true,
+  },
+  {
+    id: 5,
+    name: "Network",
+    value: ["2G", "3G", "4G", "5G"],
+    isCheckboxShown: false,
+    isDataSelected: "",
+    isClearDisabled: true,
+  },
+]
+
+
+export const MenuItemData=['1000','5000','10000','15000','20000','25000','30000','35000','40000','50000'];

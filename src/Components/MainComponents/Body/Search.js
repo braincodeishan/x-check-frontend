@@ -20,10 +20,10 @@ import Background from "../../SubComponents/Background";
 // import Background from '../../SubComponents/Background';
 
 //importing data
-import { priceData, processorsData, RAMData, cameraData, displayData, brandData ,resultsData } from "../../../Assets/Data/Data";
+import { priceData, processorsData, RAMData, cameraData, displayData, brandData, resultsData } from "../../../Assets/Data/Data";
 
 //importing other Libraries
-// import axios from 'axios'
+import axios from 'axios'
 
 // Import CSS
 import "../../../Assets/CSS/Search.css";
@@ -55,43 +55,43 @@ const Search = () => {
 
   const search = async () => {
     setisLoading(true);
-    
+
     const Filters = {
       price: inputPrice,
-      Processors: processors,
+      processors: processors,
       ram: ram,
       PrimaryCamera: primaryCamera,
       display: display,
       brands: brand
     }
 
-    
-    setFilter((prev)=>{
-      return {...prev,...Filters}
+
+    setFilter((prev) => {
+      return { ...prev, ...Filters }
     })
 
-    // const res=await axios({
-    //   method:'GET',
-    //   url:process.env.REACT_APP_SEARCH_API,
-    //   // data:JSON.stringify({
-    //   //   fromPrice,
-    //   //   toPrice,
-    //   //   processors,
-    //   //   RAM,
-    //   //   camera,
-    //   //   display,
-    //   //   brand
-    //   // })
-    // })
+    const res = await axios({
+      method: 'POST',
+      url: 'http://localhost:3001/search',
+      data: JSON.stringify({
+        price: Filters.price,
+        processors: Filters.processors,
+        ram: Filters.ram,
+        primaryCamera: Filters.primaryCamera,
+        display: Filters.display,
+        brands: Filters.brands
+      })
+    })
     // console.log(res);
 
     mobileData.setmobileData(resultsData);
     console.log(Filter);
-
-    setTimeout(() => {
-      setisLoading(false);
-      Navigate("/Result");
-    }, 3000);
+    if (res.status === '200') {
+      setTimeout(() => {
+        setisLoading(false);
+        Navigate("/Result");
+      }, 3000);
+    }
   };
   const scrollParallax = (e) => {
     console.log(e);

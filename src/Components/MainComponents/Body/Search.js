@@ -73,20 +73,20 @@ const Search = () => {
     const res = await axios({
       method: 'POST',
       url: 'http://localhost:3001/search',
-      data: JSON.stringify({
+      data: {
         price: Filters.price,
         processors: Filters.processors,
         ram: Filters.ram,
         primaryCamera: Filters.primaryCamera,
         display: Filters.display,
         brands: Filters.brands
-      })
+      }
     })
     // console.log(res);
 
     mobileData.setmobileData(resultsData);
     console.log(Filter);
-    if (res.status === '200') {
+    if (res.status === 200) {
       setTimeout(() => {
         setisLoading(false);
         Navigate("/Result");

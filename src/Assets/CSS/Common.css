@@ -84,3 +84,34 @@
     display: flex;
     align-items: center;
 }
+.d-grid{
+    display: grid;
+}
+
+.justify-items-center{
+    justify-items: center;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.justify-self-center{
+    justify-self: center;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.align-content-center{
+    align-content: center;
+}
+
+.align-self-center{
+    align-self: center;
+}
+
+.align-items-end{
+    align-items: end;
+}

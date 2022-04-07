@@ -34,17 +34,26 @@ const UpdateMobile = () => {
           <div className="boxLayout">
             <Table sx={{ minWidth: 500 }} aria-label="simple table">
               <TableBody>
-                {data.specification.map((row) => (
-                  <TableRow
-                    key={row.name}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      <b>{row.name}</b>
-                    </TableCell>
-                    <TableCell align="left">{row.value}</TableCell>
-                  </TableRow>
-                ))}
+                {data.specification?.map((row) => {
+                  
+                  if (row.value) {
+                  return (
+                      <TableRow
+                        key={row.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          <b>{row.name}</b>
+                        </TableCell>
+                        <TableCell align="left">{row.value}</TableCell>
+                      </TableRow>
+                    )
+                  }else{
+                  return null;
+                }
+                })}
               </TableBody>
             </Table>
           </div>
@@ -54,7 +63,6 @@ const UpdateMobile = () => {
             <div className="boxLayout d-flex-justify-align">
               <div className="questions">
                 <h6>Is 2G available in the phone?</h6>
-                
               </div>
             </div>
           )}
@@ -78,20 +86,20 @@ const UpdateMobile = () => {
             </div>
           )}
           {!data.dualSim && (
-            <div className="boxLayout d-flex-justify-align">
+            <div className="boxLayout">
               <div className="questions row">
                 <h6 className="col-6">Does the phone has Dual SIM?</h6>
-                {/* <Select
+                <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                // value={age}
+                                value={true}
                                 label="Age"
                                 className='col-6'
                             // onChange={handleChange}
                             >
                                 <MenuItem value={true}>Yes</MenuItem>
                                 <MenuItem value={false}>No</MenuItem>
-                            </Select> */}
+                            </Select>
               </div>
             </div>
           )}

@@ -67,3 +67,10 @@
 .animateZoom:hover{
     transform: scale(1.10);
 }
+
+
+.d-flex-justify-align{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

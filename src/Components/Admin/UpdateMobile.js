@@ -40,7 +40,7 @@ const UpdateMobile = () => {
                         <Table sx={{ minWidth: 500 }} aria-label="simple table">
 
                             <TableBody>
-                                {data.specification.map((row) => {
+                                {data.specification.map(function(row){
                                     if (row.value) {
                                         return <TableRow
                                             key={row.name}
@@ -53,6 +53,7 @@ const UpdateMobile = () => {
 
                                         </TableRow>
                                     }
+                                    return <></>
                                 })}
                             </TableBody>
                         </Table>
@@ -79,18 +80,19 @@ const UpdateMobile = () => {
 
                     </div>}
                     {!data.dualSim && <div className="boxLayout d-flex-justify-align">
-                    <div className="questions container">
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            // value={age}
-                            label="Age"
-                            className='col-6'
-                        // onChange={handleChange}
-                        >
-                            <MenuItem value={true}>Yes</MenuItem>
-                            <MenuItem value={false}>No</MenuItem>
-                        </Select>
+                        <div className="questions row">
+                            <h6 className='col-6'>Does the phone has Dual SIM?</h6>
+                            {/* <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                // value={age}
+                                label="Age"
+                                className='col-6'
+                            // onChange={handleChange}
+                            >
+                                <MenuItem value={true}>Yes</MenuItem>
+                                <MenuItem value={false}>No</MenuItem>
+                            </Select> */}
                         </div>
                     </div>}
                     {data.ipxRating && <div className="boxLayout d-flex-justify-align">abc8</div>}

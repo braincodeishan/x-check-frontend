@@ -17,7 +17,7 @@ const UpdateMobile = () => {
   const getData = async () => {
     const result = await axios.get("http://localhost:3001/admin/updateMobile");
     if (result.status === 200) {
-      console.log(result.data);
+    //   console.log(result.data);
       setData(result.data);
     } else {
       alert(result.data);
@@ -169,7 +169,7 @@ const UpdateMobile = () => {
           )}
           {data.displayHz === -1 && (
             <div className="boxLayout">
-                <div className="questions row p-4">
+              <div className="questions row p-4">
                 <h6 className="col-6 my-auto">
                   Please select Refresh Rate of Display?
                 </h6>
@@ -189,87 +189,121 @@ const UpdateMobile = () => {
               </div>
             </div>
           )}
-          {data.displayResolutionHeight === -1 && data.displayResolutionWidth === -1 && (
-            <div className="boxLayout d-flex-justify-align">
+          {data.displayResolutionHeight === -1 &&
+            data.displayResolutionWidth === -1 && (
+              <div className="boxLayout d-flex-justify-align">
                 <div className="questions row p-4">
-                <h6 className="col-6 my-auto">
-                  What is the Resolution of the phone?
-                </h6>
-                <TextField
-                  id="standard-basic"
-                  label="Width"
-                  variant="standard"
-                  className="col-2 pl-2"
-                />
-                <h6 className="col-2 d-grid justify-items-center align-items-end">X</h6>
-                <TextField
-                  id="standard-basic"
-                  label="Height"
-                  variant="standard"
-                  className="col-2 pl-2"
-                />
+                  <h6 className="col-6 my-auto">
+                    What is the Resolution of the phone?
+                  </h6>
+                  <TextField
+                    id="standard-basic"
+                    label="Width"
+                    variant="standard"
+                    className="col-2 pl-2"
+                  />
+                  <h6 className="col-2 d-grid justify-items-center align-items-end">
+                    X
+                  </h6>
+                  <TextField
+                    id="standard-basic"
+                    label="Height"
+                    variant="standard"
+                    className="col-2 pl-2"
+                  />
+                </div>
               </div>
-            </div>
-          )}
-          
+            )}
+
           {data.os === null && (
             <div className="boxLayout">
-                <div className="questions row p-4">
+              <div className="questions row p-4">
                 <h6 className="col-6 my-auto">
                   Please select OS of the Phone?
                 </h6>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={'IOS'}
+                  value={"IOS"}
                   label="Age"
                   className="col-6"
                   // onChange={handleChange}
                 >
-                  <MenuItem value={'Android'}>Android</MenuItem>
-                  <MenuItem value={'IOS'}>IOS</MenuItem>
-                  <MenuItem value={'Symbian'}>Symbian</MenuItem>
-                  <MenuItem value={'Java'}>Java</MenuItem>
+                  <MenuItem value={"Android"}>Android</MenuItem>
+                  <MenuItem value={"IOS"}>IOS</MenuItem>
+                  <MenuItem value={"Symbian"}>Symbian</MenuItem>
+                  <MenuItem value={"Java"}>Java</MenuItem>
                 </Select>
               </div>
             </div>
           )}
           {data.cpuNoOfCores === -1 && (
-            <div className="boxLayout d-flex-justify-align">abc14</div>
+            <div className="boxLayout">
+              <div className="questions row p-4">
+                <h6 className="col-6 my-auto">
+                  Please select no of Cores in the CPU?
+                </h6>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={8}
+                  label="Age"
+                  className="col-6"
+                  // onChange={handleChange}
+                >
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={6}>6</MenuItem>
+                  <MenuItem value={8}>8</MenuItem>
+                  <MenuItem value={10}>10</MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                </Select>
+              </div>
+            </div>
           )}
           {data.cpuHz === -1 && (
-            <div className="boxLayout d-flex-justify-align">abc15</div>
+            <div className="boxLayout">
+              <div className="questions row p-4">
+                <h6 className="col-6 my-auto">
+                  Please select clock speed of the CPU?
+                </h6>
+                <TextField
+                  id="standard-basic"
+                  label="Clock Speed"
+                  variant="standard"
+                  className="col-6 pl-2"
+                />
+              </div>
+            </div>
           )}
           {!data.cardSlot && (
-            <div className="boxLayout d-flex-justify-align">abc16</div>
+            <div className="boxLayout">
+              <div className="questions row p-4">
+                <h6 className="col-6 my-auto">Does the phone has CardSlot?</h6>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={true}
+                  label="Age"
+                  className="col-6"
+                  // onChange={handleChange}
+                >
+                  <MenuItem value={true}>Yes</MenuItem>
+                  <MenuItem value={false}>No</MenuItem>
+                </Select>
+              </div>
+            </div>
           )}
-          {data.pCamera && (
-            <div className="boxLayout d-flex-justify-align">abc17</div>
-          )}
-          {data.pVideoResolution && (
-            <div className="boxLayout d-flex-justify-align">abc18</div>
-          )}
-          {data.sCamera && (
-            <div className="boxLayout d-flex-justify-align">abc19</div>
-          )}
-          {data.sVideoResolution && (
-            <div className="boxLayout d-flex-justify-align">abc20</div>
-          )}
-          {data.cardSlot && (
-            <div className="boxLayout d-flex-justify-align">abc21</div>
-          )}
-          {data.cardSlot && (
-            <div className="boxLayout d-flex-justify-align">abc22</div>
-          )}
-          {data.cardSlot && (
-            <div className="boxLayout d-flex-justify-align">abc23</div>
-          )}
-          {data.cardSlot && (
-            <div className="boxLayout d-flex-justify-align">abc24</div>
-          )}
-          {data.cardSlot && (
-            <div className="boxLayout d-flex-justify-align">abc25</div>
-          )}
+          {data.pCamera && <div className="boxLayout">abc17</div>}
+          {data.pVideoResolution && <div className="boxLayout">abc18</div>}
+          {data.sCamera && <div className="boxLayout">abc19</div>}
+          {data.sVideoResolution && <div className="boxLayout">abc20</div>}
+          {data.cardSlot && <div className="boxLayout">abc21</div>}
+          {data.cardSlot && <div className="boxLayout">abc22</div>}
+          {data.cardSlot && <div className="boxLayout">abc23</div>}
+          {data.cardSlot && <div className="boxLayout">abc24</div>}
+          {data.cardSlot && <div className="boxLayout">abc25</div>}
         </div>
       </div>
     </div>

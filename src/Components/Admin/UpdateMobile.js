@@ -2,16 +2,22 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 const UpdateMobile = () => {
     const [data, setData] = useState({});
+    const [updatedData,setUpdatedData]=useState({})
     useEffect(() => {
         getData()
-    }, [data])
+    },[])
 
     const getData = async () => {
-        const result = await axios.get('http://localhost:3001/updateMobile')
-        if (result) {
+        const result = await axios.get('http://localhost:3001/admin/updateMobile')
+        if (result.status===200) {
+            console.log(result.data);
             setData(result.data)
+
+        }else{
+            alert(result.data)
         }
     }
+
 
 
 

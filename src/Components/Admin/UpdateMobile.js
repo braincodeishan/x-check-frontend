@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import '../../Assets/CSS/Admin.css'
+import { Select } from '@mui/material';
 const UpdateMobile = () => {
     const [data, setData] = useState({});
-    const [updatedData,setUpdatedData]=useState({})
+    const [updatedData, setUpdatedData] = useState({})
     useEffect(() => {
         getData()
-    },[])
+    }, [])
 
     const getData = async () => {
         const result = await axios.get('http://localhost:3001/admin/updateMobile')
-        if (result.status===200) {
+        if (result.status === 200) {
             console.log(result.data);
             setData(result.data)
 
-        }else{
+        } else {
             alert(result.data)
         }
     }
@@ -29,7 +30,10 @@ const UpdateMobile = () => {
                 <h2>{data.name}</h2>
             </div>
             {!data.twoG && < div className="boxLayout d-flex-justify-align">
-                abc1
+                <div className="questions">
+                    <h6>Is 2G available in the phone?</h6>
+                    <Select/>
+                </div>
             </div>}
             {!data.threeG && <div className="boxLayout d-flex-justify-align">
                 abc2
@@ -37,7 +41,13 @@ const UpdateMobile = () => {
             {!data.fourG && <div className="boxLayout d-flex-justify-align">abc3</div>}
             {!data.fiveG && <div className="boxLayout d-flex-justify-align">abc4</div>}
             {data.announced === null && <div className="boxLayout d-flex-justify-align">abc5</div>}
-            {data.weight === -1 && <div className="boxLayout d-flex-justify-align">abc6</div>}
+            {data.weight === -1 && <div className="boxLayout d-flex-justify-align">
+            <div className="questions">
+                    <h6>What is the weight of the Phone?</h6>
+                    <Select/>
+                </div>
+                
+                </div>}
             {!data.dualSim && <div className="boxLayout d-flex-justify-align">abc7</div>}
             {data.ipxRating && <div className="boxLayout d-flex-justify-align">abc8</div>}
             {data.displayType === null && <div className="boxLayout d-flex-justify-align">abc9</div>}

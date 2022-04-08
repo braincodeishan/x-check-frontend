@@ -324,6 +324,12 @@ const UpdateMobile = () => {
                             </h6>
                             <TextField
                                 id="standard-basic"
+                                label="Name"
+                                variant="standard"
+                                className="col-2 pl-2"
+                            />
+                            <TextField
+                                id="standard-basic"
                                 label="MegaPixel"
                                 variant="standard"
                                 className="col-2 pl-2"

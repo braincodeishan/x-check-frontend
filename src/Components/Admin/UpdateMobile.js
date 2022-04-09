@@ -20,18 +20,23 @@ const UpdateMobile = () => {
         try{
         const result = await axios.get("http://localhost:3001/admin/updateMobile");
         if (result.status === 200) {
+            console.log("1")
               console.log(result.data);
             if(!result.data){
-                Navigate('/AdminDashboard')
+                alert(result.data);
+                // Navigate('/AdminDashboard')
             }
             setData(result.data);
-        } else {
+        } else if(result.status===400){
+            console.log("2")
             alert(result.data);
-            
+        }else{
+
         }
     }catch(err){
+        console.log("3")
         alert(err);
-        Navigate('/AdminDashboard')
+        // Navigate('/AdminDashboard')
     }
     };
 

@@ -7,7 +7,9 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { TextField } from "@mui/material";
+import { useNavigate } from "react-router";
 const UpdateMobile = () => {
+    const Navigate = useNavigate();
     const [data, setData] = useState({});
     const [updatedData, setUpdatedData] = useState({});
     useEffect(() => {
@@ -15,13 +17,22 @@ const UpdateMobile = () => {
     }, []);
 
     const getData = async () => {
+        try{
         const result = await axios.get("http://localhost:3001/admin/updateMobile");
         if (result.status === 200) {
-            //   console.log(result.data);
+              console.log(result.data);
+            if(!result.data){
+                Navigate('/AdminDashboard')
+            }
             setData(result.data);
         } else {
             alert(result.data);
+            
         }
+    }catch(err){
+        alert(err);
+        Navigate('/AdminDashboard')
+    }
     };
 
     return (

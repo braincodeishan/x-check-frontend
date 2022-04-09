@@ -19,7 +19,7 @@ const CompareIcons = () => {
         <div className="CompareIcons">
           <div className="showComparePhones">
               {Login.comparePhones.map((data,index)=>{
-                return( <><div className="phones">
+                return( <><div className="phones" key={index}>
                   <img src={resultsData[parseInt(data)].image} alt={resultsData[parseInt(data)].name} srcSet="" />
                   <h6>{resultsData[parseInt(data)].name}</h6>
                   

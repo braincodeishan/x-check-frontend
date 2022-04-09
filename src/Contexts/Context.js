@@ -98,6 +98,11 @@ const MiscProvider = (props) => {
     Battery:[],
     Network:[]
   })
+  const [alert,setAlert]=useState({
+    show:false,
+    message:"",
+    severity:""
+  });
   return (
     <Misc.Provider value={{ 
       logoWidth, 
@@ -105,7 +110,9 @@ const MiscProvider = (props) => {
       LastLocation,
       setLastLocation,
       Filter,
-      setFilter
+      setFilter,
+      alert,
+      setAlert
     
     }}>
       {props.children}

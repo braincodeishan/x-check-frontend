@@ -14,7 +14,7 @@ import ProtectedRoutes from "./Contexts/ProtectedRoutes";
 import { MiscProvider } from "./Contexts/Context";
 import { MobileDataProvider } from "./Contexts/Context";
 import { LoginProvider } from "./Contexts/Context";
-
+import { useMisc } from "./Contexts/Context";
 
 // Routes import
 import { Routes, Route } from "react-router-dom";
@@ -36,14 +36,16 @@ import Wishlist from "./Components/MainComponents/Body/Wishlist";
 import ContactUs from "./Components/MainComponents/Body/ContactUs";
 import Dashboard from './Components/Admin/Dashboard'
 import UpdateMobile from "./Components/Admin/UpdateMobile";
+import { SnackbarAlert } from "./Components/SubComponents/Alert";
 
 function App() {
+  const {alert, setAlert}= useMisc();
   return (
     <div className="App">
       <LoginProvider>
         <MiscProvider>
           <MobileDataProvider>
-
+            {alert.show && <SnackbarAlert {...alert} setopenSnack={setAlert}/>}
             <Navbar />
             <div className="body">
               <Header />

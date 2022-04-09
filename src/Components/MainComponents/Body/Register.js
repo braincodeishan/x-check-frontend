@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Divider } from '@mui/material'
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
@@ -12,13 +12,33 @@ import FacebookIcon from '../../../Assets/Icons/facebook.webp';
 
 import { useNavigate } from 'react-router';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
+import axios from 'axios';
+
 import '../../../Assets/CSS/Login.css'
 
 const Register = () => {
   const Navigate = useNavigate();
-  
-  const handleSignin = () => {
+  const [regData,setRegData]=useState({
+    fName:"",
+    lName:"",
+    email:"",
+    mobile:"",
+    password:"",
+    confirmPassword:""
+  });
+
+  const handleSignin = async() => {
+    const url=
+    const result = await axios({
+      url:''
+    })
     Navigate('/Login');
+  }
+
+  const handleChange=(e)=>{
+    const name=e.target.name;
+    const val=e.target.value;
+    setRegData({...regData,[name]:val});
   }
 
   return (
@@ -43,47 +63,65 @@ const Register = () => {
             <TextField
               id="outlined-password-input1"
               label="First Name"
+              name='fName'
               type="text"
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"
+              value={regData.fName}
+              onChange={handleChange}
             />
             <TextField
               id="outlined-password-input2"
               label="Last Name"
               type="text"
+              name='lName'
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"
+              value={regData.lName}
+              onChange={handleChange}
             />
             <TextField
               id="outlined-password-input3"
-              label="Emai Id"
+              label="Email Id"
               type="text"
+              name='email'
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"
+              value={regData.email}
+              onChange={handleChange}
             />
             <TextField
               id="outlined-password-input4"
               label="Mobile Number"
               type="text"
+              name='mobile'
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"
               InputProps={{
                 startAdornment: <InputAdornment position="start">+91</InputAdornment>,
               }}
+              value={regData.mobile}
+              onChange={handleChange}
             />
             <TextField
               id="outlined-password-input5"
               label="Password"
               type="password"
               autoComplete="false"
+              name='password'
               sx={{ marginBottom: '20px', width: '70%' }}
+              value={regData.password}
+              onChange={handleChange}
             />
             <TextField
               id="outlined-password-input6"
               label="Confirm Password"
               type="password"
               autoComplete="false"
+              name='confirmPassword'
               sx={{ marginBottom: '20px', width: '70%' }}
+              value={regData.confirmPassword}
+              onChange={handleChange}
             />
             
             <Button variant="contained"

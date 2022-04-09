@@ -28,10 +28,32 @@ const Register = () => {
   });
 
   const handleSignin = async() => {
-    const url=
-    const result = await axios({
-      url:''
-    })
+    const {fName,lName,email,mobile,password,confirmPassword}=regData;
+    const url=process.env.REACT_APP_DOMAIN_NAME+"User/register";
+    if(!fName &&!lName && !email && !mobile && !password && password===confirmPassword){
+      const result = await axios({
+        url:url,
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+          fName,
+          lName,
+          email,
+          mobile,
+          password
+        })
+      })
+      if(result.status===200){
+        
+      }else{
+
+      }
+    }else{
+
+    }
+    
     Navigate('/Login');
   }
 

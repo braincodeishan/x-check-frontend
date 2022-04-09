@@ -12,13 +12,13 @@ import FacebookIcon from "../../../Assets/Icons/facebook.webp";
 
 import { useNavigate } from "react-router";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
-import { useMisc } from "../../../Contexts/Context";
+import { successAlert,dangerAlert } from "../../SubComponents/Alert";
 import axios from "axios";
 
 import "../../../Assets/CSS/Login.css";
 
 const Register = () => {
-  const { setAlert } = useMisc();
+  
   const Navigate = useNavigate();
   const [regData, setRegData] = useState({
     username: "",
@@ -30,58 +30,54 @@ const Register = () => {
   });
 
   const handleSignin = async () => {
-    try{
-    const { username, name, email, mobile, password, confirmPassword } = regData;
-    const url = process.env.REACT_APP_DOMAIN_NAME + "User/register";
-    if (
-      username &&
-      name &&
-      email &&
-      mobile &&
-      password &&
-      password === confirmPassword
-    ) {
-      const result = await axios({
-        url: url,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          username,
-          name,
-          email,
-          mobile,
-          password,
-        },
-      });
-      if (result.status === 201) {
-        setAlert({
-          show: true,
-          message: "Registration Successful",
-          severity: "success",
+    try {
+      const { username, name, email, mobile, password, confirmPassword } =
+        regData;
+      const url = process.env.REACT_APP_DOMAIN_NAME + "User/register";
+      if (!username &&!name &&!email &&!mobile &&!password){
+          dangerAlert("Please enter all the fields");
+          return;
+        } 
+        if(password !== confirmPassword){
+          dangerAlert("Password doesn't match");
+          return;
+        }
+        if(!email.includes('@')&&!email.includes('.')){
+          dangerAlert("Incorrect email entered");
+          return;
+        }
+        if(mobile.length!==10){
+          dangerAlert("Incorrect phone entered");
+          return;
+        }
+        
+        const result = await axios({
+          url: url,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: {
+            username,
+            name,
+            email,
+            mobile,
+            password,
+          },
         });
+        if (result.status === 201) {
+          successAlert(result.data);
+          setInterval(() => {
+            Navigate("/Login");            
+          }, 2000);
+        } else {
+          dangerAlert(result.data);
 
-        setTimeout(() => {
-          setAlert({
-            show: false,
-            message: "",
-            severity: ""
-          })
-          Navigate("/Login");
-        }, 2000);
-
-      } else {
-        console.log("aaaaaa");
-      }
-    } else {
-      console.log("qqqqqqq");
+        }
+     
+    } catch (err) {
+      console.log(err);
     }
-  }catch(err){
-    console.log(err);
-  }
-
-    
   };
 
   const handleChange = (e) => {

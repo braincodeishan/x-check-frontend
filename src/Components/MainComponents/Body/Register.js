@@ -21,8 +21,8 @@ const Register = () => {
   const { setAlert } = useMisc();
   const Navigate = useNavigate();
   const [regData, setRegData] = useState({
-    fName: "",
-    lName: "",
+    username: "",
+    name: "",
     email: "",
     mobile: "",
     password: "",
@@ -31,12 +31,11 @@ const Register = () => {
 
   const handleSignin = async () => {
     try{
-    const { fName, lName, email, mobile, password, confirmPassword } = regData;
-    console.log(process.env);
+    const { username, name, email, mobile, password, confirmPassword } = regData;
     const url = process.env.REACT_APP_DOMAIN_NAME + "User/register";
     if (
-      fName &&
-      lName &&
+      username &&
+      name &&
       email &&
       mobile &&
       password &&
@@ -48,15 +47,15 @@ const Register = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          fName,
-          lName,
+        data: {
+          username,
+          name,
           email,
           mobile,
           password,
-        }),
+        },
       });
-      if (result.status === 200) {
+      if (result.status === 201) {
         setAlert({
           show: true,
           message: "Registration Successful",
@@ -118,22 +117,22 @@ const Register = () => {
           <div className="L-emailLogin">
             <TextField
               id="outlined-password-input1"
-              label="First Name"
-              name="fName"
+              label="UserName"
+              name="username"
               type="text"
               sx={{ marginBottom: "20px", width: "70%" }}
               autoComplete="off"
-              value={regData.fName}
+              value={regData.username}
               onChange={handleChange}
             />
             <TextField
               id="outlined-password-input2"
-              label="Last Name"
+              label="Name"
               type="text"
-              name="lName"
+              name="name"
               sx={{ marginBottom: "20px", width: "70%" }}
               autoComplete="off"
-              value={regData.lName}
+              value={regData.name}
               onChange={handleChange}
             />
             <TextField

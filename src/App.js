@@ -11,9 +11,6 @@ import "../node_modules/boxicons/css/boxicons.min.css";
 
 // Context imports
 import ProtectedRoutes from "./Contexts/ProtectedRoutes";
-import { MiscProvider } from "./Contexts/Context";
-import { MobileDataProvider } from "./Contexts/Context";
-import { LoginProvider } from "./Contexts/Context";
 import { useMisc } from "./Contexts/Context";
 
 // Routes import
@@ -42,9 +39,7 @@ function App() {
   const {alert, setAlert}= useMisc();
   return (
     <div className="App">
-      <LoginProvider>
-        <MiscProvider>
-          <MobileDataProvider>
+      
             {alert.show && <SnackbarAlert {...alert} setopenSnack={setAlert}/>}
             <Navbar />
             <div className="body">
@@ -78,9 +73,7 @@ function App() {
             <LoveIndia />
             <Footer />
 
-          </MobileDataProvider>
-        </MiscProvider>
-      </LoginProvider>
+          
     </div>
   );
 }

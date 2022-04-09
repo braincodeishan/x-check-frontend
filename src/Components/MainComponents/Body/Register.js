@@ -1,93 +1,127 @@
-import React, { useState } from 'react'
-import { Button, Divider } from '@mui/material'
-import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
-import { Link } from 'react-router-dom'
-import MyCard from '../../SubComponents/MyCard'
+import React, { useState } from "react";
+import { Button, Divider } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import { InputAdornment } from "@mui/material";
+import { Link } from "react-router-dom";
+import MyCard from "../../SubComponents/MyCard";
 
-import GoogleIcon from '../../../Assets/Icons/google.png';
-import InstagramIcon from '../../../Assets/Icons/instagram.webp';
-import TwitterIcon from '../../../Assets/Icons/twitter.png';
-import FacebookIcon from '../../../Assets/Icons/facebook.webp';
+import GoogleIcon from "../../../Assets/Icons/google.png";
+import InstagramIcon from "../../../Assets/Icons/instagram.webp";
+import TwitterIcon from "../../../Assets/Icons/twitter.png";
+import FacebookIcon from "../../../Assets/Icons/facebook.webp";
 
-import { useNavigate } from 'react-router';
-import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
-import axios from 'axios';
+import { useNavigate } from "react-router";
+import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
+import { useMisc } from "../../../Contexts/Context";
+import axios from "axios";
 
-import '../../../Assets/CSS/Login.css'
+import "../../../Assets/CSS/Login.css";
 
 const Register = () => {
+  const { setAlert } = useMisc();
   const Navigate = useNavigate();
-  const [regData,setRegData]=useState({
-    fName:"",
-    lName:"",
-    email:"",
-    mobile:"",
-    password:"",
-    confirmPassword:""
+  const [regData, setRegData] = useState({
+    fName: "",
+    lName: "",
+    email: "",
+    mobile: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const handleSignin = async() => {
-    const {fName,lName,email,mobile,password,confirmPassword}=regData;
-    const url=process.env.REACT_APP_DOMAIN_NAME+"User/register";
-    if(!fName &&!lName && !email && !mobile && !password && password===confirmPassword){
+  const handleSignin = async () => {
+    try{
+    const { fName, lName, email, mobile, password, confirmPassword } = regData;
+    console.log(process.env);
+    const url = process.env.REACT_APP_DOMAIN_NAME + "User/register";
+    if (
+      fName &&
+      lName &&
+      email &&
+      mobile &&
+      password &&
+      password === confirmPassword
+    ) {
       const result = await axios({
-        url:url,
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
+        url: url,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
           fName,
           lName,
           email,
           mobile,
-          password
-        })
-      })
-      if(result.status===200){
-        
-      }else{
+          password,
+        }),
+      });
+      if (result.status === 200) {
+        setAlert({
+          show: true,
+          message: "Registration Successful",
+          severity: "success",
+        });
 
+        setTimeout(() => {
+          setAlert({
+            show: false,
+            message: "",
+            severity: ""
+          })
+          Navigate("/Login");
+        }, 2000);
+
+      } else {
+        console.log("aaaaaa");
       }
-    }else{
-
+    } else {
+      console.log("qqqqqqq");
     }
-    
-    Navigate('/Login');
+  }catch(err){
+    console.log(err);
   }
 
-  const handleChange=(e)=>{
-    const name=e.target.name;
-    const val=e.target.value;
-    setRegData({...regData,[name]:val});
-  }
+    
+  };
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const val = e.target.value;
+    setRegData({ ...regData, [name]: val });
+  };
 
   return (
-    <div className='Login '>
+    <div className="Login ">
       <div className="L-box container">
         <div className="L-section-primary">
-          <i className='bx bxl-xing animateZoom'></i>
+          <i className="bx bxl-xing animateZoom"></i>
           <h3>Resister</h3>
-          <p>First step where the Magic Begins. <AutoFixHighIcon /></p>
+          <p>
+            First step where the Magic Begins. <AutoFixHighIcon />
+          </p>
           <div className="L-emailLogin">
-            <Button
-              variant="outlined"
-              sx={{ margin: '20px', width: '70%' }}
-            >
-              {<img src={GoogleIcon} alt={GoogleIcon} srcSet={GoogleIcon} style={{ width: '25px', marginRight: '10px' }} />}
+            <Button variant="outlined" sx={{ margin: "20px", width: "70%" }}>
+              {
+                <img
+                  src={GoogleIcon}
+                  alt={GoogleIcon}
+                  srcSet={GoogleIcon}
+                  style={{ width: "25px", marginRight: "10px" }}
+                />
+              }
               Sign up with Google
             </Button>
           </div>
-          <Divider sx={{ marginBottom: '30px' }} />
+          <Divider sx={{ marginBottom: "30px" }} />
 
           <div className="L-emailLogin">
             <TextField
               id="outlined-password-input1"
               label="First Name"
-              name='fName'
+              name="fName"
               type="text"
-              sx={{ marginBottom: '20px', width: '70%' }}
+              sx={{ marginBottom: "20px", width: "70%" }}
               autoComplete="off"
               value={regData.fName}
               onChange={handleChange}
@@ -96,8 +130,8 @@ const Register = () => {
               id="outlined-password-input2"
               label="Last Name"
               type="text"
-              name='lName'
-              sx={{ marginBottom: '20px', width: '70%' }}
+              name="lName"
+              sx={{ marginBottom: "20px", width: "70%" }}
               autoComplete="off"
               value={regData.lName}
               onChange={handleChange}
@@ -106,8 +140,8 @@ const Register = () => {
               id="outlined-password-input3"
               label="Email Id"
               type="text"
-              name='email'
-              sx={{ marginBottom: '20px', width: '70%' }}
+              name="email"
+              sx={{ marginBottom: "20px", width: "70%" }}
               autoComplete="off"
               value={regData.email}
               onChange={handleChange}
@@ -116,11 +150,13 @@ const Register = () => {
               id="outlined-password-input4"
               label="Mobile Number"
               type="text"
-              name='mobile'
-              sx={{ marginBottom: '20px', width: '70%' }}
+              name="mobile"
+              sx={{ marginBottom: "20px", width: "70%" }}
               autoComplete="off"
               InputProps={{
-                startAdornment: <InputAdornment position="start">+91</InputAdornment>,
+                startAdornment: (
+                  <InputAdornment position="start">+91</InputAdornment>
+                ),
               }}
               value={regData.mobile}
               onChange={handleChange}
@@ -130,8 +166,8 @@ const Register = () => {
               label="Password"
               type="password"
               autoComplete="false"
-              name='password'
-              sx={{ marginBottom: '20px', width: '70%' }}
+              name="password"
+              sx={{ marginBottom: "20px", width: "70%" }}
               value={regData.password}
               onChange={handleChange}
             />
@@ -140,58 +176,101 @@ const Register = () => {
               label="Confirm Password"
               type="password"
               autoComplete="false"
-              name='confirmPassword'
-              sx={{ marginBottom: '20px', width: '70%' }}
+              name="confirmPassword"
+              sx={{ marginBottom: "20px", width: "70%" }}
               value={regData.confirmPassword}
               onChange={handleChange}
             />
-            
-            <Button variant="contained"
-              sx={{ backgroundColor: '#3521b5', marginBottom: '20px', width: '70%' }}
+
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#3521b5",
+                marginBottom: "20px",
+                width: "70%",
+              }}
               onClick={handleSignin}
-            >SIGN UP</Button>
+            >
+              SIGN UP
+            </Button>
           </div>
-          <Divider sx={{ marginBottom: '30px' }} />
-          <h6>Already have an account? <Link to="/Login">Sign in</Link> here.</h6>
+          <Divider sx={{ marginBottom: "30px" }} />
+          <h6>
+            Already have an account? <Link to="/Login">Sign in</Link> here.
+          </h6>
         </div>
         <div className="L-section-secondary">
           <div className="L-Login-bg">
             <div className="images">
               <div className="section">
-                <MyCard classes={'animateLeftCard1'} data={{ name: 'Ishan', avatar: 'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png', body: 'Awesome App ❤️', details: 'Saved a lot of money. Keep in your pocket and save a lot.' }} />
-
+                <MyCard
+                  classes={"animateLeftCard1"}
+                  data={{
+                    name: "Ishan",
+                    avatar:
+                      "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png",
+                    body: "Awesome App ❤️",
+                    details:
+                      "Saved a lot of money. Keep in your pocket and save a lot.",
+                  }}
+                />
               </div>
               <div className="section">
-                <MyCard classes={'animateLeftCard2'} data={{ name: 'Shivam', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO4UxJO_flRww7WXHnIwuxAeX0kgkqlviKhgPzgg2hHdXW0YjdQucZegboJdxBAoFyD40&usqp=CAU', body: 'My Favorite App ❤️', details: 'It gets more delicious when you sign up and use the App.' }} />
-
+                <MyCard
+                  classes={"animateLeftCard2"}
+                  data={{
+                    name: "Shivam",
+                    avatar:
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO4UxJO_flRww7WXHnIwuxAeX0kgkqlviKhgPzgg2hHdXW0YjdQucZegboJdxBAoFyD40&usqp=CAU",
+                    body: "My Favorite App ❤️",
+                    details:
+                      "It gets more delicious when you sign up and use the App.",
+                  }}
+                />
               </div>
               <div className="section">
                 <div className="textbox">
                   <h5>Maximum Rewards</h5>
-                  <p>Check out our social medias handles to get coupons and discount. BEST DEALS GUARANTEED.</p>
+                  <p>
+                    Check out our social medias handles to get coupons and
+                    discount. BEST DEALS GUARANTEED.
+                  </p>
                   <div className="icons">
                     <img
                       src={InstagramIcon}
                       alt={InstagramIcon}
                       srcSet={InstagramIcon}
-                      style={{ padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
-                      className='animateZoom L-Image1 animateLeftIcons'
+                      style={{
+                        padding: "5px",
+                        borderRadius: "50%",
+                        backgroundColor: "#fff",
+                      }}
+                      className="animateZoom L-Image1 animateLeftIcons"
                     />
                     <img
                       src={TwitterIcon}
                       alt={TwitterIcon}
                       srcSet={TwitterIcon}
-                      style={{ width: '50px', padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
-                      className='animateZoom L-Image2 animateLeftIcons'
+                      style={{
+                        width: "50px",
+                        padding: "5px",
+                        borderRadius: "50%",
+                        backgroundColor: "#fff",
+                      }}
+                      className="animateZoom L-Image2 animateLeftIcons"
                     />
                     <img
                       src={FacebookIcon}
                       alt={FacebookIcon}
                       srcSet={FacebookIcon}
-                      style={{ width: '50px', padding: '5px', borderRadius: '50%', backgroundColor: '#fff' }}
-                      className='animateZoom L-Image3 animateLeftIcons'
+                      style={{
+                        width: "50px",
+                        padding: "5px",
+                        borderRadius: "50%",
+                        backgroundColor: "#fff",
+                      }}
+                      className="animateZoom L-Image3 animateLeftIcons"
                     />
-
                   </div>
                 </div>
               </div>
@@ -199,9 +278,8 @@ const Register = () => {
           </div>
         </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

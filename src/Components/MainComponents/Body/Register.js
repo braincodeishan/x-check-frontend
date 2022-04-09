@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Divider } from '@mui/material'
 import TextField from '@mui/material/TextField';
+import { InputAdornment } from '@mui/material';
 import { Link } from 'react-router-dom'
 import MyCard from '../../SubComponents/MyCard'
 
@@ -40,35 +41,45 @@ const Register = () => {
 
           <div className="L-emailLogin">
             <TextField
-              id="outlined-password-input"
+              id="outlined-password-input1"
               label="First Name"
               type="text"
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"
             />
             <TextField
-              id="outlined-password-input"
+              id="outlined-password-input2"
               label="Last Name"
               type="text"
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"
             />
             <TextField
-              id="outlined-password-input"
+              id="outlined-password-input3"
               label="Emai Id"
               type="text"
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"
             />
             <TextField
-              id="outlined-password-input"
+              id="outlined-password-input4"
+              label="Mobile Number"
+              type="text"
+              sx={{ marginBottom: '20px', width: '70%' }}
+              autoComplete="off"
+              InputProps={{
+                startAdornment: <InputAdornment position="start">+91</InputAdornment>,
+              }}
+            />
+            <TextField
+              id="outlined-password-input5"
               label="Password"
               type="password"
               autoComplete="false"
               sx={{ marginBottom: '20px', width: '70%' }}
             />
             <TextField
-              id="outlined-password-input"
+              id="outlined-password-input6"
               label="Confirm Password"
               type="password"
               autoComplete="false"

@@ -103,6 +103,42 @@ const MiscProvider = (props) => {
     message:"",
     severity:""
   });
+  const [loading,setLoading]=useState(false);
+  const successAlert=(message)=>{
+    
+    if(!alert.show){
+     setAlert({
+       show:true,
+       message:message,
+       severity:'success'
+     })
+      setTimeout(() => {
+        setAlert({
+          show:false,
+          message:"",
+          severity:""
+        })
+      }, 2000);
+    }
+ }
+  const dangerAlert=(message)=>{
+    
+     if(!alert.show){
+      setAlert({
+        show:true,
+        message:message,
+        severity:'error'
+      })
+       setTimeout(() => {
+         setAlert({
+           show:false,
+           message:"",
+           severity:""
+         })
+       }, 2000);
+     }
+  }
+
   return (
     <Misc.Provider value={{ 
       logoWidth, 
@@ -112,7 +148,11 @@ const MiscProvider = (props) => {
       Filter,
       setFilter,
       alert,
-      setAlert
+      setAlert,
+      successAlert,
+      dangerAlert,
+      loading,
+      setLoading
     
     }}>
       {props.children}

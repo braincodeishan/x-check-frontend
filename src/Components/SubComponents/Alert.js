@@ -1,9 +1,9 @@
 // Generates the Alert
 
-import React from 'react'
+import React, { useState } from 'react'
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { useMisc } from '../../Contexts/Context';
+
 
 
 const AlertBar = (props) => {
@@ -53,40 +53,3 @@ export const SnackbarAlert = (props) => {
   )
 }
 
-export const successAlert=(message)=>{
-  const {alert,setAlert}=useMisc();
-  if(!alert.show){
-    setAlert({
-      show:true,
-      message:message,
-      severity:"success"
-    })
-    setTimeout(() => {
-      setAlert({
-        show:false,
-        message:"",
-        severity:""
-      })
-    }, 2000);
-  }
-}
-
-
-
-export const dangerAlert=(message)=>{
-  const {alert,setAlert}=useMisc();
-  if(!alert.show){
-    setAlert({
-      show:true,
-      message:message,
-      severity:"danger"
-    })
-    setTimeout(() => {
-      setAlert({
-        show:false,
-        message:"",
-        severity:""
-      })
-    }, 2000);
-  }
-}

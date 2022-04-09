@@ -34,13 +34,17 @@ import ContactUs from "./Components/MainComponents/Body/ContactUs";
 import Dashboard from './Components/Admin/Dashboard'
 import UpdateMobile from "./Components/Admin/UpdateMobile";
 import { SnackbarAlert } from "./Components/SubComponents/Alert";
+import Loading from "./Components/SubComponents/Loading";
 
 function App() {
-  const {alert, setAlert}= useMisc();
+  const {alert, setAlert, loading}= useMisc();
   return (
     <div className="App">
       
             {alert.show && <SnackbarAlert {...alert} setopenSnack={setAlert}/>}
+            {
+              loading && <Loading/>
+            }
             <Navbar />
             <div className="body">
               <Header />

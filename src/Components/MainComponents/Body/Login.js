@@ -53,7 +53,7 @@ Navigate(LastLocation);
 
             <TextField
               id="outlined-password-input"
-              label="Emai Id"
+              label="Username / Email Id"
               type="text"
               sx={{ marginBottom: '20px', width: '70%' }}
               autoComplete="off"

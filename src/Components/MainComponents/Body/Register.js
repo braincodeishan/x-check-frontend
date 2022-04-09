@@ -12,13 +12,13 @@ import FacebookIcon from "../../../Assets/Icons/facebook.webp";
 
 import { useNavigate } from "react-router";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
-import { successAlert,dangerAlert } from "../../SubComponents/Alert";
+import { useMisc } from "../../../Contexts/Context";
 import axios from "axios";
 
 import "../../../Assets/CSS/Login.css";
 
 const Register = () => {
-  
+  const {successAlert,dangerAlert, setLoading}=useMisc();
   const Navigate = useNavigate();
   const [regData, setRegData] = useState({
     username: "",
@@ -31,6 +31,7 @@ const Register = () => {
 
   const handleSignin = async () => {
     try {
+      setLoading(true);
       const { username, name, email, mobile, password, confirmPassword } =
         regData;
       const url = process.env.REACT_APP_DOMAIN_NAME + "User/register";
@@ -47,7 +48,7 @@ const Register = () => {
           return;
         }
         if(mobile.length!==10){
-          dangerAlert("Incorrect phone entered");
+         dangerAlert("Incorrect phone entered");
           return;
         }
         
@@ -65,7 +66,9 @@ const Register = () => {
             password,
           },
         });
+        setLoading(false);
         if (result.status === 201) {
+          console.log(result.data);
           successAlert(result.data);
           setInterval(() => {
             Navigate("/Login");            

@@ -16,7 +16,9 @@ const ResultBox = (props) => {
   })
 
   useEffect(() => {
-    
+    setIsChecked(()=>{
+      return Login.comparePhones.includes(props.data.id.toString())
+    })
   }, [Login.comparePhones])
   
 

@@ -70,7 +70,7 @@ const Search = () => {
       return { ...prev, ...Filters }
     })
 
-    const res = await axios({
+    const result = await axios({
       method: 'POST',
       url: process.env.REACT_APP_DOMAIN_NAME+ 'search',
       data: {
@@ -84,22 +84,20 @@ const Search = () => {
     })
     // console.log(res);
 
-    mobileData.setmobileData(resultsData);
+    mobileData.setmobileData(result.data);
     console.log(Filter);
-    if (res.status === 200) {
+    if (result.status === 200) {
       setTimeout(() => {
         setisLoading(false);
         Navigate("/Result");
       }, 3000);
     }
   };
-  const scrollParallax = (e) => {
-    console.log(e);
-  };
+  
 
   return (
     <>
-      <div className="Search-Parent" onScroll={scrollParallax}>
+      <div className="Search-Parent" >
         <Background />
         {isLoading && <Loading />}
         <div className="container search">

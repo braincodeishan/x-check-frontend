@@ -60,11 +60,10 @@ const Login = () => {
         Login.setWishlist(result.data.wishList);
         Login.setComparePhones(result.data.comparePhones);
         Login.changelogin(true);
-        if(Login.user.type==='ADMIN'){
+        if(result.data.type==='ADMIN'){
           Navigate("/AdminDashboard");
           
-        }
-        if (LastLocation) {
+        }else if (LastLocation!=="") {
           Navigate(LastLocation);
         } else {
           Navigate("/");

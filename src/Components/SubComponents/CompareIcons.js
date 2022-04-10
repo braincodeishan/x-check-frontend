@@ -4,6 +4,7 @@ import CompareIcon from "@mui/icons-material/Compare";
 import { LoginContext } from "../../Contexts/Context";
 import { useNavigate } from "react-router";
 import {resultsData} from '../../Assets/Data/Data'
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const CompareIcons = () => {
   const Navigate = useNavigate();
@@ -13,6 +14,10 @@ const CompareIcons = () => {
       Navigate("/Compare");
     }
   };
+
+  const handleCross=()=>{
+
+  }
   return (
     <>
       {Login.comparePhones[0] !== undefined && (
@@ -22,7 +27,12 @@ const CompareIcons = () => {
                 return( <><div className="phones" key={index}>
                   <img src={resultsData[parseInt(data)].image} alt={resultsData[parseInt(data)].name} srcSet="" />
                   <h6>{resultsData[parseInt(data)].name}</h6>
-                  
+                  <CancelIcon
+                  className=""
+                  sx={{position:'absolute',right:'-3px',top:'-5px',color:'red'}}
+                  onClick={handleCross}
+
+                  />
                   </div>
                   </>)
               })}

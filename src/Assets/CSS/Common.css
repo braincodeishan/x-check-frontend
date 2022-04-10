@@ -115,3 +115,9 @@
 .align-items-end{
     align-items: end;
 }
+
+a{
+    text-decoration: none;
+    color: black;
+}
+

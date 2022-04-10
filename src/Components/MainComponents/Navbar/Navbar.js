@@ -33,7 +33,22 @@ const Navbar = () => {
     e.target.parentElement.parentElement.classList.toggle("showMenu")
       }
     
-
+  const showHome = ()=>{
+    let homeLocation="/"
+    if(Login.user.type==="ADMIN"){
+      homeLocation="/AdminDashboard"
+    }
+  return(<li>
+  <Link to={homeLocation}>
+    <i className='bx bx-grid-alt' ></i>
+    <span className="link_name">Home</span>
+  </Link>
+  <ul className="sub-menu blank">
+    <li><Link className="link_name" to={homeLocation}>Home</Link></li>
+  </ul>
+</li>)
+    
+  }
 
   const showLogin = () => {
     if (!Login.isLoggedin) {
@@ -75,15 +90,8 @@ const Navbar = () => {
         </div>
         <ul className="nav-links">
           {showLogin()}
-          <li>
-            <Link to="/">
-              <i className='bx bx-grid-alt' ></i>
-              <span className="link_name">Home</span>
-            </Link>
-            <ul className="sub-menu blank">
-              <li><Link className="link_name" to="/">Home</Link></li>
-            </ul>
-          </li>
+          {showHome()}
+
           <li>
             <div className="iocn-link">
               <Link to="#">

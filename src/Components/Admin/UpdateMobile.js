@@ -446,8 +446,8 @@ const UpdateMobile = () => {
                             />
                         </div>
                     </div>}
-                    <div className="boxLayout">
-                    <Button variant="contained">Submit</Button>
+                    <div className="boxLayout p-4 d-grid">
+                    <Button variant="contained" color="success">Submit</Button>
 
                     </div>
                 </div>

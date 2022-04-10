@@ -54,11 +54,16 @@ const Login = () => {
           JWT: result.data.token,
           name: result.data.name,
           avatar: result.data.avatar,
+          type: result.data.type
         });
         Login.setCart(result.data.cart);
         Login.setWishlist(result.data.wishList);
         Login.setComparePhones(result.data.comparePhones);
         Login.changelogin(true);
+        if(Login.user.type==='ADMIN'){
+          Navigate("/AdminDashboard");
+          
+        }
         if (LastLocation) {
           Navigate(LastLocation);
         } else {

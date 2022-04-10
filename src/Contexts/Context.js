@@ -42,6 +42,7 @@ const LoginProvider = (props) => {
     username: "Guest",
     JWT: "",
     name: "Guest",
+    type: "CUSTOMER",
     avatar: "",
   });
   const [comparePhones, setComparePhones] = useState([]);
@@ -56,6 +57,7 @@ const LoginProvider = (props) => {
         username: "Guest",
         JWT: "",
         name: "Guest",
+        type: "CUSTOMER",
         avatar: "",
       });
       setCart([]);

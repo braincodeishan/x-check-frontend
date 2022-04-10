@@ -9,7 +9,7 @@ const Navbar = () => {
   const Login = useContext(LoginContext)
   const [sidebarclass, setsidebarclass] = useState("close");
   const [menu, setmenu] = useState("bx-menu");
-
+  const fname=Login.user.name.split(' ');
     
   const logOut = async() => {
     // const logout= await fetch("http://localhost:3001/logout", {
@@ -167,7 +167,7 @@ const Navbar = () => {
                 <img src={Login.user.avatar} alt="profileImg" className='avatar'/> }
               </div>
               <div className="name-job">
-                <div className="profile_name">Hi! {Login.user.name}</div>
+                <div className="profile_name">Hi! {fname[0]} </div>
                 
               </div>
               {Login.isLoggedin &&<i className='bx bx-log-out' onClick={() => { logOut() }}></i>}

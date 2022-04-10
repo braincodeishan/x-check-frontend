@@ -8,6 +8,7 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router";
+import { Button } from "@mui/material";
 const UpdateMobile = () => {
     const Navigate = useNavigate();
     const [data, setData] = useState({});
@@ -307,7 +308,32 @@ const UpdateMobile = () => {
                             </div>
                         </div>
                     )}
-                    {data.pCamera && <div className="boxLayout">abc17</div>}
+                    {data.pCamera && <div className="boxLayout">
+                        <div className="questions row p-4">
+                            <h6 className="col-6 my-auto">
+                                Primary Camera?
+                            </h6>
+                            <TextField
+                                id="standard-basic"
+                                label="Name"
+                                variant="standard"
+                                className="col mr-1"
+                            />
+                            <TextField
+                                id="standard-basic"
+                                label="MegaPixel"
+                                variant="standard"
+                                className="col mx-1"
+                            />
+                            <TextField
+                                id="standard-basic"
+                                label="F Number"
+                                variant="standard"
+                                className="col ml-1"
+                            />
+                        </div>
+
+                    </div>}
 
 
                     {data.pVideoResolution && <div className="boxLayout">
@@ -331,26 +357,26 @@ const UpdateMobile = () => {
                     </div>}
                     {data.sCamera && <div className="boxLayout">
                         <div className="questions row p-4">
-                            <h6 className="col-2 my-auto">
-                                Primary Camera?
+                            <h6 className="col-6 my-auto">
+                                Secondary Camera?
                             </h6>
                             <TextField
                                 id="standard-basic"
                                 label="Name"
                                 variant="standard"
-                                className="col-2 pl-2"
+                                className="col mr-1"
                             />
                             <TextField
                                 id="standard-basic"
                                 label="MegaPixel"
                                 variant="standard"
-                                className="col-2 pl-2"
+                                className="col mx-1"
                             />
                             <TextField
                                 id="standard-basic"
-                                label="MegaPixel"
+                                label="F Number"
                                 variant="standard"
-                                className="col-2 pl-2"
+                                className="col ml-1"
                             />
                         </div>
 
@@ -420,7 +446,10 @@ const UpdateMobile = () => {
                             />
                         </div>
                     </div>}
+                    <div className="boxLayout">
+                    <Button variant="contained">Submit</Button>
 
+                    </div>
                 </div>
             </div>
         </div>

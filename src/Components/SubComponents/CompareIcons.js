@@ -15,8 +15,14 @@ const CompareIcons = () => {
     }
   };
 
-  const handleCross=()=>{
-
+  const handleCross=(id)=>{
+    console.log(id);
+    const idx=id+"";
+    Login.setComparePhones((prev)=>{
+      return prev.filter((data)=>{
+        return idx!==data
+        })
+      })
   }
   return (
     <>
@@ -29,8 +35,9 @@ const CompareIcons = () => {
                   <h6>{resultsData[parseInt(data)].name}</h6>
                   <CancelIcon
                   className=""
-                  sx={{position:'absolute',right:'-3px',top:'-5px',color:'red'}}
-                  onClick={handleCross}
+                  sx={{position:'absolute',right:'-3px',top:'-15px',cursor:'pointer'}}
+                  color="secondary"
+                  onClick={()=>{handleCross(resultsData[parseInt(data)].id)}}
 
                   />
                   </div>

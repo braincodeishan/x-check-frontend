@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Button } from "@mui/material";
@@ -14,6 +14,13 @@ const ResultBox = (props) => {
   const [heart,setHeart]=useState(()=>{
     return Login.wishlist.includes(props.data.id.toString())
   })
+
+  useEffect(() => {
+    
+  }, [Login.comparePhones])
+  
+
+
 
 
   const handleWishlistChange = (id) => {

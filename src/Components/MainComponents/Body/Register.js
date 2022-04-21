@@ -18,7 +18,7 @@ import axios from "axios";
 import "../../../Assets/CSS/Login.css";
 
 const Register = () => {
-  const {successAlert,dangerAlert, setLoading}=useMisc();
+  const {alertSuccess,alertDanger, setLoading}=useMisc();
   const Navigate = useNavigate();
   const [regData, setRegData] = useState({
     username: "",
@@ -36,19 +36,19 @@ const Register = () => {
         regData;
       const url = process.env.REACT_APP_DOMAIN_NAME + "User/register";
       if (!username ||!name ||!email ||!mobile ||!password){
-          dangerAlert("Please enter all the fields");
+        alertDanger("Please enter all the fields");
           return;
         } 
         if(password !== confirmPassword){
-          dangerAlert("Password doesn't match");
+          alertDanger("Password doesn't match");
           return;
         }
         if(!email.includes('@')&&!email.includes('.')){
-          dangerAlert("Incorrect email entered");
+          alertDanger("Incorrect email entered");
           return;
         }
         if(mobile.length!==10){
-         dangerAlert("Incorrect phone entered");
+          alertDanger("Incorrect phone entered");
           return;
         }
         
@@ -69,12 +69,12 @@ const Register = () => {
         setLoading(false);
         if (result.status === 201) {
           console.log(result.data);
-          successAlert(result.data);
+          alertSuccess(result.data);
           setInterval(() => {
             Navigate("/Login");            
           }, 2000);
         } else {
-          dangerAlert(result.data);
+          alertDanger(result.data);
 
         }
      

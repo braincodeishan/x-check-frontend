@@ -27,11 +27,14 @@ import Reviews from '../../SubComponents/Reviews'
 import ImageViewer from '../../SubComponents/ImageViewer';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
-import {useLogin,useMisc} from '../../../Contexts/Context'
+import { useLogin, useMisc } from '../../../Contexts/Context'
+import AddReviews from '../../SubComponents/AddReviews';
+import AddPhotos from '../../SubComponents/AddPhotos';
+
 
 const PhoneDetails = () => {
   const Login = useLogin();
-  const {setLastLocation}=useMisc()
+  const { setLastLocation } = useMisc()
   useEffect(() => {
     setLastLocation('/PhoneDetails/:id')
   })
@@ -40,7 +43,8 @@ const PhoneDetails = () => {
   const [showImage, setshowImage] = useState(null)
   const [res, setRes] = useState(resultsData[id]);
   const [value, setValue] = React.useState(0);
-
+  const [showAddReviews, setShowAddReviews] = useState(false);
+  const [showAddPhotos, setShowAddPhotos] = useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -80,6 +84,9 @@ const PhoneDetails = () => {
   return (
     <>
       {showImage && <ImageViewer image={showImage} setshowImage={setshowImage} />}
+      {showAddReviews && <AddReviews close={setShowAddReviews} />}
+      {showAddPhotos && <AddPhotos close={setShowAddPhotos} />}
+
       <div className='PhoneDetails container mt-4' >
 
         <div className="PDsection1">
@@ -155,7 +162,9 @@ const PhoneDetails = () => {
                 </Table>
               </TabPanel>
               <TabPanel value={value} index={1}>
-
+              <div className='mb-5 d-flex'>
+                  <Button variant="outlined" onClick={()=>setShowAddPhotos(true)}>Add Photos from Phone</Button>
+                </div>
                 <ImageList variant="masonry" cols={3} gap={8}>
                   {itemData.map((item, index) => (
                     <ImageListItem key={item.img}>
@@ -164,7 +173,7 @@ const PhoneDetails = () => {
                         srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         alt={item.title}
                         loading="lazy"
-                        className='cursor-pointer animateZoom PD-imageList'
+                        className='cursorPointer animateZoom PD-imageList'
                         onClick={() => { showMyImage(item.img) }}
                       />
                     </ImageListItem>
@@ -178,20 +187,24 @@ const PhoneDetails = () => {
               </TabPanel>
 
               <TabPanel value={value} index={2}>
+                <div className='mb-5'>
+                  <Button variant="outlined" onClick={()=>setShowAddReviews(true)}>Rate Product</Button>
+                </div>
                 <div className="PD-reviewsBar">
+
                   <div className="PD-XCheckNumber">
-                  <EmojiEventsIcon sx={{fontSize:'100px', justifyContent:'center', alignSelf:'center'}}/>
-                  <h3>X-Check Score</h3>
+                    <EmojiEventsIcon sx={{ fontSize: '100px', justifyContent: 'center', alignSelf: 'center' }} />
+                    <h3>X-Check Score</h3>
                     <h2 className='animateZoom'>1040</h2>
                   </div>
                   <div>
-                  {progress.map((data, index) => {
-                    return <div className="progressbars" key={index}>
-                      <h6>{5-index} <i class="bx bxs-star"></i></h6>
-                      <LinearProgress variant="determinate" value={data} className='PD-progressbar'/>
-                      <p>{Math.round(Math.random() * 1000)}</p>
-                    </div>
-                  })}
+                    {progress.map((data, index) => {
+                      return <div className="progressbars" key={index}>
+                        <h6>{5 - index} <i class="bx bxs-star"></i></h6>
+                        <LinearProgress variant="determinate" value={data} className='PD-progressbar' />
+                        <p>{Math.round(Math.random() * 1000)}</p>
+                      </div>
+                    })}
                   </div>
                 </div>
 
@@ -204,20 +217,24 @@ const PhoneDetails = () => {
 
               </TabPanel>
               <TabPanel value={value} index={3}>
-              <div className="PD-reviewsBar">
+                <div className='mb-5'>
+                  <Button variant="outlined" onClick={()=>setShowAddReviews(true)}>Rate Product</Button>
+                </div>
+                <div className="PD-reviewsBar">
+
                   <div className="PD-XCheckNumber">
-                  <EmojiEventsIcon sx={{fontSize:'100px', justifyContent:'center', alignSelf:'center'}}/>
-                  <h3>X-Check Score</h3>
+                    <EmojiEventsIcon sx={{ fontSize: '100px', justifyContent: 'center', alignSelf: 'center' }} />
+                    <h3>X-Check Score</h3>
                     <h2 className='animateZoom'>1040</h2>
                   </div>
                   <div>
-                  {progress.map((data, index) => {
-                    return <div className="progressbars" key={index}>
-                      <h6>{5-index} <i class="bx bxs-star"></i></h6>
-                      <LinearProgress variant="determinate" value={data} className='PD-progressbar'/>
-                      <p>{Math.round(Math.random() * 1000)}</p>
-                    </div>
-                  })}
+                    {progress.map((data, index) => {
+                      return <div className="progressbars" key={index}>
+                        <h6>{5 - index} <i class="bx bxs-star"></i></h6>
+                        <LinearProgress variant="determinate" value={data} className='PD-progressbar' />
+                        <p>{Math.round(Math.random() * 1000)}</p>
+                      </div>
+                    })}
                   </div>
                 </div>
                 {res.reviews.map((item, index) => {

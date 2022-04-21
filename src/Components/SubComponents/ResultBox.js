@@ -67,10 +67,10 @@ const ResultBox = (props) => {
   return (
     <div className="resultBox">
 
-      <div className="data phoneImage cursor-pointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
+      <div className="data phoneImage cursorPointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
         <img src={props.data.image} alt={props.data.name} style={{ height: 'auto', width: 'auto', justifyContent: 'center' }} />
       </div>
-      <div className="data phoneDetails cursor-pointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
+      <div className="data phoneDetails cursorPointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
         <h4>{props.data.name}</h4>
         <div className="reviews">
           <span>

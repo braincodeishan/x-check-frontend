@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react'
 import {LoginContext} from '../../../Contexts/Context';
 import { Link } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import '../../../Assets/CSS/Sidebar.css'
 
 
 const Navbar = () => {
-  
+  const Navigate=useNavigate();
   const Login = useContext(LoginContext)
   const [sidebarclass, setsidebarclass] = useState("close");
   const [menu, setmenu] = useState("bx-menu");
@@ -27,6 +28,7 @@ const Navbar = () => {
             
     //     }
     Login.changelogin(false);
+    Navigate('/')
   }
 
   const dropDown=(e)=>{

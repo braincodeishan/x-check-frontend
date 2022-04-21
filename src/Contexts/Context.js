@@ -106,7 +106,7 @@ const MiscProvider = (props) => {
     severity:""
   });
   const [loading,setLoading]=useState(false);
-  const successAlert=(message)=>{
+  const alertSuccess=(message)=>{
     
     if(!alert.show){
      setAlert({
@@ -123,7 +123,7 @@ const MiscProvider = (props) => {
       }, 2000);
     }
  }
-  const dangerAlert=(message)=>{
+  const alertDanger=(message)=>{
     
      if(!alert.show){
       setAlert({
@@ -151,8 +151,8 @@ const MiscProvider = (props) => {
       setFilter,
       alert,
       setAlert,
-      successAlert,
-      dangerAlert,
+      alertSuccess,
+      alertDanger,
       loading,
       setLoading
     

@@ -22,7 +22,7 @@ const Login = () => {
   });
   const Navigate = useNavigate();
   const Login = useLogin();
-  const { LastLocation, setLoader, successAlert, dangerAlert } = useMisc();
+  const { LastLocation, setLoader, alertSuccess, alertDanger } = useMisc();
   const handleChange = (e) => {
     const name = e.target.name;
     const val = e.target.value;
@@ -31,7 +31,7 @@ const Login = () => {
   const handleSignin = async () => {
     const { username, password } = loginData;
     if (!username || !password) {
-      dangerAlert("Please enter all fields");
+      alertDanger("Please enter all fields");
       return;
     }
     try {
@@ -48,7 +48,7 @@ const Login = () => {
       });
 
       if (result.status === 200) {
-        successAlert(result.data.data);
+        alertSuccess(result.data.data);
         Login.setUser({
           username: result.data.username,
           JWT: result.data.token,

@@ -199,3 +199,31 @@
     width: auto;
     height: 100%;
 }
+
+
+
+
+/* Add Reviews Component */
+
+.addReviews{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%,-50%);
+    background-color: rgb(249, 246, 255);
+    border-radius: 10px;
+    padding: 50px;
+    z-index: 12;
+}
+
+.reviewContainer{
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 12;
+    
+}

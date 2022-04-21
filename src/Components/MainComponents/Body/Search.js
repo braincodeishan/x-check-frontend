@@ -98,7 +98,7 @@ const Search = () => {
   return (
     <>
       <div className="Search-Parent" >
-        <Background />
+        {/* <Background /> */}
         {isLoading && <Loading />}
         <div className="container search">
           <div className="Search-Box">

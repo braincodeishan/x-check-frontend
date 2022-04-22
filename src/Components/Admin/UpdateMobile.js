@@ -19,7 +19,7 @@ const UpdateMobile = () => {
 
     const getData = async () => {
         try{
-        const result = await axios.get("http://localhost:3001/admin/updateMobile");
+        const result = await axios.get(process.env.REACT_APP_DOMAIN_NAME+"/admin/updateMobile");
         if (result.status === 200) {
             if(result.error===404){
                 alert(result.data);

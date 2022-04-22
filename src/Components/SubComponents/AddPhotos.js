@@ -13,7 +13,7 @@ const AddPhotos = (props) => {
     try {
       const result = await axios({
         method: 'POST',
-        url: process.env.REACT_APP_DOMAIN_NAME + "addPhotos",
+        url: process.env.REACT_APP_DOMAIN_NAME + "/addPhotos",
         headers: {
           'Content-Type': 'application/json'
         },

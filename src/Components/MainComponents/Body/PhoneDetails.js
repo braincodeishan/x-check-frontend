@@ -30,21 +30,54 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { useLogin, useMisc } from '../../../Contexts/Context'
 import AddReviews from '../../SubComponents/AddReviews';
 import AddPhotos from '../../SubComponents/AddPhotos';
+import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 
 const PhoneDetails = () => {
+  const Navigate=useNavigate();
   const Login = useLogin();
   const { setLastLocation } = useMisc()
-  useEffect(() => {
-    setLastLocation('/PhoneDetails/:id')
-  })
+  
   const { id } = useParams();
-
+  
   const [showImage, setshowImage] = useState(null)
   const [res, setRes] = useState(resultsData[id]);
+  const [reviews, setReviews] = useState([]);
   const [value, setValue] = React.useState(0);
   const [showAddReviews, setShowAddReviews] = useState(false);
   const [showAddPhotos, setShowAddPhotos] = useState(false);
+
+  
+  
+  
+  useEffect(() => {
+    setLastLocation('/PhoneDetails/'+id)
+    fetchReviews();
+  },[])
+
+  const fetchReviews=async()=>{
+    try{
+      const result=await axios({
+        method:'POST',
+        url:process.env.REACT_APP_DOMAIN_NAME+'/reviews',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        data:{
+          id:id
+        }
+      })
+      if(result.status===200){
+        console.log(result.data)
+        setReviews(result.data)
+
+      }
+    }catch(err){
+
+    }
+  }
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -84,8 +117,8 @@ const PhoneDetails = () => {
   return (
     <>
       {showImage && <ImageViewer image={showImage} setshowImage={setshowImage} />}
-      {showAddReviews && <AddReviews close={setShowAddReviews} />}
-      {showAddPhotos && <AddPhotos close={setShowAddPhotos} />}
+      {showAddReviews && <AddReviews close={setShowAddReviews} id={id}/>}
+      {showAddPhotos && <AddPhotos close={setShowAddPhotos} id={id}/>}
 
       <div className='PhoneDetails container mt-4' >
 
@@ -162,8 +195,11 @@ const PhoneDetails = () => {
                 </Table>
               </TabPanel>
               <TabPanel value={value} index={1}>
-              <div className='mb-5 d-flex'>
-                  <Button variant="outlined" onClick={()=>setShowAddPhotos(true)}>Add Photos from Phone</Button>
+              <div className='mb-5 d-flex-end'>
+              {Login.isLoggedin?
+                  <Button variant="outlined" onClick={()=>setShowAddPhotos(true)}>Add Photos</Button>:
+                  <Button variant="outlined" onClick={()=>Navigate('/Login')}>Login to Add more Photos</Button>
+                  }
                 </div>
                 <ImageList variant="masonry" cols={3} gap={8}>
                   {itemData.map((item, index) => (
@@ -187,8 +223,11 @@ const PhoneDetails = () => {
               </TabPanel>
 
               <TabPanel value={value} index={2}>
-                <div className='mb-5'>
-                  <Button variant="outlined" onClick={()=>setShowAddReviews(true)}>Rate Product</Button>
+                <div className='mb-5 d-flex-end'>
+                  {Login.isLoggedin?
+                  <Button variant="outlined" onClick={()=>setShowAddReviews(true)}>Rate Product</Button>:
+                  <Button variant="outlined" onClick={()=>Navigate('/Login')}>Login to Rate Product</Button>
+                  }
                 </div>
                 <div className="PD-reviewsBar">
 
@@ -200,7 +239,7 @@ const PhoneDetails = () => {
                   <div>
                     {progress.map((data, index) => {
                       return <div className="progressbars" key={index}>
-                        <h6>{5 - index} <i class="bx bxs-star"></i></h6>
+                        <h6>{5 - index} <i className="bx bxs-star"></i></h6>
                         <LinearProgress variant="determinate" value={data} className='PD-progressbar' />
                         <p>{Math.round(Math.random() * 1000)}</p>
                       </div>
@@ -208,16 +247,19 @@ const PhoneDetails = () => {
                   </div>
                 </div>
 
-                {res.reviews.map((item, index) => {
+                {reviews.length!==0?
+                reviews.map((item, index) => {
                   return <Reviews {...item} key={index} />
-                })}
+                }):
+                <div className='mt-5 d-flex-center'>No Reviews yet. Be the first one to review the Phone.</div>
+              }
 
 
 
 
               </TabPanel>
               <TabPanel value={value} index={3}>
-                <div className='mb-5'>
+                <div className='mb-5 d-flex-end'>
                   <Button variant="outlined" onClick={()=>setShowAddReviews(true)}>Rate Product</Button>
                 </div>
                 <div className="PD-reviewsBar">
@@ -230,7 +272,7 @@ const PhoneDetails = () => {
                   <div>
                     {progress.map((data, index) => {
                       return <div className="progressbars" key={index}>
-                        <h6>{5 - index} <i class="bx bxs-star"></i></h6>
+                        <h6>{5 - index} <i className="bx bxs-star"></i></h6>
                         <LinearProgress variant="determinate" value={data} className='PD-progressbar' />
                         <p>{Math.round(Math.random() * 1000)}</p>
                       </div>

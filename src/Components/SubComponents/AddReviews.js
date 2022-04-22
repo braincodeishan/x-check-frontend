@@ -1,41 +1,50 @@
 import React, { useState } from 'react'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { TextField } from '@mui/material';
-import { Button } from '@mui/material';
+import { Button, Tooltip, IconButton } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import CloseIcon from '@mui/icons-material/Close';
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import axios from 'axios';
-import { useMisc } from '../../Contexts/Context';
+import { useMisc, useLogin } from '../../Contexts/Context';
 const AddReviews = (props) => {
-  const {alertSuccess, alertDanger}=useMisc();
+  const Login = useLogin();
+  const { alertSuccess, alertDanger } = useMisc();
   const [stars, setStars] = useState(0);
-
-  const handleChange= async()=>{
-    try{
-      const result= await axios({
-        method:'POST',
-        url:process.env.REACT_APP_DOMAIN_NAME+"addReview",
-        headers:{
-          'Content-Type':'application/json'
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("")
+  const handleChange = async () => {
+    try {
+      const result = await axios({
+        method: 'POST',
+        url: process.env.REACT_APP_DOMAIN_NAME + "/reviews/addReview",
+        headers: {
+          'Content-Type': 'application/json'
         },
-        data:{
-  
+        data: {
+          phoneId: props.id,
+          name: Login.user.name,
+          username: Login.user.username,
+          stars: stars,
+          title: title,
+          description: desc,
+
         }
       })
-      if(result.status===200){
-        alertSuccess("Data Updated")
-        setTimeout(()=>{
+      if (result.status === 201) {
+        alertSuccess("Saved")
+        setTimeout(() => {
           props.close(false);
-        },2000)
-      }else{
+        }, 2000)
+      } else {
         alertDanger("Something Went Wrong");
 
       }
-    }catch(err){
+    } catch (err) {
       console.log(err);
       alertDanger("Something Went Wrong");
     }
-  
+
   }
 
 
@@ -44,18 +53,40 @@ const AddReviews = (props) => {
       <div className='reviewContainer'>
         <div className='addReviews'>
           <CloseIcon
-              sx={{
-                position:'absolute',
-                left:'10px',
-                top:'10px',
-                fontSize:'30px',
-                cursor:'pointer'
+            sx={{
+              position: 'absolute',
+              left: '10px',
+              top: '10px',
+              fontSize: '30px',
+              cursor: 'pointer'
 
-              }}
-              onClick={()=>{
-                props.close(false);
-              }}
+            }}
+            onClick={() => {
+              props.close(false);
+            }}
           />
+          <Tooltip title="Pop Up">
+            <IconButton>
+              <OpenInFullIcon
+                sx={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '10px',
+                  fontSize: '30px',
+                  cursor: 'pointer',
+                  background: '#fff',
+                  boxShadow: '1px 1px 10px rgba(0,0,0,0.3)',
+                  padding: '7px',
+                  borderRadius: '50%'
+
+                }}
+                onClick={() => {
+                  // props.close(false);
+                }}
+              />
+            </IconButton>
+          </Tooltip>
+
           <div className='mb-5'>
             <span >
               <p>Rate the Product</p>
@@ -90,6 +121,8 @@ const AddReviews = (props) => {
                 label="Title"
                 variant="standard"
                 sx={{ minWidth: '275px' }}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               // className='mt-1'
               />
             </div>
@@ -102,6 +135,8 @@ const AddReviews = (props) => {
               variant="standard"
               className='mt-2'
               sx={{ minWidth: '275px' }}
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
             /></div>
             <Button variant="contained" color="success" className='mt-3 mx-auto' onClick={handleChange}>
               Submit

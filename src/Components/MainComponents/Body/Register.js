@@ -34,7 +34,7 @@ const Register = () => {
       setLoading(true);
       const { username, name, email, mobile, password, confirmPassword } =
         regData;
-      const url = process.env.REACT_APP_DOMAIN_NAME + "User/register";
+      const url = process.env.REACT_APP_DOMAIN_NAME + "/User/register";
       if (!username ||!name ||!email ||!mobile ||!password){
         alertDanger("Please enter all the fields");
           return;

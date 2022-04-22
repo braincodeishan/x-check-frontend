@@ -36,7 +36,7 @@ const Login = () => {
     }
     try {
       const result = await axios({
-        url: process.env.REACT_APP_DOMAIN_NAME + "User/login",
+        url: process.env.REACT_APP_DOMAIN_NAME + "/User/login",
         method: "POST",
         headers: {
           "Content-Type": "Application/json",

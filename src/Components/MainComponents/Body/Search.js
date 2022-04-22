@@ -72,7 +72,7 @@ const Search = () => {
 
     const result = await axios({
       method: 'POST',
-      url: process.env.REACT_APP_DOMAIN_NAME+ 'search',
+      url: process.env.REACT_APP_DOMAIN_NAME+ '/search',
       data: {
         price: Filters.price,
         processors: Filters.processors,

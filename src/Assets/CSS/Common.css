@@ -75,6 +75,18 @@
     align-items: center;
 }
 
+.d-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.d-flex-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .d-flex-justify{
     display: flex;
     justify-content: center;

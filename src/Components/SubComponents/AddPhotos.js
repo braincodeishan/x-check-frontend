@@ -84,14 +84,14 @@ const handleInput=()=>{
                 className="cursorPointer"
                 onClick={handleInput}
               />
-              <IKContext
+              {/* <IKContext
                 publicKey={IK.publicKey}
                 urlEndpoint={IK.urlEndpoint}
                 authenticationEndpoint={IK.authenticationEndpoint}
               >
                 <IKUpload onError={onError} onSuccess={onSuccess} id='789789' ref={inputElement}/>
-              </IKContext>
-              {/* <TextField  type='file' hidden='true'/> */}
+              </IKContext> */}
+              <TextField  type='file' hidden='true' ref={inputElement}/>
             </div>
             <Button
               variant="contained"

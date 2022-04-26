@@ -1,66 +1,101 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@mui/material";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import CloseIcon from "@mui/icons-material/Close";
-import { TextField } from "@mui/material";
 import axios from "axios";
-import { useMisc } from "../../Contexts/Context";
+import { useMisc,useLogin } from "../../Contexts/Context";
+import ImageKit from "imagekit-javascript"
 
-import { IKImage, IKContext, IKUpload } from "imagekitio-react";
+const IK = {
+  publicKey: process.env.REACT_APP_IK_PUBLIC_KEY,
+  urlEndpoint: process.env.REACT_APP_IK_URLENDPOINT,
+  authenticationEndpoint: process.env.REACT_APP_IK_AUTHENTICATIONENDPOINT,
+};
+
+
+
 
 const AddPhotos = (props) => {
+  const Login=useLogin();
   const { alertSuccess, alertDanger } = useMisc();
-  const IK = {
-    publicKey: process.env.REACT_APP_IK_PUBLIC_KEY,
-    urlEndpoint: process.env.REACT_APP_IK_URLENDPOINT,
-    authenticationEndpoint: process.env.REACT_APP_IK_AUTHENTICATIONENDPOINT,
-  };
   const inputElement = useRef();
 
-  const handleChange = async () => {
+  // const [fileName,setFileName]=useState("");
+
+  const imagekit = new ImageKit(IK);
+  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null)
+
+  function selectedFile(e) {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0])
+      setImage(URL.createObjectURL(e.target.files[0]));
+    }
+
+  };
+
+
+  const dataPosting = async (url) => {
     try {
       const result = await axios({
         method: "POST",
-        url: process.env.REACT_APP_DOMAIN_NAME + "/addPhotos",
+        url: process.env.REACT_APP_DOMAIN_NAME + "/reviews/addPhotos",
         headers: {
           "Content-Type": "application/json",
         },
-        data: {},
+        data: {
+          name:Login.user.name,
+          username: Login.user.username,
+          phoneId: props.id,
+          image:url
+        },
       });
-      if (result.status === 200) {
+      if (result.status === 201) {
         alertSuccess("Data Updated");
         setTimeout(() => {
           props.close(false);
         }, 2000);
       } else {
         alertDanger("Something Went Wrong");
+
       }
     } catch (err) {
-      console.log(err);
+
+    }
+  }
+
+  const handleSubmit = async () => {
+    try {
+      imagekit.upload({
+        file: file,
+        fileName: "abc1.jpg",
+        tags: ["tag1"],
+        extensions: [
+          {
+            name: "aws-auto-tagging",
+            minConfidence: 80,
+            maxTags: 10
+          }
+        ]
+      }, function (err, result) {
+        if (err) {
+          alertDanger("Something Went Wrong!!")
+          return;
+        }
+        dataPosting(result.url);
+      });
+    } catch (err) {
       alertDanger("Something Went Wrong");
     }
   };
 
 
-const handleInput=()=>{
-  inputElement.current.click();
-}
 
-
-  const onError = (err) => {
-    console.log("Error");
-    console.log(err);
-  };
-
-  const onSuccess = (res) => {
-    console.log("Success");
-    console.log(res);
-  };
 
   return (
     <>
-      <div className="reviewContainer">
-        <div className="addReviews">
+      <div className="addPhotoContainer">
+        <div className="addPhotos">
           <CloseIcon
             sx={{
               position: "absolute",
@@ -82,27 +117,28 @@ const handleInput=()=>{
               <AddAPhotoIcon
                 sx={{ fontSize: "60px", color: "rgba(0,0,0,0.2)" }}
                 className="cursorPointer"
-                onClick={handleInput}
+                onClick={() => inputElement.current.click()}
               />
-              {/* <IKContext
-                publicKey={IK.publicKey}
-                urlEndpoint={IK.urlEndpoint}
-                authenticationEndpoint={IK.authenticationEndpoint}
-              >
-                <IKUpload onError={onError} onSuccess={onSuccess} id='789789' ref={inputElement}/>
-              </IKContext> */}
-              <TextField  type='file' hidden='true' ref={inputElement}/>
+              <input
+                type='file'
+                hidden={true}
+                ref={inputElement}
+                onChange={(e) => selectedFile(e)}
+              />
             </div>
             <Button
               variant="contained"
               color="success"
               className="mt-3 mx-auto"
-              onClick={handleChange}
+              onClick={handleSubmit}
             >
               Submit
             </Button>
           </div>
         </div>
+        {image && <div className="showPhotos">
+          <img src={image} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+        </div>}
       </div>
     </>
   );

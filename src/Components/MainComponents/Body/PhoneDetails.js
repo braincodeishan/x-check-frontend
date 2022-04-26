@@ -35,12 +35,12 @@ import axios from 'axios';
 
 
 const PhoneDetails = () => {
-  const Navigate=useNavigate();
+  const Navigate = useNavigate();
   const Login = useLogin();
   const { setLastLocation } = useMisc()
-  
+
   const { id } = useParams();
-  
+
   const [showImage, setshowImage] = useState(null)
   const [res, setRes] = useState(resultsData[id]);
   const [reviews, setReviews] = useState([]);
@@ -48,35 +48,15 @@ const PhoneDetails = () => {
   const [showAddReviews, setShowAddReviews] = useState(false);
   const [showAddPhotos, setShowAddPhotos] = useState(false);
 
-  
-  
-  
+
+
+
   useEffect(() => {
-    setLastLocation('/PhoneDetails/'+id)
-    fetchReviews();
-  },[])
+    setLastLocation('/PhoneDetails/' + id)
 
-  const fetchReviews=async()=>{
-    try{
-      const result=await axios({
-        method:'POST',
-        url:process.env.REACT_APP_DOMAIN_NAME+'/reviews',
-        headers:{
-          'Content-Type':'application/json',
-        },
-        data:{
-          id:id
-        }
-      })
-      if(result.status===200){
-        console.log(result.data)
-        setReviews(result.data)
+  }, [])
 
-      }
-    }catch(err){
 
-    }
-  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -113,12 +93,67 @@ const PhoneDetails = () => {
   const showMyImage = (item) => {
     setshowImage(item)
   }
-  const progress = [100, 50, 70, 20, 10]
+  const progress = [100, 50, 70, 20, 10]    //
+
+  const getPhotos = async () => {
+
+  }
+
+
+  const getReviews = async () => {
+    try {
+      const result = await axios({
+        method: 'POST',
+        url: process.env.REACT_APP_DOMAIN_NAME + '/reviews',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          id: id
+        }
+      })
+      if (result.status === 200) {
+        console.log(result.data)
+        setReviews(result.data)
+
+      }
+    } catch (err) {
+
+    }
+  }
+
+  const getCritiqueReviews = async () => {
+    try {
+      const result = await axios({
+        method: 'POST',
+        url: process.env.REACT_APP_DOMAIN_NAME + '/CritiqueReviews',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          id: id
+        }
+      })
+      if (result.status === 200) {
+        console.log(result.data)
+        setReviews(result.data)
+
+      }
+    } catch (err) {
+
+    }
+  }
+
+
+
+
+
+
   return (
     <>
       {showImage && <ImageViewer image={showImage} setshowImage={setshowImage} />}
-      {showAddReviews && <AddReviews close={setShowAddReviews} id={id}/>}
-      {showAddPhotos && <AddPhotos close={setShowAddPhotos} id={id}/>}
+      {showAddReviews && <AddReviews close={setShowAddReviews} id={id} />}
+      {showAddPhotos && <AddPhotos close={setShowAddPhotos} id={id} />}
 
       <div className='PhoneDetails container mt-4' >
 
@@ -170,11 +205,14 @@ const PhoneDetails = () => {
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                   <Tab label="Details" {...a11yProps(0)} />
-                  <Tab label="Photos & Videos" {...a11yProps(1)} />
-                  <Tab label="Reviews" {...a11yProps(2)} />
-                  <Tab label="Critiques" {...a11yProps(3)} />
+                  <Tab label="Photos & Videos" {...a11yProps(1)} onClick={getPhotos} />
+                  <Tab label="Reviews" {...a11yProps(2)} onClick={getReviews} />
+                  <Tab label="Critiques" {...a11yProps(3)} onClick={getCritiqueReviews} />
                 </Tabs>
               </Box>
+
+{/* Specification */}
+
               <TabPanel value={value} index={0}>
                 <Table sx={{ minWidth: 500 }} aria-label="simple table">
 
@@ -194,11 +232,15 @@ const PhoneDetails = () => {
                   </TableBody>
                 </Table>
               </TabPanel>
+
+
+{/* Images */}
+
               <TabPanel value={value} index={1}>
-              <div className='mb-5 d-flex-end'>
-              {Login.isLoggedin?
-                  <Button variant="outlined" onClick={()=>setShowAddPhotos(true)}>Add Photos</Button>:
-                  <Button variant="outlined" onClick={()=>Navigate('/Login')}>Login to Add more Photos</Button>
+                <div className='mb-5 d-flex-end'>
+                  {Login.isLoggedin ?
+                    <Button variant="outlined" onClick={() => setShowAddPhotos(true)}>Add Photos</Button> :
+                    <Button variant="outlined" onClick={() => Navigate('/Login')}>Login to Add more Photos</Button>
                   }
                 </div>
                 <ImageList variant="masonry" cols={3} gap={8}>
@@ -216,17 +258,15 @@ const PhoneDetails = () => {
                   ))}
                 </ImageList>
 
-
-
-
-
               </TabPanel>
+
+{/* Reviews */}
 
               <TabPanel value={value} index={2}>
                 <div className='mb-5 d-flex-end'>
-                  {Login.isLoggedin?
-                  <Button variant="outlined" onClick={()=>setShowAddReviews(true)}>Rate Product</Button>:
-                  <Button variant="outlined" onClick={()=>Navigate('/Login')}>Login to Rate Product</Button>
+                  {Login.isLoggedin ?
+                    <Button variant="outlined" onClick={() => setShowAddReviews(true)}>Rate Product</Button> :
+                    <Button variant="outlined" onClick={() => Navigate('/Login')}>Login to Rate Product</Button>
                   }
                 </div>
                 <div className="PD-reviewsBar">
@@ -247,20 +287,24 @@ const PhoneDetails = () => {
                   </div>
                 </div>
 
-                {reviews.length!==0?
-                reviews.map((item, index) => {
-                  return <Reviews {...item} key={index} />
-                }):
-                <div className='mt-5 d-flex-center'>No Reviews yet. Be the first one to review the Phone.</div>
-              }
-
-
-
-
+                {reviews.length !== 0 ?
+                  reviews.map((item, index) => {
+                    return <Reviews {...item} key={index} />
+                  }) :
+                  <div className='mt-5 d-flex-center'>No Reviews yet. Be the first one to review the Phone.</div>
+                }
               </TabPanel>
+
+
+
+{/* Critique Reviews */}
+
               <TabPanel value={value} index={3}>
                 <div className='mb-5 d-flex-end'>
-                  <Button variant="outlined" onClick={()=>setShowAddReviews(true)}>Rate Product</Button>
+                  {Login.isLoggedin ?
+                    <Button variant="outlined" onClick={() => setShowAddReviews(true)}>Rate Product</Button> :
+                    <Button variant="outlined" onClick={() => Navigate('/Login')}>Login to Rate Product</Button>
+                  }
                 </div>
                 <div className="PD-reviewsBar">
 
@@ -279,9 +323,13 @@ const PhoneDetails = () => {
                     })}
                   </div>
                 </div>
-                {res.reviews.map((item, index) => {
-                  return <Reviews {...item} key={index} />
-                })}
+
+                {reviews.length !== 0 ?
+                  reviews.map((item, index) => {
+                    return <Reviews {...item} key={index} />
+                  }) :
+                  <div className='mt-5 d-flex-center'>No Reviews yet. Be the first one to review the Phone.</div>
+                }
               </TabPanel>
             </Box>
           </div>

@@ -13,6 +13,7 @@ const AddReviews = (props) => {
   const [stars, setStars] = useState(0);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("")
+  const [popUp,setPopUp]=useState(false)
   const handleChange = async () => {
     try {
       const result = await axios({
@@ -51,27 +52,36 @@ const AddReviews = (props) => {
   return (
     <>
       <div className='reviewContainer'>
-        <div className='addReviews'>
-          <CloseIcon
-            sx={{
-              position: 'absolute',
-              left: '10px',
-              top: '10px',
-              fontSize: '30px',
-              cursor: 'pointer'
+        <div className={popUp?'addReviews addReview-popup':'addReviews'}>
+          <Tooltip title="Close" sx={{
+            position: 'absolute',
+            left: '10px',
+            top: '10px',
+          }}>
+            <IconButton >
+              <CloseIcon
+                sx={{
+                  
+                  fontSize: '30px',
+                  cursor: 'pointer'
 
-            }}
-            onClick={() => {
-              props.close(false);
-            }}
-          />
-          <Tooltip title="Pop Up">
-            <IconButton>
+                }}
+                onClick={() => {
+                  props.close(false);
+                }}
+              />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Pop Up" sx={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px'
+          }}>
+            <IconButton >
               <OpenInFullIcon
                 sx={{
-                  position: 'absolute',
-                  right: '10px',
-                  top: '10px',
+
+                  position: 'relative',
                   fontSize: '30px',
                   cursor: 'pointer',
                   background: '#fff',
@@ -81,7 +91,7 @@ const AddReviews = (props) => {
 
                 }}
                 onClick={() => {
-                  // props.close(false);
+                  setPopUp(prev=>!prev)
                 }}
               />
             </IconButton>
@@ -120,7 +130,7 @@ const AddReviews = (props) => {
                 id="standard-basic"
                 label="Title"
                 variant="standard"
-                sx={{ minWidth: '275px' }}
+                sx={{ minWidth: '275px', width:'100%' }}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               // className='mt-1'
@@ -130,11 +140,11 @@ const AddReviews = (props) => {
               id="standard-multiline-static"
               label="Few Lines from You"
               multiline
-              rows={4}
+              rows={popUp?8:4}
               defaultValue=""
               variant="standard"
               className='mt-2'
-              sx={{ minWidth: '275px' }}
+              sx={{ minWidth: '275px', width:'100%' }}
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
             /></div>

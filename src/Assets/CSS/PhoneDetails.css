@@ -197,8 +197,8 @@
 }
 
 .IV-Images{
-    width: auto;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 
@@ -207,15 +207,17 @@
 /* Add Reviews Component */
 
 .addReviews{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    transform: translate(-50%,-50%);
+    position: relative;
+    min-width: 400px;
     background-color: rgb(249, 246, 255);
     border-radius: 10px;
     padding: 50px;
     z-index: 12;
+}
+
+.addReview-popup{
+    width: 900px;
+    height: 600px;
 }
 
 .reviewContainer{
@@ -226,5 +228,51 @@
     width: 100vw;
     height: 100vh;
     z-index: 12;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+}
+
+.addPhotoContainer{
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 12;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.addPhotos{
+    position: relative;
+    /* position: fixed;
+    top: 50%;
+    left: 50%; */
+    width: 400px;
+    /* transform: translate(-50%,-50%); */
+    background-color: rgb(249, 246, 255);
+    border-radius: 10px;
+    padding: 50px;
+    z-index: 12;
+    transition: all ease-in-out 5s;
+}
+
+.showPhotos{
+    width: 400px;
+    height:275px;
+    margin-left: 10px;
+    background-color: rgb(249, 246, 255);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 120;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }

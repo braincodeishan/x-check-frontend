@@ -141,12 +141,17 @@ const MiscProvider = (props) => {
      }
   }
 
+  const setLocation=(props)=>{
+    setLastLocation(props)
+  }
+
   return (
     <Misc.Provider value={{ 
       logoWidth, 
       setlogoWidth,
       LastLocation,
       setLastLocation,
+      setLocation,
       Filter,
       setFilter,
       alert,

@@ -15,8 +15,8 @@ import makeAnimated from "react-select/animated";
 import Select from "react-select";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
-import Loading from "../../SubComponents/Loading";
-import Background from "../../SubComponents/Background";
+import Loading from "../../SubComponents/RegularComponents/Loading/Loading";
+import Background from "../../SubComponents/RegularComponents/Background";
 // import Background from '../../SubComponents/Background';
 
 //importing data
@@ -32,6 +32,7 @@ import "../../../Assets/CSS/Search.css";
 const Search = () => {
   const Navigate = useNavigate();
   const Login = useLogin();
+  const mobileData = useMobileData();
   const [inputPrice, setInputPrice] = useState(['0', '50000']);
   const [processors, setProcessors] = useState([]);
   const [ram, setRam] = useState([]);
@@ -39,10 +40,8 @@ const Search = () => {
   const [display, setDisplay] = useState([]);
   const [brand, setBrand] = useState([]);
   const { setLastLocation, Filter, setFilter } = useMisc();
-  const mobileData = useMobileData();
   const [isAdvSearch, setisAdvSearch] = useState(false);
   const [isLoading, setisLoading] = useState(false);
-
   const animatedComponents = makeAnimated();
 
   useEffect(() => {
@@ -84,13 +83,15 @@ const Search = () => {
     })
     // console.log(res);
 
-    mobileData.setmobileData(result.data);
-    console.log(Filter);
+    
+    
     if (result.status === 200) {
+      mobileData.setmobileData(result.data);
+      console.log(result.data)
       setTimeout(() => {
         setisLoading(false);
         Navigate("/Result");
-      }, 3000);
+      }, 1000);
     }
   };
   

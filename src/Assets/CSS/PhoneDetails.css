@@ -217,7 +217,7 @@
 
 .addReview-popup{
     width: 900px;
-    height: 600px;
+    /* height: 600px; */
 }
 
 .reviewContainer{
@@ -227,6 +227,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    overflow-y: scroll;
     z-index: 12;
     display: flex;
     flex-direction: row;
@@ -274,5 +275,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+.showReviewPhotos{
+    position: relative;
+    width: 320px;
+    height:180px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    border: 0.5px dashed rgba(0,0,0,0.1)
     
 }

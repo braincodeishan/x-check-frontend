@@ -28,7 +28,7 @@ const showImage = (name) => {
 
 };
 
-const Reviews = (props) => {
+const ReviewsCard = (props) => {
 
   const [isliked, setIsLiked] = useState(false)
   const [likes, setLikes] = useState(props.likes)
@@ -124,4 +124,4 @@ const Reviews = (props) => {
   );
 };
 
-export default Reviews;
+export default ReviewsCard;

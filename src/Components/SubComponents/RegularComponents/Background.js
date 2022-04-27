@@ -3,9 +3,9 @@
 
 import React, {memo} from 'react'
 // import ReactJSXWrapper from './ReactJSXWrapper'
-import img1 from '../../Assets/Images/1.png'
+import img1 from '../../../Assets/Images/1.png'
 
-import img4 from '../../Assets/Images/4.png'
+import img4 from '../../../Assets/Images/4.png'
 const Background = (props) => {
   // const IMG1=ReactJSXWrapper(
     const IMG1=<div className='plx-block-1 entrance-left'>

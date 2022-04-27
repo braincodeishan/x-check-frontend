@@ -26,15 +26,15 @@ import LoveIndia from "./Components/MainComponents/Footer/LoveIndia";
 import Results from "./Components/MainComponents/Body/Results";
 import PhoneDetails from "./Components/MainComponents/Body/PhoneDetails";
 import ComparePhones from "./Components/MainComponents/Body/ComparePhones";
-import CompareIcons from "./Components/SubComponents/CompareIcons";
+import CompareIcons from "./Components/SubComponents/ComparePhones/CompareIcons";
 import ForgotPassword from "./Components/MainComponents/Body/ForgotPassword";
 import Register from "./Components/MainComponents/Body/Register";
 import Wishlist from "./Components/MainComponents/Body/Wishlist";
 import ContactUs from "./Components/MainComponents/Body/ContactUs";
 import Dashboard from './Components/Admin/Dashboard'
 import UpdateMobile from "./Components/Admin/UpdateMobile";
-import { SnackbarAlert } from "./Components/SubComponents/Alert";
-import Loading from "./Components/SubComponents/Loading";
+import { SnackbarAlert } from "./Components/SubComponents/RegularComponents/Alerts/Alert";
+import Loading from "./Components/SubComponents/RegularComponents/Loading/Loading";
 
 function App() {
   const {alert, setAlert, loading}= useMisc();

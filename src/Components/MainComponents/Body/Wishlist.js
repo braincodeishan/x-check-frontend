@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLogin,useMisc } from "../../../Contexts/Context";
-import ResultBox from "../../SubComponents/ResultBox";
+import ResultBox from "../../SubComponents/Search/ResultBox";
 import { resultsData } from "../../../Assets/Data/Data";
 import { useNavigate } from "react-router";
 import { Divider } from "@mui/material";

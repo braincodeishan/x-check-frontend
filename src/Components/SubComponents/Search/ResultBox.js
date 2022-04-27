@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import { FormGroup } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
-import { LoginContext } from '../../Contexts/Context'
+import { LoginContext } from '../../../Contexts/Context'
 const ResultBox = (props) => {
   const Login = useContext(LoginContext)
   const [isChecked,setIsChecked]=useState(()=>{

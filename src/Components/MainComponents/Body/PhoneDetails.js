@@ -10,51 +10,54 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import { LinearProgress } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 
-import TableRow from '@mui/material/TableRow';
+
+
 import { useParams } from 'react-router';
 import '../../../Assets/CSS/PhoneDetails.css'
 import { resultsData } from '../../../Assets/Data/Data'
 import { itemData } from '../../../Assets/Data/Data'
 
-import Reviews from '../../SubComponents/Reviews'
-import ImageViewer from '../../SubComponents/ImageViewer';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+
+
+
 
 import { useLogin, useMisc } from '../../../Contexts/Context'
-import AddReviews from '../../SubComponents/AddReviews';
-import AddPhotos from '../../SubComponents/AddPhotos';
+
+
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 
+import DataTables from '../../SubComponents/PhoneDetails/DataTables'
+import Images from '../../SubComponents/PhoneDetails/Images';
+import Reviews from '../../SubComponents/PhoneDetails/Reviews';
+
+
+
 
 const PhoneDetails = () => {
+  const { setLastLocation } = useMisc()
+  const { id } = useParams();
   const Navigate = useNavigate();
   const Login = useLogin();
-  const { setLastLocation } = useMisc()
 
-  const { id } = useParams();
 
-  const [showImage, setshowImage] = useState(null)
+
+
+
+
   const [res, setRes] = useState(resultsData[id]);
-  const [reviews, setReviews] = useState([]);
+
   const [value, setValue] = React.useState(0);
-  const [showAddReviews, setShowAddReviews] = useState(false);
-  const [showAddPhotos, setShowAddPhotos] = useState(false);
 
 
 
 
+  //for Last location of login
   useEffect(() => {
     setLastLocation('/PhoneDetails/' + id)
-
   }, [])
+  // for folowing the star rating of the reviews
 
 
 
@@ -76,7 +79,7 @@ const PhoneDetails = () => {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            <Typography component={'div'}>{children}</Typography>
           </Box>
         )}
       </div>
@@ -90,70 +93,20 @@ const PhoneDetails = () => {
     };
   }
 
-  const showMyImage = (item) => {
-    setshowImage(item)
-  }
-  const progress = [100, 50, 70, 20, 10]    //
+
+
 
   const getPhotos = async () => {
 
   }
 
 
-  const getReviews = async () => {
-    try {
-      const result = await axios({
-        method: 'POST',
-        url: process.env.REACT_APP_DOMAIN_NAME + '/reviews/UserReviews',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          id: id
-        }
-      })
-      if (result.status === 200) {
-        console.log(result.data)
-        setReviews(result.data.result)
-
-      }
-    } catch (err) {
-
-    }
-  }
-
-  const getCritiqueReviews = async () => {
-    try {
-      const result = await axios({
-        method: 'POST',
-        url: process.env.REACT_APP_DOMAIN_NAME + '/reviews/CritiquesReviews',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          id: id
-        }
-      })
-      if (result.status === 200) {
-        console.log(result.data)
-        setReviews(result.data)
-
-      }
-    } catch (err) {
-
-    }
-  }
-
-
-
-
-
 
   return (
     <>
-      {showImage && <ImageViewer image={showImage} setshowImage={setshowImage} />}
-      {showAddReviews && <AddReviews close={setShowAddReviews} id={id} />}
-      {showAddPhotos && <AddPhotos close={setShowAddPhotos} id={id} />}
+
+
+
 
       <div className='PhoneDetails container mt-4' >
 
@@ -205,131 +158,37 @@ const PhoneDetails = () => {
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                   <Tab label="Details" {...a11yProps(0)} />
-                  <Tab label="Photos & Videos" {...a11yProps(1)} onClick={getPhotos} />
-                  <Tab label="Reviews" {...a11yProps(2)} onClick={getReviews} />
-                  <Tab label="Critiques" {...a11yProps(3)} onClick={getCritiqueReviews} />
+                  <Tab label="Photos & Videos" {...a11yProps(1)} />
+                  <Tab label="Reviews" {...a11yProps(2)} />
+                  <Tab label="Critiques" {...a11yProps(3)} />
                 </Tabs>
               </Box>
 
-{/* Specification */}
+              {/* Specification */}
 
               <TabPanel value={value} index={0}>
-                <Table sx={{ minWidth: 500 }} aria-label="simple table">
-
-                  <TableBody>
-                    {res.specification.map((row) => (
-                      <TableRow
-                        key={row.name}
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                      >
-                        <TableCell component="th" scope="row">
-                          <b>{row.name}</b>
-                        </TableCell>
-                        <TableCell align="left">{row.value}</TableCell>
-
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                <DataTables data={res} />
               </TabPanel>
 
 
-{/* Images */}
+              {/* Images */}
 
               <TabPanel value={value} index={1}>
-                <div className='mb-5 d-flex-end'>
-                  {Login.isLoggedin ?
-                    <Button variant="outlined" onClick={() => setShowAddPhotos(true)}>Add Photos</Button> :
-                    <Button variant="outlined" onClick={() => Navigate('/Login')}>Login to Add more Photos</Button>
-                  }
-                </div>
-                <ImageList variant="masonry" cols={3} gap={8}>
-                  {itemData.map((item, index) => (
-                    <ImageListItem key={item.img}>
-                      <img
-                        src={`${item.img}?w=248&fit=crop&auto=format`}
-                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        alt={item.title}
-                        loading="lazy"
-                        className='cursorPointer animateZoom PD-imageList'
-                        onClick={() => { showMyImage(item.img) }}
-                      />
-                    </ImageListItem>
-                  ))}
-                </ImageList>
+                <Images itemData={itemData} />
 
               </TabPanel>
 
-{/* Reviews */}
+              {/* Reviews */}
 
               <TabPanel value={value} index={2}>
-                <div className='mb-5 d-flex-end'>
-                  {Login.isLoggedin ?
-                    <Button variant="outlined" onClick={() => setShowAddReviews(true)}>Rate Product</Button> :
-                    <Button variant="outlined" onClick={() => Navigate('/Login')}>Login to Rate Product</Button>
-                  }
-                </div>
-                <div className="PD-reviewsBar">
+                <Reviews id={id} url={'UserReviews'} />
 
-                  <div className="PD-XCheckNumber">
-                    <EmojiEventsIcon sx={{ fontSize: '100px', justifyContent: 'center', alignSelf: 'center' }} />
-                    <h3>X-Check Score</h3>
-                    <h2 className='animateZoom'>1040</h2>
-                  </div>
-                  <div>
-                    {progress.map((data, index) => {
-                      return <div className="progressbars" key={index}>
-                        <h6>{5 - index} <i className="bx bxs-star"></i></h6>
-                        <LinearProgress variant="determinate" value={data} className='PD-progressbar' />
-                        <p>{Math.round(Math.random() * 1000)}</p>
-                      </div>
-                    })}
-                  </div>
-                </div>
-
-                {reviews.length !== 0 ?
-                  reviews.map((item, index) => {
-                    return <Reviews {...item} key={index} />
-                  }) :
-                  <div className='mt-5 d-flex-center'>No Reviews yet. Be the first one to review the Phone.</div>
-                }
               </TabPanel>
 
-
-
-{/* Critique Reviews */}
+              {/* Critique Reviews */}
 
               <TabPanel value={value} index={3}>
-                <div className='mb-5 d-flex-end'>
-                  {Login.isLoggedin ?
-                    <Button variant="outlined" onClick={() => setShowAddReviews(true)}>Rate Product</Button> :
-                    <Button variant="outlined" onClick={() => Navigate('/Login')}>Login to Rate Product</Button>
-                  }
-                </div>
-                <div className="PD-reviewsBar">
-
-                  <div className="PD-XCheckNumber">
-                    <EmojiEventsIcon sx={{ fontSize: '100px', justifyContent: 'center', alignSelf: 'center' }} />
-                    <h3>X-Check Score</h3>
-                    <h2 className='animateZoom'>1040</h2>
-                  </div>
-                  <div>
-                    {progress.map((data, index) => {
-                      return <div className="progressbars" key={index}>
-                        <h6>{5 - index} <i className="bx bxs-star"></i></h6>
-                        <LinearProgress variant="determinate" value={data} className='PD-progressbar' />
-                        <p>{Math.round(Math.random() * 1000)}</p>
-                      </div>
-                    })}
-                  </div>
-                </div>
-
-                {reviews.length !== 0 ?
-                  reviews.map((item, index) => {
-                    return <Reviews {...item} key={index} />
-                  }) :
-                  <div className='mt-5 d-flex-center'>No Reviews yet. Be the first one to review the Phone.</div>
-                }
+                <Reviews id={id} url={'CriticsReviews'} />
               </TabPanel>
             </Box>
           </div>

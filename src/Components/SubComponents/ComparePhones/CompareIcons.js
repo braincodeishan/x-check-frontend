@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import Fab from "@mui/material/Fab";
 import CompareIcon from "@mui/icons-material/Compare";
-import { LoginContext } from "../../Contexts/Context";
+import { LoginContext } from "../../../Contexts/Context";
 import { useNavigate } from "react-router";
-import {resultsData} from '../../Assets/Data/Data'
+import {resultsData} from '../../../Assets/Data/Data'
 import CancelIcon from '@mui/icons-material/Cancel';
 
 const CompareIcons = () => {

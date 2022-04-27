@@ -4,7 +4,7 @@ import "../../../Assets/CSS/ComparePhones.css";
 import { resultsData } from "../../../Assets/Data/Data";
 
 import { Grid } from "@mui/material";
-import CompareBox from '../../SubComponents/CompareBox'
+import CompareBox from '../../SubComponents/ComparePhones/CompareBox'
 import {useNavigate} from "react-router";
 const ComparePhones = () => {
   const Navigate=useNavigate()

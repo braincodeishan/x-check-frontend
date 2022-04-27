@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
-import { useMisc,useLogin } from "../../Contexts/Context";
+import { useMisc,useLogin } from "../../../../Contexts/Context";
 import ImageKit from "imagekit-javascript"
 
 const IK = {

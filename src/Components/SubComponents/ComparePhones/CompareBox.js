@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import {MobileMaker} from '../../Assets/Data/Data'
+import {MobileMaker} from '../../../Assets/Data/Data'
 import { Skeleton } from "@mui/material";
 const CompareBox = (props) => {
   return (

@@ -6,26 +6,24 @@ import Slider from "@mui/material/Slider";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router";
 import "../../../Assets/CSS/Results.css";
-import FilterBox from "../../SubComponents/FilterBox";
-import ResultBox from "../../SubComponents/ResultBox";
-import CustomizedBreadcrumbs from "../../SubComponents/CustomizedBreadcrumbs";
-import {resultsData} from '../../../Assets/Data/Data'
-import { useMisc } from '../../../Contexts/Context';
+import FilterBox from "../../SubComponents/Search/FilterBox";
+import ResultBox from "../../SubComponents/Search/ResultBox";
+import CustomizedBreadcrumbs from "../../SubComponents//RegularComponents/CustomizedBreadcrumbs";
+// import {resultsData} from '../../../Assets/Data/Data'
+import { useMisc, useMobileData } from '../../../Contexts/Context';
 import {ResultFilter} from '../../../Assets/Data/Data'
 const Results = () => {
-  
   const {setLastLocation,Filter,setFilter}=useMisc()
+  const Navigate=useNavigate();
   useEffect(() => {
     setLastLocation('/Result')
   })
   
-  const Navigate=useNavigate();
+  const mobileData=useMobileData();
   
   const [pricevalue, setpriceValue] = React.useState([10, 80]);
-
-   const [data, setdata] = useState(ResultFilter);
-
-  
+  const [data, setdata] = useState(ResultFilter);
+  const [resultsData,setResultsData]=useState(mobileData.mobileData)
   const handleCheckboxChangeFunction = () => {};
   
   const showAllCheckboxesFunction = () => {};

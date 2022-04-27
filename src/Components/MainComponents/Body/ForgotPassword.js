@@ -9,7 +9,7 @@ import TwitterIcon from '../../../Assets/Icons/twitter.png';
 import FacebookIcon from '../../../Assets/Icons/facebook.webp';
 import { useLogin, useMisc } from '../../../Contexts/Context'
 import { useNavigate } from 'react-router';
-import {SnackbarAlert} from '../../SubComponents/Alert'
+import {SnackbarAlert} from '../../SubComponents/RegularComponents/Alerts/Alert'
 import '../../../Assets/CSS/Login.css'
 
 const ForgotPassword = () => {

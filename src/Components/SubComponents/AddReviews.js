@@ -58,7 +58,9 @@ const AddReviews = (props) => {
             left: '10px',
             top: '10px',
           }}>
-            <IconButton >
+            <IconButton onClick={() => {
+                  props.close(false);
+                }}>
               <CloseIcon
                 sx={{
                   
@@ -66,9 +68,7 @@ const AddReviews = (props) => {
                   cursor: 'pointer'
 
                 }}
-                onClick={() => {
-                  props.close(false);
-                }}
+                
               />
             </IconButton>
           </Tooltip>
@@ -77,7 +77,9 @@ const AddReviews = (props) => {
             top: '10px',
             right: '10px'
           }}>
-            <IconButton >
+            <IconButton onClick={() => {
+                  setPopUp(prev=>!prev)
+                }}>
               <OpenInFullIcon
                 sx={{
 
@@ -90,9 +92,7 @@ const AddReviews = (props) => {
                   borderRadius: '50%'
 
                 }}
-                onClick={() => {
-                  setPopUp(prev=>!prev)
-                }}
+                
               />
             </IconButton>
           </Tooltip>
@@ -141,7 +141,6 @@ const AddReviews = (props) => {
               label="Few Lines from You"
               multiline
               rows={popUp?8:4}
-              defaultValue=""
               variant="standard"
               className='mt-2'
               sx={{ minWidth: '275px', width:'100%' }}

@@ -104,7 +104,7 @@ const PhoneDetails = () => {
     try {
       const result = await axios({
         method: 'POST',
-        url: process.env.REACT_APP_DOMAIN_NAME + '/reviews',
+        url: process.env.REACT_APP_DOMAIN_NAME + '/reviews/UserReviews',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -114,7 +114,7 @@ const PhoneDetails = () => {
       })
       if (result.status === 200) {
         console.log(result.data)
-        setReviews(result.data)
+        setReviews(result.data.result)
 
       }
     } catch (err) {
@@ -126,7 +126,7 @@ const PhoneDetails = () => {
     try {
       const result = await axios({
         method: 'POST',
-        url: process.env.REACT_APP_DOMAIN_NAME + '/CritiqueReviews',
+        url: process.env.REACT_APP_DOMAIN_NAME + '/reviews/CritiquesReviews',
         headers: {
           'Content-Type': 'application/json',
         },

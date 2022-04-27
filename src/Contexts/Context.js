@@ -7,15 +7,11 @@ import { ResultFilter } from "../Assets/Data/Data";
 const LoginContext = createContext();
 export { LoginContext };
 
-
-
-
 const Misc = createContext();
 export { Misc };
 
 const MobileData = createContext();
 export { MobileData };
-
 
 
 const useLogin=()=>{
@@ -170,9 +166,9 @@ const MiscProvider = (props) => {
 export { MiscProvider };
 
 const MobileDataProvider = (props) => {
-  const [mobileData, setmobileData] = useState([]);
+  const [mobileData, setMobileData] = useState([]);
   return (
-    <MobileData.Provider value={{ mobileData, setmobileData }}>
+    <MobileData.Provider value={{ mobileData, setMobileData }}>
       {props.children}
     </MobileData.Provider>
   );

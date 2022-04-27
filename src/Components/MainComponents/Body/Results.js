@@ -154,7 +154,7 @@ const Results = () => {
             <CustomizedBreadcrumbs data={["Home","Results"]}/>
             <h6>Showing 1 – 25 of 10,711 results within your search brackets </h6>
             <Divider className="mdivider" />
-              {resultsData.map((data,index)=>{
+              {resultsData.length>0 && resultsData.map((data,index)=>{
                 return(
                 <>
                 <ResultBox 

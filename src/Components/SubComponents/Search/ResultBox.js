@@ -9,15 +9,15 @@ import { LoginContext } from '../../../Contexts/Context'
 const ResultBox = (props) => {
   const Login = useContext(LoginContext)
   const [isChecked,setIsChecked]=useState(()=>{
-    return Login.comparePhones.includes(props.data.id.toString())
+    return Login.comparePhones.includes(props.data._id.toString())
   })
   const [heart,setHeart]=useState(()=>{
-    return Login.wishlist.includes(props.data.id.toString())
+    return Login.wishlist.includes(props.data._id.toString())
   })
 
   useEffect(() => {
     setIsChecked(()=>{
-      return Login.comparePhones.includes(props.data.id.toString())
+      return Login.comparePhones.includes(props.data._id.toString())
     })
   }, [Login.comparePhones])
   
@@ -67,10 +67,10 @@ const ResultBox = (props) => {
   return (
     <div className="resultBox">
 
-      <div className="data phoneImage cursorPointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
-        <img src={props.data.image} alt={props.data.name} style={{ height: 'auto', width: 'auto', justifyContent: 'center' }} />
+      <div className="data phoneImage cursorPointer" onClick={() => { props.handleMoreDetailsFunction(props.data._id) }}>
+        <img src={props.data.image[0]} alt={props.data.name} style={{ height: 'auto', width: 'auto', justifyContent: 'center' }} />
       </div>
-      <div className="data phoneDetails cursorPointer" onClick={() => { props.handleMoreDetailsFunction(props.data.id) }}>
+      <div className="data phoneDetails cursorPointer" onClick={() => { props.handleMoreDetailsFunction(props.data._id) }}>
         <h4>{props.data.name}</h4>
         <div className="reviews">
           <span>
@@ -104,7 +104,7 @@ const ResultBox = (props) => {
               padding: '5px',
               boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
             }}
-            onClick={()=>handleWishlistChange(props.data.id)}
+            onClick={()=>handleWishlistChange(props.data._id)}
           /> :
           <FavoriteBorderIcon
             sx={{
@@ -117,7 +117,7 @@ const ResultBox = (props) => {
               padding: '5px',
               boxShadow: '0 2px 5px rgba(0,0,0,0.3)'
             }}
-            onClick={()=>handleWishlistChange(props.data.id)}
+            onClick={()=>handleWishlistChange(props.data._id)}
           />}
 
         <div className="priceSearch" style={{ marginTop: '40px' }}>
@@ -130,7 +130,7 @@ const ResultBox = (props) => {
             default 
             checked={isChecked}
               
-            onChange={(e) => { handleCheckbox(props.data.id,e.target.checked) }} />} label="Add to compare" />
+            onChange={(e) => { handleCheckbox(props.data._id,e.target.checked) }} />} label="Add to compare" />
 
           </FormGroup>
           <Button variant="contained" color="success">

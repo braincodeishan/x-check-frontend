@@ -81,12 +81,13 @@ const Search = () => {
         brands: Filters.brands
       }
     })
-    // console.log(res);
+    
 
     
     
     if (result.status === 200) {
-      mobileData.setmobileData(result.data);
+      console.log(result);
+      mobileData.setMobileData(result.data);
       console.log(result.data)
       setTimeout(() => {
         setisLoading(false);

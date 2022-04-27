@@ -12,7 +12,7 @@ const DataTables = (props) => {
             <Table sx={{ minWidth: 500 }} aria-label="simple table">
 
                 <TableBody>
-                    {props.data.specification.map((row) => (
+                    {props.specification.map((row) => (
                         <TableRow
                             key={row.name}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

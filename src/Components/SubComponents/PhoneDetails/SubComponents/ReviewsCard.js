@@ -101,18 +101,15 @@ const ReviewsCard = (props) => {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
+            <IconButton aria-label="add to favorites" onClick={() => handleLikes(isliked?-1:1)}>
               {isliked ?
                 <FavoriteIcon
-                sx={{color: '#e62568'}}
-                  onClick={() => handleLikes(-1)}
+                  sx={{ color: '#e62568' }}
                 /> :
-                <FavoriteIcon
-                  onClick={() => handleLikes(1)}
-                />
+                <FavoriteIcon/>
 
               }
-              
+
             </IconButton>{likes + " Likes"}
             <IconButton aria-label="share">
               <ShareIcon />

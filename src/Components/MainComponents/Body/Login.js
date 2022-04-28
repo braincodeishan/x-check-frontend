@@ -124,7 +124,7 @@ const Login = () => {
                 control={<Checkbox defaultChecked />}
                 label="Remeber Me"
               />
-              <Link to="/Forgot-Passwords" style={{ textAlign: "right" }}>
+              <Link to="/Forgot-Passwords/Verify" style={{ textAlign: "right" }}>
                 Forgot Password?
               </Link>
             </div>

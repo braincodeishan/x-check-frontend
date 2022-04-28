@@ -9,33 +9,60 @@ import TableRow from "@mui/material/TableRow";
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router";
 import { Button } from "@mui/material";
+import { useMisc } from "../../Contexts/Context";
 const UpdateMobile = () => {
     const Navigate = useNavigate();
     const [data, setData] = useState({});
     const [updatedData, setUpdatedData] = useState({});
+    const {alertSuccess,alertDanger}=useMisc();
     useEffect(() => {
         getData();
     }, []);
 
     const getData = async () => {
-        try{
-        const result = await axios.get(process.env.REACT_APP_DOMAIN_NAME+"/admin/updateMobile");
-        if (result.status === 200) {
-            if(result.error===404){
+        try {
+            const result = await axios.get(process.env.REACT_APP_DOMAIN_NAME + "/admin/updateMobile");
+            if (result.status === 200) {
+                if (result.error === 404) {
+                    alert(result.data);
+                    Navigate('/AdminDashboard')
+                }
+                setData(result.data);
+            } else if (result.status === 400) {
                 alert(result.data);
-                Navigate('/AdminDashboard')
+            } else {
+
             }
-            setData(result.data);
-        } else if(result.status===400){
-            alert(result.data);
-        }else{
+        } catch (err) {
+            alert(err);
 
         }
-    }catch(err){
-        alert(err);
-        
-    }
     };
+
+    const handleSubmit = async () => {
+        try {
+            const result = await axios({
+                method: 'POST',
+                url: process.env.REACT_APP_DOMAIN_NAME + "/admin/updateMobile",
+                headers: {
+                    'content-type': 'application/json',
+                },
+                data: {
+
+                }
+            })
+            if(result.status===200){
+                alertSuccess("Updated Part 1")
+                Navigate("/UpdateMobiles/"+data._id)
+            }else{
+                alertDanger('Something Went Wrong!')
+                Navigate("/UpdateMobiles/"+data._id)
+            }
+        } catch (err) {
+            alertDanger('Something Went Wrong!')
+            Navigate("/UpdateMobiles/"+data._id)
+        }
+    }
 
     return (
         <div className="container">
@@ -447,7 +474,7 @@ const UpdateMobile = () => {
                         </div>
                     </div>}
                     <div className="boxLayout p-4 d-grid">
-                    <Button variant="contained" color="success">Submit</Button>
+                        <Button variant="contained" color="success" onClick={handleSubmit}>Submit</Button>
 
                     </div>
                 </div>

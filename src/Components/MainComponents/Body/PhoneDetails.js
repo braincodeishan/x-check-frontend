@@ -13,10 +13,10 @@ import Box from "@mui/material/Box";
 
 import { useParams } from "react-router";
 import "../../../Assets/CSS/PhoneDetails.css";
-// import { resultsData } from '../../../Assets/Data/Data'
+import { resultsData } from '../../../Assets/Data/Data'
 import { itemData } from "../../../Assets/Data/Data";
 
-import {  useMisc } from "../../../Contexts/Context";
+import { useMisc } from "../../../Contexts/Context";
 
 import axios from "axios";
 
@@ -27,9 +27,15 @@ import Reviews from "../../SubComponents/PhoneDetails/Reviews";
 const PhoneDetails = () => {
   const { setLastLocation } = useMisc();
   const { id } = useParams();
-  console.log(id);
-  const [res, setRes] = useState({});
-  const [mainImage,setMainImage]=useState('https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg')
+  const [res, setRes] = useState(resultsData);
+  const [mainImage, setMainImage] = useState([
+    'https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg',
+    'https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg',
+    'https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg',
+    'https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg',
+    'https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg',
+
+  ])
 
   const [value, setValue] = useState(0);
 
@@ -54,9 +60,15 @@ const PhoneDetails = () => {
   }, []);
 
   useEffect(() => {
-    // setMainImage(res.image[0])
+
+    console.log("data = " + res)
+    console.log("Image = " + res.image)
+    if (res.image.length > 0) {
+      setMainImage(res.image)
+
+    }
   }, [res])
-  
+
   // for folowing the star rating of the reviews
 
   const handleChange = (event, newValue) => {
@@ -95,25 +107,35 @@ const PhoneDetails = () => {
       <div className="PhoneDetails container mt-4">
         <div className="PDsection1">
           <div className="PDdisplayImage mt-4">
-            {/* <img src={mainImage} alt={res.name} srcSet="" /> */}
+            <img src={mainImage[0]} alt={res.name} srcSet="" />
           </div>
           <div className="PDselectImage">
             <ul>
-              <li className="animateZoom" onClick={()=>setMainImage(res.image[0])}>
-                {/* {res!==null?<img src={res.image[0]} alt={res.name} srcSet="" />:<img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />} */}
-              </li>
-              <li className="animateZoom" onClick={()=>setMainImage(res.image[1])}>
-              {/* {res!==null?<img src={res.image[1]} alt={res.name} srcSet="" />:<img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />} */}
-              </li>
-              <li className="animateZoom" onClick={()=>setMainImage(res.image[2])}>
-              {/* {res!==null?<img src={res.image[2]} alt={res.name} srcSet="" />:<img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />} */}
-              </li>
-              <li className="animateZoom" onClick={()=>setMainImage(res.image[3])}>
-              {/* {res!==null?<img src={res.image[3]} alt={res.name} srcSet="" />:<img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />} */}
-              </li>
-              <li className="animateZoom" onClick={()=>setMainImage(res.image[4])}>
-              {/* {res!==null?<img src={res.image[4]} alt={res.name} srcSet="" />:<img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />} */}
-              </li>
+              {res.image.length > 0 ? mainImage.map((item, index) => {
+                <li className="animateZoom" onClick={() => setMainImage(res.image[index])} key={index}>
+                  <img src={item} alt={res.name} srcSet="" />
+                </li>
+              }) :
+                <>
+                  <li className="animateZoom" >
+                    <img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />
+                  </li>
+                  <li className="animateZoom"  >
+                    <img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />
+                  </li>
+                  <li className="animateZoom"  >
+                    <img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />
+                  </li>
+                  <li className="animateZoom"  >
+                    <img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />
+                  </li>
+                  <li className="animateZoom"  >
+                    <img src='https://ik.imagekit.io/e5d019f0b85d/abc1_mE1801jBn.jpg' srcSet="" />
+                  </li>
+                </>
+              }
+
+
             </ul>
           </div>
           <div className="PDbuttons">

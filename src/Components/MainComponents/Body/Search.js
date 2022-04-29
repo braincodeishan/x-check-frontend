@@ -76,7 +76,7 @@ const Search = () => {
         price: Filters.price,
         processors: Filters.processors,
         ram: Filters.ram,
-        primaryCamera: Filters.primaryCamera,
+        primaryCamera: Filters.PrimaryCamera,
         display: Filters.display,
         brands: Filters.brands
       }

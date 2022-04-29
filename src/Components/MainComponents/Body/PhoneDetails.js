@@ -140,17 +140,17 @@ const PhoneDetails = () => {
           </div>
           <div className="PDbuttons">
             <img src={amazonImg} alt="" srcSet="" />
-            <h5>Rs. {res.price}</h5>
+            <h5>Rs. {res.priceList.amazon}</h5>
             <Button variant="contained" color="success">
               Buy Now!
             </Button>
             <img src={flipkartImg} alt="" srcSet="" />
-            <h5>Rs. {res.price}</h5>
+            <h5>Rs. {res.priceList.flipkart}</h5>
             <Button variant="contained" color="success">
               Buy Now!
             </Button>
             <img src={tataCliqImg} alt="" srcSet="" />
-            <h5>Rs. {res.price}</h5>
+            <h5>Rs. {res.priceList.tatacliq}</h5>
             <Button variant="contained" color="success">
               Buy Now!
             </Button>

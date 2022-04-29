@@ -141,6 +141,8 @@ const MiscProvider = (props) => {
     setLastLocation(props)
   }
 
+  
+
   return (
     <Misc.Provider value={{ 
       logoWidth, 
@@ -155,7 +157,8 @@ const MiscProvider = (props) => {
       alertSuccess,
       alertDanger,
       loading,
-      setLoading
+      setLoading,
+      
     
     }}>
       {props.children}

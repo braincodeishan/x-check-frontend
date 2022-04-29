@@ -68,6 +68,11 @@ export const resultsData = {
     criticRating: "",
     star: 0,
     price: 0,
+    priceList:{
+      amazon:0,
+      flipkart:0,
+      tatacliq:0
+    },
     specification: [
       
     ],

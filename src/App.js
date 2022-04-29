@@ -36,6 +36,7 @@ import UpdateMobile from "./Components/Admin/UpdateMobile";
 import { SnackbarAlert } from "./Components/SubComponents/RegularComponents/Alerts/Alert";
 import Loading from "./Components/SubComponents/RegularComponents/Loading/Loading";
 import UpdateMobilePart2 from "./Components/Admin/UpdateMobilePart2";
+
 function App() {
   const {alert, setAlert, loading}= useMisc();
   return (
@@ -69,8 +70,10 @@ function App() {
                   <Route exact path="/AdminDashboard" element={<Dashboard />} />
                   <Route exact path="/UpdateMobiles" element={<UpdateMobile />} />
                   <Route exact path="/UpdateMobiles/:id" element={<UpdateMobilePart2 />} />
+                  
                 <Route element={<ProtectedRoutes />}>
                   <Route exact path="/Wishlist" element={<Wishlist />} />
+
                 </Route>
               </Routes>
             </div>

@@ -26,6 +26,7 @@ import Reviews from "../../SubComponents/PhoneDetails/Reviews";
 
 const PhoneDetails = () => {
   const { setLastLocation } = useMisc();
+  
   const { id } = useParams();
   const [res, setRes] = useState(resultsData);
   const [mainImage, setMainImage] = useState([
@@ -45,8 +46,11 @@ const PhoneDetails = () => {
 
     async function getData() {
       try {
-        const result = await axios(
-          process.env.REACT_APP_DOMAIN_NAME + "/search/mobiles"
+        const result = await axios.get(process.env.REACT_APP_DOMAIN_NAME + "/search/mobiles",{
+          params: {
+            id: id
+          }
+        }
         );
         if (result.status === 200) {
           // console.log(result.data);
@@ -104,6 +108,7 @@ const PhoneDetails = () => {
 
   return (
     <>
+    
       <div className="PhoneDetails container mt-4">
         <div className="PDsection1">
           <div className="PDdisplayImage mt-4">
@@ -164,14 +169,15 @@ const PhoneDetails = () => {
           </div>
           <div className="PDbody">
             <h4>Details</h4>
-            <p style={{ textAlign: "justify" }}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
-              ab quaerat delectus at ipsam cupiditate consequatur sunt ea
-              nostrum neque iste nulla qui, perferendis quod fuga sint ex sit
-              temporibus molestiae iusto, aliquid enim molestias. At, commodi
-              vitae totam ducimus sint nobis, aut repellendus, animi deleniti
-              eius suscipit doloremque optio?
-            </p>
+            
+              <ul style={{ textAlign: "justify" }}>
+                  {res.highlights.map((item,index)=>{
+                    console.log(item)
+                    return <li key={index}>{item}</li>
+
+                  })}
+              </ul>
+            
 
             <Box sx={{ width: "100%" }}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

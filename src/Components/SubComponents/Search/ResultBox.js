@@ -83,7 +83,7 @@ const ResultBox = (props) => {
         <div className="details">
           <ul>
             {props.data.highlights.map((listItem, index) => {
-              return (<li key={index}>{listItem}</li>)
+              return (<li key={index}>{listItem.length>47?listItem.substring(0,47)+"...":listItem}</li>)
             })}
           </ul>
 

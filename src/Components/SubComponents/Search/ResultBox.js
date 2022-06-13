@@ -73,11 +73,11 @@ const ResultBox = (props) => {
       <div className="data phoneDetails cursorPointer" onClick={() => { props.handleMoreDetailsFunction(props.data._id) }}>
         <h4>{props.data.name}</h4>
         <div className="reviews">
-          <span>
-            <p className="ratingandreviews">{props.data.rating} Ratings & {props.data.criticRating} critic reviews</p>
+          <span className="starLines">
             <div className="stars">
               {props.data.star}<i className='bx bxs-star' ></i>
             </div>
+            <p className="ratingandreviews">{props.data.rating} Ratings & {props.data.criticRating} critic reviews</p>
           </span>
         </div>
         <div className="details">

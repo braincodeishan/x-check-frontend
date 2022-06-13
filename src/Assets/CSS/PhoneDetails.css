@@ -131,7 +131,7 @@
 }
 .PD-reviewsBar .progressbars{
     display: grid;
-    grid-template-columns: 10% 50% 40%;
+    grid-template-columns: 20% 50% 30%;
     grid-template-rows: auto;
     grid-gap: 5px;
 
